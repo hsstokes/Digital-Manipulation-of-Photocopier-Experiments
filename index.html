@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Manipulation of Photocopier Experiments</title>
+  <style>
+    :root {
+      --primary: #ea37a3;
+      --primary-light: #fdf1f5;
+      --secondary: #0a8080;
+      --secondary-light: #f5ffff;
+      --dark: #222;
+      --light: #fff;
+      --grid-light: #e0e0e0;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: "Typewriter Condensed", "Courier New", monospace;
+      background-image:
+        linear-gradient(var(--grid-light) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-light) 1px, transparent 1px);
+      background-size: 20px 20px, 20px 20px;
+      background-attachment: fixed;
+      color: var(--dark);
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.97);
+      border: 3px solid var(--primary);
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+    
+    /* Typography */
+    h1, h2, h3 {
+      font-family: "Typewriter Condensed", "Courier New", monospace;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.8em;
+    }
+    
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 10px;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      color: var(--secondary);
+      font-size: 1.4rem;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 20px;
+      background: var(--primary);
+      margin-right: 10px;
+    }
+    
+    p {
+      line-height: 1.6;
+      margin-bottom: 1em;
+      font-size: 1rem;
+    }
+    
+    /* Video tutorials */
+    .video-tutorial {
+      margin: 20px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+    
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .video-caption {
+      background: var(--secondary);
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    /* Tool cards */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .tool-card {
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+    
+    .tool-header {
+      background: var(--secondary);
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .tool-icon {
+      width: 30px;
+      height: 30px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    
+    .tool-icon img {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .tool-steps {
+      padding: 15px;
+    }
+    
+    .tool-steps ol {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .tool-steps li {
+      margin-bottom: 8px;
+    }
+    
+    .tool-image {
+      width: 100%;
+      border-radius: 5px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    
+    .shortcut {
+      display: inline-block;
+      padding: 3px 7px;
+      background: #f2f2f2;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+      margin: 0 2px;
+    }
+    
+    /* Preparation box */
+    .prep-box {
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      background-color: var(--primary-light);
+    }
+    
+    .prep-box h3 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+    
+    .prep-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .prep-item {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+    }
+    
+    .prep-item img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    
+    /* Quiz section */
+    .quiz-container {
+      margin: 30px 0;
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .quiz-header {
+      background: var(--secondary);
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .quiz-content {
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    
+    /* Drag and Drop Quiz */
+    .draggable-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .draggable {
+      padding: 10px 15px;
+      background-color: white;
+      border: 2px solid var(--secondary);
+      border-radius: 5px;
+      cursor: move;
+      user-select: none;
+      touch-action: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .draggable:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(10, 128, 128, 0.3);
+    }
+    
+    .drop-zone {
+      min-height: 180px;
+      border: 2px dashed var(--secondary);
+      border-radius: 5px;
+      padding: 15px;
+      background-color: white;
+      margin-top: 15px;
+    }
+    
+    .drop-zone p {
+      color: #666;
+      text-align: center;
+      margin: 0;
+    }
+    
+    /* Multiple choice */
+    .question {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .question-text {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    
+    @media (max-width: 600px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .option {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #ddd;
+    }
+    
+    .option:hover {
+      background: #e0e0e0;
+    }
+    
+    .option.selected {
+      background: #d4edda;
+      border-color: #c3e6cb;
+    }
+    
+    .check-button {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+      font-family: "Typewriter Condensed", "Courier New", monospace;
+    }
+    
+    .check-button:hover {
+      background-color: #d72b92;
+    }
+    
+    .feedback {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: none;
+    }
+    
+    .correct-feedback {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .incorrect-feedback {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+    .correct {
+      background-color: #d4edda !important;
+      border-color: #c3e6cb !important;
+    }
+    
+    .incorrect {
+      background-color: #f8d7da !important;
+      border-color: #f5c6cb !important;
+    }
+    
+    /* Step-by-step grid */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    @media (max-width: 768px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .step-box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+    
+    .step-number {
+      background: var(--secondary-light);
+      color: var(--secondary);
+      padding: 8px 15px;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .step-content {
+      padding: 15px;
+    }
+    
+    .step-image {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      border: 1px solid #eee;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    
+    /* Modal for image popup */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      overflow: auto;
+    }
+    
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      z-index: 1001;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    /* Inspiration gallery */
+    .inspiration-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .inspiration-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .inspiration-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .inspiration-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+    
+    .inspiration-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 8px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    /* Typography box */
+    .typography-box {
+      border: 2px solid var(--secondary);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 25px 0;
+      background-color: var(--secondary-light);
+    }
+    
+    .typography-box h3 {
+      color: var(--secondary);
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+    .font-sample {
+      margin: 15px 0;
+      padding: 10px;
+      background: white;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    
+    .font-sample h4 {
+      margin-bottom: 5px;
+      color: var(--secondary);
+      font-size: 1rem;
+    }
+    
+    .font-example {
+      padding: 10px;
+      border: 1px dashed #ddd;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+    
+    .andale-mono {
+      font-family: "Andale Mono", monospace;
+    }
+    
+    .orator-std {
+      font-family: "Orator Std", "Courier New", monospace;
+    }
+    
+    .grandview {
+      font-family: "Grandview Display", "Segoe UI", sans-serif;
+    }
+    
+    .typewriter {
+      font-family: "Typewriter Condensed", "Courier New", monospace;
+    }
+    
+    /* Citation reminder */
+    .citation-reminder {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .citation-reminder img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Digital Manipulation of Photocopier Experiments</h1>
+  
+  <p>Learn how to digitally enhance photocopier experiments with Photoshop techniques to create emotive, expressive outcomes for your design projects.</p>
+  
+  <!-- PRE-CLASS PREPARATION - HOMEWORK -->
+  <div class="prep-box">
+    <h3>⚠️ BEFORE CLASS: Create Photocopier Experiments (Homework)</h3>
+    
+    <div style="margin-bottom: 15px; padding: 10px 15px; background: rgba(234, 55, 163, 0.1); border-left: 4px solid var(--primary); border-radius: 4px;">
+      <p><strong>IMPORTANT:</strong> Before coming to class, create 2-3 photocopier experiments using research images related to your Term 2 design project.</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+      <div style="background: white; padding: 15px; border-radius: 8px;">
+        <h4 style="color: var(--secondary); margin-top: 0;">Quick Experiment Ideas:</h4>
+        <ul>
+          <li>Move images during scanning for distortion</li>
+          <li>Hold scanner lid partially open for light effects</li>
+          <li>Layer transparent materials (acetate, tracing paper)</li>
+          <li>Create multiple generations of copies</li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px;">
+        <h4 style="color: var(--secondary); margin-top: 0;">What to Bring to Class:</h4>
+        <ol>
+          <li>Your 2-3 scanned photocopier experiments (300dpi)</li>
+          <li>Original research images related to your project</li>
+          <li>Any artist references that inspired your experiments</li>
+          <li>Notes on techniques you used (for documentation)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ARTIST INSPIRATION SECTION -->
+  <h2>Artist Inspiration</h2>
+
+  <div class="inspiration-gallery">
+    <div class="inspiration-item">
+      <a href="https://tillmans.co.uk/" target="_blank">
+        <img class="inspiration-image" src="wolfgang-tillmans.jpg" alt="Wolfgang Tillmans photocopier artwork" />
+      </a>
+      <div class="inspiration-caption">Wolfgang Tillmans, Paper Drop, 2014</div>
+    </div>
+    
+    <div class="inspiration-item">
+      <a href="https://www.moma.org/artists/3406" target="_blank">
+        <img class="inspiration-image" src="william-larson.jpg" alt="William Larson Fireflies series" />
+      </a>
+      <div class="inspiration-caption">William Larson, Fireflies series, 1969-78</div>
+    </div>
+    
+    <div class="inspiration-item">
+      <a href="https://www.tate.org.uk/art/artists/wade-guyton-12907" target="_blank">
+        <img class="inspiration-image" src="wade-guyton.jpg" alt="Wade Guyton printer manipulation" />
+      </a>
+      <div class="inspiration-caption">Wade Guyton, Untitled, 2007</div>
+    </div>
+  </div>
+
+  <div class="citation-reminder">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4NTY0MDQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTEyIDh2NCI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxNmguMDEiPjwvcGF0aD48L3N2Zz4=" />
+    <div>
+      <strong>During class:</strong> We'll be adding proper citations for these artists to your digital compositions. Make note of any artists that influence your work.
+    </div>
+  </div>
+  
+  <!-- CLASS OVERVIEW -->
+  <div style="background: #f8f8f8; padding: 20px; border-radius: 10px; margin: 20px 0;">
+    <h3 style="color: var(--secondary); margin-top: 0;">Today's Class (2.5 hours)</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <h4 style="color: var(--primary); margin-top: 0;">Hour 1</h4>
+        <ul>
+          <li>Advanced selection techniques</li>
+          <li>Working with Filter Gallery</li>
+          <li>Masking techniques for selective application</li>
+        </ul>
+      </div>
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <h4 style="color: var(--primary); margin-top: 0;">Hour 2</h4>
+        <ul>
+          <li>Blend modes for combining elements</li>
+          <li>Adding quotes and references</li>
+          <li>Typography and layout techniques</li>
+        </ul>
+      </div>
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); grid-column: span 2;">
+        <h4 style="color: var(--primary); margin-top: 0;">Final 30 Minutes</h4>
+        <ul>
+          <li>Finalizing compositions</li>
+          <li>Adding citations and references</li>
+          <li>Export for submission to Padlet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- EXAMPLE INSPIRATION SECTION -->
+  <h2>Research Reference: William Larson Technique</h2>
+
+  <div style="background: #f8f8f8; padding: 20px; border-radius: 10px; margin: 20px 0;">
+    <h3 style="color: var(--secondary); margin-top: 0;">Example: Student Work</h3>
+    
+    <!-- Main image with click-to-enlarge functionality -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <!-- The thumbnail image that appears on the page -->
+      <img src="william-larson-example.jpg" alt="William Larson inspired research page" 
+           style="width: 80%; max-width: 600px; border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); cursor: pointer;"
+           onclick="document.getElementById('enlarged-image-modal').style.display='flex';">
+      <div style="font-size: 0.8em; color: #666; margin-top: 5px;">Click image to enlarge</div>
+    </div>
+    
+    <!-- Modal popup for enlarged image -->
+    <div id="enlarged-image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; flex-direction: column;">
+      <img src="william-larson-example.jpg" alt="William Larson inspired research page (enlarged)" 
+           style="max-width: 90%; max-height: 80%; object-fit: contain; border: 3px solid white;">
+      <button onclick="document.getElementById('enlarged-image-modal').style.display='none'" 
+              style="margin-top: 20px; padding: 10px 20px; background: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+        Close
+      </button>
+    </div>
+
+    <p style="font-style: italic; margin-bottom: 20px; text-align: center;">Student example incorporating photocopier experiments with digital enhancement techniques</p>
+    
+    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 20px;">
+      <h4 style="color: var(--secondary); margin-top: 0;">Artist Quote for Reference</h4>
+      <p style="font-style: italic;">"I became interested in the idea that you could send image information over telephone lines... and that you could interfere with that information."</p>
+      <p style="font-size: 0.9em; margin-bottom: 0;">— William Larson, on his Fireflies series (1969-78)</p>
+    </div>
+    
+    <!-- Harvard Reference Example -->
+    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--secondary);">
+      <h4 style="color: var(--secondary); margin-top: 0;">Example Harvard Reference Format</h4>
+      <p style="font-family: 'Courier New', monospace; font-size: 0.9em;">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. The Museum of Modern Art, New York.</p>
+      <p style="font-family: 'Courier New', monospace; font-size: 0.9em;">Tillmans, W. (2014) <em>Paper Drop</em> [Photographic print]. Tate Modern, London.</p>
+    </div>
+  </div>
+  
+  <!-- SELECTION TECHNIQUES SECTION -->
+  <h2>Advanced Selection Techniques</h2>
+  
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWdvbiBwb2ludHM9IjEyIDIgMTkuNTYgNS4zMiAxOS41NiAxNS42OCAxMiAxOSA0LjQ0IDE1LjY4IDQuNDQgNS4zMiAxMiAyIj48L3BvbHlnb24+PC9zdmc+" />
+        </div>
+        <span>Selection Tools for Precise Editing</span>
+      </div>
+      
+      <div class="tool-steps">
+        <p>In today's class, we'll focus on making precise selections to apply effects to specific parts of your photocopier experiments:</p>
+        
+        <div class="steps-grid">
+          <div class="step-box">
+            <div class="step-number">Tool 1: Object Selection Tool</div>
+            <div class="step-content">
+              <p>Quickly select elements in your composition:</p>
+              <ol>
+                <li>Select Object Selection Tool (<span class="shortcut">W</span>, then toggle)</li>
+                <li>Draw rectangle around element</li>
+                <li>Photoshop automatically selects the object</li>
+                <li>Hold <span class="shortcut">Shift</span> to add to selection</li>
+                <li>Hold <span class="shortcut">Alt/Option</span> to subtract</li>
+              </ol>
+              <img class="step-image" src="object-selection.jpg" alt="Object Selection Tool" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Tool 2: Select Subject</div>
+            <div class="step-content">
+              <p>AI-powered automatic subject selection:</p>
+              <ol>
+                <li>Go to <span class="shortcut">Select → Subject</span></li>
+                <li>Photoshop analyzes and selects main elements</li>
+                <li>Perfect for isolating scanned objects</li>
+                <li>Refine with Select and Mask if needed</li>
+              </ol>
+              <img class="step-image" src="select-subject.jpg" alt="Select Subject feature" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Tool 3: Select and Mask</div>
+            <div class="step-content">
+              <p>Refine selections for complex edges:</p>
+              <ol>
+                <li>Make initial selection with any selection tool</li>
+                <li>Click <span class="shortcut">Select and Mask</span> in options bar</li>
+                <li>Use Refine Edge Brush to improve edges</li>
+                <li>Adjust "Output To" options (Layer Mask recommended)</li>
+                <li>Click OK to apply</li>
+              </ol>
+              <img class="step-image" src="select-and-mask.jpg" alt="Select and Mask dialog" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Tool 4: Color Range</div>
+            <div class="step-content">
+              <p>Select areas based on color similarity:</p>
+              <ol>
+                <li>Go to <span class="shortcut">Select → Color Range</span></li>
+                <li>Use eyedropper to select target color</li>
+                <li>Adjust Fuzziness to control selection range</li>
+                <li>Perfect for selecting light areas in photocopies</li>
+              </ol>
+              <img class="step-image" src="color-range.jpg" alt="Color Range dialog" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- SAVING SELECTIONS SECTION -->
+        <div style="margin-top: 20px; padding: 15px; background: var(--secondary-light); border-radius: 8px;">
+          <h4 style="color: var(--secondary); margin-top: 0;">💡 Pro Tip: Save Your Selections</h4>
+          <p>Save complex selections to reuse them later:</p>
+          <ol>
+            <li>Make your selection with any method</li>
+            <li>Go to <span class="shortcut">Select → Save Selection</span></li>
+            <li>Name your selection and click OK</li>
+            <li>To load it later: <span class="shortcut">Select → Load Selection</span></li>
+          </ol>
+          <p><strong>Why this matters:</strong> You can apply different filters to the same area without having to reselect it each time.</p>
+        </div>
+        
+        <!-- VIDEO TUTORIAL SECTION -->
+        <div class="video-tutorial">
+          <div class="video-caption">Advanced Selection Techniques</div>
+          <div class="video-wrapper">
+            <!-- Panopto video embed code -->
+            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=505318ca-dfd2-42f0-b56d-b39900a14563" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- FILTER GALLERY SECTION -->
+  <h2>Filter Gallery Techniques</h2>
+  
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTggMTQuNUExMi41IDEyLjUgMCAwIDAgMTYgOS41Ij48L3BhdGg+PHBhdGggZD0iTTE2IDkuNUExMi41IDEyLjUgMCAwIDEgOCAxNC41Ij48L3BhdGg+PC9zdmc+" />
+        </div>
+        <span>Filter Gallery for Creative Effects</span>
+      </div>
+      
+      <div class="tool-steps">
+        <p>The Filter Gallery is perfect for enhancing photocopier experiments with artistic effects:</p>
+        
+        <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+          <h4 style="color: var(--primary); margin-top: 0;">⚠️ Important: Smart Objects First</h4>
+          <p>Before applying filters, convert your layer to a Smart Object:</p>
+          <ol>
+            <li>Right-click on layer</li>
+            <li>Select "Convert to Smart Object"</li>
+            <li>Now filters will be non-destructive and adjustable</li>
+          </ol>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;">
+          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--secondary); margin-top: 0;">Opening Filter Gallery</h4>
+            <ol>
+              <li>Select your layer or a specific selection</li>
+              <li>Go to <span class="shortcut">Filter → Filter Gallery</span></li>
+              <li>The gallery interface opens with preview</li>
+            </ol>
+            <img class="step-image" src="filter-gallery-open.jpg" alt="Opening Filter Gallery" />
+          </div>
+          
+          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--secondary); margin-top: 0;">Filter Gallery Interface</h4>
+            <ol>
+              <li>Left: Filter category folders</li>
+              <li>Center: Preview of effect</li>
+              <li>Right: Settings for selected filter</li>
+              <li>Bottom: Layer stack of applied filters</li>
+            </ol>
+            <img class="step-image" src="filter-gallery-interface.jpg" alt="Filter Gallery Interface" />
+          </div>
+        </div>
+        
+        <h4 style="color: var(--secondary);">Recommended Filters for Photocopier Aesthetics</h4>
+        
+        <div class="steps-grid">
+          <div class="step-box">
+            <div class="step-number">Artistic → Cutout</div>
+            <div class="step-content">
+              <p>Creates a posterized effect that enhances photocopier aesthetics:</p>
+              <ul>
+                <li>Number of Levels: 4-6</li>
+                <li>Edge Simplicity: 2-4</li>
+                <li>Edge Fidelity: 1-2</li>
+              </ul>
+              <img class="step-image" src="filter-cutout.jpg" alt="Cutout filter example" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Sketch → Photocopy</div>
+            <div class="step-content">
+              <p>Simulates photocopier artifacts and enhances existing ones:</p>
+              <ul>
+                <li>Detail: 5-10</li>
+                <li>Darkness: 10-20</li>
+                <li>Perfect for emphasizing already photocopied elements</li>
+              </ul>
+              <img class="step-image" src="filter-photocopy.jpg" alt="Photocopy filter example" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Stylize → Find Edges</div>
+            <div class="step-content">
+              <p>Creates line-drawing effect from edges in your photocopies:</p>
+              <ul>
+                <li>No adjustable settings</li>
+                <li>Try applying to duplicate layer</li>
+                <li>Set layer blend mode to Multiply or Overlay</li>
+              </ul>
+              <img class="step-image" src="filter-find-edges.jpg" alt="Find Edges filter example" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Distort → Glass</div>
+            <div class="step-content">
+              <p>Creates warped, distorted areas similar to movement in photocopier:</p>
+              <ul>
+                <li>Distortion: 5-15</li>
+                <li>Smoothness: 3-7</li>
+                <li>Texture: Frosted</li>
+                <li>Scaling: 50-100%</li>
+              </ul>
+              <img class="step-image" src="filter-glass.jpg" alt="Glass filter example" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- SELECTIVE FILTER APPLICATION -->
+        <div style="margin-top: 20px; padding: 20px; background: #f8f8f8; border-radius: 8px;">
+          <h4 style="color: var(--secondary); margin-top: 0;">Selective Filter Application</h4>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+            <div>
+              <p><strong>Why apply filters selectively?</strong></p>
+              <ul>
+                <li>Creates focal points in your composition</li>
+                <li>Maintains clarity in important areas</li>
+                <li>Adds visual interest through contrast</li>
+                <li>Creates layered, professional results</li>
+              </ul>
+            </div>
+            
+            <div>
+              <p><strong>Methods for selective application:</strong></p>
+              <ol>
+                <li>Make a selection before applying filter</li>
+                <li>Apply filter to whole layer, then add layer mask</li>
+                <li>Duplicate layer, apply filter, then erase parts</li>
+                <li>Use Filter Gallery mask controls</li>
+              </ol>
+            </div>
+          </div>
+          
+          <div style="margin-top: 15px;">
+            <img class="step-image" src="selective-filter.jpg" alt="Example of selective filter application" style="max-width: 100%; height: auto;" />
+            <p style="font-size: 0.9em; text-align: center; margin-top: 5px;">Example: Photocopy filter applied only to specific areas of the image</p>
+          </div>
+        </div>
+        
+        <!-- VIDEO TUTORIAL SECTION -->
+        <div class="video-tutorial">
+          <div class="video-caption">Filter Gallery and Selective Application</div>
+          <div class="video-wrapper">
+            <!-- Panopto video embed code -->
+            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=b3839b74-5113-4c3f-9929-b37d00a206ba" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASKING TECHNIQUES SECTION -->
+  <h2>Layer Masking for Controlled Effects</h2>
+  
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTMgMTNsNS40IDAuNmw1LjQgLTMuNmwtMy42IC01LjRMMTkuNCAwbC0zLjYgNS40TDEzIDEzem0tMTAuNCAxMGw1LjQgLTMuNmwwLjYgLTUuNGw3LjggLTcuOEwxMyAwbC03LjggNy44TC4xIDEzLjZsLTMuNiA1LjRMMSAyMi42bC0xLjEgLTEuMnoiPjwvcGF0aD48L3N2Zz4=" />
+        </div>
+        <span>Layer Masking Essentials</span>
+      </div>
+      
+      <div class="tool-steps">
+        <p>Layer masks are crucial for controlling where effects appear in your composition:</p>
+        
+        <div class="steps-grid">
+          <div class="step-box">
+            <div class="step-number">Basics: Adding Layer Masks</div>
+            <div class="step-content">
+              <ol>
+                <li>Select your layer</li>
+                <li>Click the "Add Layer Mask" button at bottom of Layers panel</li>
+                <li>A white mask thumbnail appears next to layer</li>
+                <li>Paint with black brush to hide parts of layer</li>
+                <li>Paint with white brush to reveal parts of layer</li>
+              </ol>
+              <p style="font-style: italic; margin-top: 10px;">Remember: "Black conceals, white reveals"</p>
+              <img class="step-image" src="layer-mask-basics.jpg" alt="Layer mask basics" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Technique: Gradient Masks</div>
+            <div class="step-content">
+              <ol>
+                <li>Add a layer mask</li>
+                <li>Select Gradient Tool (<span class="shortcut">G</span>)</li>
+                <li>Choose black-to-white gradient</li>
+                <li>Click and drag across mask to create smooth transition</li>
+                <li>Perfect for blending filters gradually</li>
+              </ol>
+              <img class="step-image" src="gradient-mask.jpg" alt="Gradient mask example" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Advanced: Creating Atmosphere</div>
+            <div class="step-content">
+              <ol>
+                <li>Apply a filter to enhance your photocopier experiment</li>
+                <li>Add a layer mask</li>
+                <li>Select a soft, low-opacity brush (20-30%)</li>
+                <li>Paint with black to reveal original areas gradually</li>
+                <li>Create depth and focus in your composition</li>
+              </ol>
+              <img class="step-image" src="atmospheric-mask.jpg" alt="Creating atmosphere with masks" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Technique: Selection-Based Masks</div>
+            <div class="step-content">
+              <ol>
+                <li>Make a selection using any selection tool</li>
+                <li>Add a layer mask - selection automatically applies to mask</li>
+                <li>Adjust mask with Brush tool as needed</li>
+                <li>Perfect for complex shapes in photocopier images</li>
+              </ol>
+              <img class="step-image" src="selection-mask.jpg" alt="Selection-based mask" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- MASK EDITING TIPS -->
+        <div style="margin-top: 20px; background: var(--secondary-light); padding: 15px; border-radius: 8px;">
+          <h4 style="color: var(--secondary); margin-top: 0;">Layer Mask Editing Tips</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;">
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <p><strong>View the Mask:</strong> Alt/Option+click on mask thumbnail to view it</p>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <p><strong>Invert the Mask:</strong> Ctrl/Cmd+I when mask is selected</p>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <p><strong>Refine Edges:</strong> Select mask and use Select and Mask</p>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <p><strong>Disable/Enable:</strong> Shift+click on mask thumbnail</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- APPLICATION EXAMPLES -->
+        <div style="margin-top: 20px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+          <div style="padding: 10px; background: var(--secondary); color: white; font-weight: bold;">
+            Examples: Masking for Artistic Effect
+          </div>
+          <div style="padding: 15px; background: white;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div>
+                <img src="mask-example-1.jpg" alt="Mask example 1" style="width: 100%; border-radius: 5px;" />
+                <p style="font-size: 0.9em; margin-top: 5px;">Example 1: Filter applied with gradient mask</p>
+              </div>
+              <div>
+                <img src="mask-example-2.jpg" alt="Mask example 2" style="width: 100%; border-radius: 5px;" />
+                <p style="font-size: 0.9em; margin-top: 5px;">Example 2: Multiple filters with selective masking</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- VIDEO TUTORIAL SECTION -->
+        <div class="video-tutorial">
+          <div class="video-caption">Layer Masking Techniques</div>
+          <div class="video-wrapper">
+            <!-- Panopto video embed code -->
+            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=9abedd5a-4837-485a-a9c9-b39900fd9a97" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- BLEND MODES SECTION -->
+  <h2>Blend Modes for Combining Elements</h2>
+  
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTggMTQuNUExMi41IDEyLjUgMCAwIDAgMTYgOS41Ij48L3BhdGg+PHBhdGggZD0iTTE2IDkuNUExMi41IDEyLjUgMCAwIDEgOCAxNC41Ij48L3BhdGg+PC9zdmc+" />
+        </div>
+        <span>Blend Modes for Combining Elements</span>
+      </div>
+      
+      <div class="tool-steps">
+        <p>Blend modes are essential for creating rich, layered compositions with your photocopier experiments:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--secondary); margin-top: 0;">Key Blend Modes for Photocopier Art</h4>
+            
+            <div style="margin-top: 15px; border-left: 3px solid var(--primary); padding-left: 15px;">
+              <h5 style="margin: 0 0 5px 0; color: var(--primary);">Multiply</h5>
+              <p style="margin: 0 0 15px 0;">Darkens image, perfect for layering photocopied textures</p>
+              
+              <h5 style="margin: 0 0 5px 0; color: var(--primary);">Screen</h5>
+              <p style="margin: 0 0 15px 0;">Lightens image, good for creating glow effects</p>
+              
+              <h5 style="margin: 0 0 5px 0; color: var(--primary);">Overlay</h5>
+              <p style="margin: 0 0 15px 0;">Increases contrast while preserving highlights and shadows</p>
+              
+              <h5 style="margin: 0 0 5px 0; color: var(--primary);">Difference</h5>
+              <p style="margin: 0 0 15px 0;">Creates inverted, negative-like effects</p>
+              
+              <h5 style="margin: 0 0 5px 0; color: var(--primary);">Hard Light</h5>
+              <p style="margin: 0;">Intense contrast, makes edges and textures pop</p>
+            </div>
+          </div>
+          
+          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--secondary); margin-top: 0;">Blend Mode Examples</h4>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+              <img src="blend-mode-multiply.jpg" alt="Multiply blend mode" style="width: 100%; border-radius: 4px;" />
+              <img src="blend-mode-screen.jpg" alt="Screen blend mode" style="width: 100%; border-radius: 4px;" />
+              <img src="blend-mode-overlay.jpg" alt="Overlay blend mode" style="width: 100%; border-radius: 4px;" />
+              <img src="blend-mode-difference.jpg" alt="Difference blend mode" style="width: 100%; border-radius: 4px;" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- LAYERING STRATEGIES -->
+        <div style="margin-top: 20px; background: #f8f8f8; padding: 15px; border-radius: 8px;">
+          <h4 style="color: var(--secondary); margin-top: 0;">Layering Strategies for Complex Compositions</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <h5 style="color: var(--primary); margin-top: 0;">Base Layer Strategy</h5>
+              <ol>
+                <li>Start with main photocopier experiment</li>
+                <li>Add research images on separate layers</li>
+                <li>Apply blend modes to integrate layers</li>
+                <li>Use masks to reveal/hide specific areas</li>
+              </ol>
+            </div>
+            
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <h5 style="color: var(--primary); margin-top: 0;">Effect Layer Strategy</h5>
+              <ol>
+                <li>Duplicate your base layer</li>
+                <li>Apply filter to duplicate layer</li>
+                <li>Change blend mode of filtered layer</li>
+                <li>Adjust opacity to control intensity</li>
+                <li>Add mask to apply effect selectively</li>
+              </ol>
+            </div>
+            
+            <div style="background: white; padding: 10px; border-radius: 5px;">
+              <h5 style="color: var(--primary); margin-top: 0;">Text Integration Strategy</h5>
+              <ol>
+                <li>Create text layer with quote/reference</li>
+                <li>Position text appropriately</li>
+                <li>Experiment with blend modes for text layer</li>
+                <li>Try Overlay or Soft Light for subtle text</li>
+                <li>Use layer effects for additional emphasis</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        
+        <!-- VIDEO TUTORIAL SECTION -->
+        <div class="video-tutorial">
+          <div class="video-caption">Blend Modes for Photocopier Art</div>
+          <div class="video-wrapper">
+            <!-- Panopto video embed code -->
+            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=37e1b91d-d690-4bd4-a15d-b39900b5af52" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADDING TEXT AND REFERENCES SECTION -->
+  <h2>Adding Text and References</h2>
+  
+  <div class="typography-box">
+    <h3>Integrating Text and Citations</h3>
+    
+    <p>Adding properly formatted text and references is essential for academic integrity and creates a professional research document:</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <h4 style="color: var(--secondary); margin-top: 0;">Adding Artist Quotes</h4>
+        <ol>
+          <li>Create new text layer (<span class="shortcut">T</span> key)</li>
+          <li>Select appropriate font (see recommendations below)</li>
+          <li>Type or paste your quote with attribution</li>
+          <li>Format with italics for the quote</li>
+          <li>Add quotation marks and attribution</li>
+          <li>Consider adding a semi-transparent background rectangle</li>
+        </ol>
+        <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-top: 10px;">
+          <p style="font-style: italic; margin-bottom: 5px;">"I became interested in the idea that you could send image information over telephone lines... and that you could interfere with that information."</p>
+          <p style="text-align: right; margin-top: 0; font-size: 0.9em;">— William Larson (1978)</p>
+        </div>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <h4 style="color: var(--secondary); margin-top: 0;">Harvard References</h4>
+        <ol>
+          <li>Create new text layer</li>
+          <li>Use a monospaced font (Courier, Andale Mono)</li>
+          <li>Include full Harvard reference format:</li>
+        </ol>
+        <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 0.9em; margin-top: 10px;">
+          <p style="margin-bottom: 5px;">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. The Museum of Modern Art, New York.</p>
+          <p style="margin-bottom: 5px;">Tillmans, W. (2014) <em>Paper Drop</em> [Photographic print]. Tate Modern, London.</p>
+          <p style="margin-bottom: 0;">Guyton, W. (2007) <em>Untitled</em> [Digital print on linen]. The Museum of Modern Art, New York.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+      <h4 style="color: var(--secondary); margin-top: 0;">Typography Considerations</h4>
+      
+      <div class="font-sample">
+        <h4>Recommended Fonts:</h4>
+        
+        <div class="font-example andale-mono">
+          <p>Andale Mono - clean, technical look for references</p>
+        </div>
+        
+        <div class="font-example orator-std">
+          <p>Orator Std - balanced spacing, good for quotes</p>
+        </div>
+        
+        <div class="font-example typewriter">
+          <p>Typewriter Condensed - pairs well with photocopied materials</p>
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+        <div>
+          <h5 style="margin-top: 0; color: var(--secondary);">Text Styling Tips</h5>
+          <ul>
+            <li>Use consistent text alignment (left alignment usually works best)</li>
+            <li>Consider text color carefully - black or dark gray is most readable</li>
+            <li>Add semi-transparent background shapes behind text for legibility</li>
+            <li>Group text layers with their backgrounds</li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="margin-top: 0; color: var(--secondary);">Text Effects</h5>
+          <ul>
+            <li>Try subtle Drop Shadow effect for emphasis</li>
+            <li>Experiment with low-opacity Outer Glow for ethereal quality</li>
+            <li>Avoid overly decorative effects that compromise legibility</li>
+            <li>Subtle Stroke effect can help text stand out on busy backgrounds</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- CLASS ACTIVITY -->
+  <div style="margin-top: 30px; border: 2px solid var(--primary); border-radius: 10px; padding: 20px; background-color: var(--primary-light);">
+    <h3 style="color: var(--primary); margin-top: 0;">Class Activity (2.5 hours)</h3>
+    
+    <p>During today's class, create a digital composition using your photocopier experiments. Follow this workflow:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">1. Setup (15 mins)</h4>
+        <ul>
+          <li>Create new A3 document (300dpi)</li>
+          <li>Import your photocopier experiments</li>
+          <li>Import original research images</li>
+          <li>Organize your layers logically</li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">2. Selection & Masking (45 mins)</h4>
+        <ul>
+          <li>Practice selection techniques</li>
+          <li>Convert selections to masks</li>
+          <li>Create compositions with multiple elements</li>
+          <li>Try gradient masks for smooth transitions</li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">3. Filter Application (45 mins)</h4>
+        <ul>
+          <li>Convert layers to Smart Objects</li>
+          <li>Apply filters from Filter Gallery</li>
+          <li>Use selective application techniques</li>
+          <li>Experiment with filter combinations</li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">4. Blend & Refine (30 mins)</h4>
+        <ul>
+          <li>Apply blend modes to integrate layers</li>
+          <li>Adjust opacity levels</li>
+          <li>Add final adjustments (levels, curves)</li>
+          <li>Fine-tune mask details</li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">5. Add Text & References (15 mins)</h4>
+        <ul>
+          <li>Add meaningful quote with attribution</li>
+          <li>Include proper Harvard references</li>
+          <li>Format text appropriately</li>
+          <li>Ensure text is legible</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="citation-reminder" style="margin-top: 20px;">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4NTY0MDQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTEyIDh2NCI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxNmguMDEiPjwvcGF0aD48L3N2Zz4=" />
+      <div>
+        <strong>Remember:</strong> Save your work regularly! Keep the PSD file with all layers for future editing.
+      </div>
+    </div>
+  </div>
+  
+  <!-- FINALIZING & SUBMISSION SECTION -->
+  <h2>Finalizing & Submission to Padlet</h2>
+
+  <div class="prep-box" style="background-color: var(--secondary-light);">
+    <h3 style="color: var(--secondary);">Before Submitting Your Work:</h3>
+    
+    <div class="prep-list">
+      <div class="prep-item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTQgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjgiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSIxNCAyIDE0IDggMjAgOCI+PC9wb2x5bGluZT48bGluZSB4MT0iMTYiIHkxPSIxMyIgeDI9IjgiIHkyPSIxMyI+PC9saW5lPjxsaW5lIHgxPSIxNiIgeTE9IjE3IiB4Mj0iOCIgeTI9IjE3Ij48L2xpbmU+PHBvbHlsaW5lIHBvaW50cz0iMTAgOSA5IDkgOCA5Ij48L3BvbHlsaW5lPjwvc3ZnPg==" />
+        <span>Check connection to Term 2 project</span>
+      </div>
+      <div class="prep-item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI5IDExIDEyIDE0IDE2IDEwIj48L3BvbHlsaW5lPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIj48L2NpcmNsZT48L3N2Zz4=" />
+        <span>Verify all references are included</span>
+      </div>
+      <div class="prep-item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTkgMjFINWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmgxMWw1IDV2MTFhMiAyIDAgMCAxLTIgMnoiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSIxNyAyMSAxNyAxMyA3IDEzIDcgMjEiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iNyAzIDcgOCAxNSA4Ij48L3BvbHlsaW5lPjwvc3ZnPg==" />
+        <span>Save PSD files with layers</span>
+      </div>
+      <div class="prep-item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnYtNCI+PC9wYXRoPjxwb2x5bGluZSBwb2ludHM9IjcgMTAgMTIgMTUgMTcgMTAiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjEyIiB5MT0iMTUiIHgyPSIxMiIgeTI9IjMiPjwvbGluZT48L3N2Zz4=" />
+        <span>Export as JPG for submission</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMISSION SECTION -->
+  <div style="margin-top: 30px; border: 2px solid var(--primary); border-radius: 10px; padding: 20px; background-color: var(--primary-light);">
+    <h3 style="color: var(--primary); margin-top: 0;">Submitting to Padlet</h3>
+    
+    <p><strong>Submit two components that clearly connect to your Term 2 design project:</strong></p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">1. Original Photocopier Experiments</h4>
+        <p>Upload your scanned photocopier experiments:</p>
+        <ul>
+          <li>Include at least 2 different photocopier techniques</li>
+          <li>Brief description of methods used</li>
+          <li>How they relate to your Term 2 project</li>
+        </ul>
+      </div>
+      
+      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h4 style="margin-top: 0; color: var(--secondary);">2. Digital Composition (A3)</h4>
+        <p>Upload your final digitally enhanced composition:</p>
+        <ul>
+          <li>Demonstrate at least 3 techniques from today's class</li>
+          <li>Include proper artist reference/quotation</li>
+          <li>Show clear connection to Term 2 project</li>
+          <li>Demonstrate emotive expression through technique</li>
+        </ul>
+      </div>
+    </div>
+    
+    <a href="https://artslondon.padlet.org/hstokes12/week-1-term-2-as18keb970kmh0re" target="_blank" style="display: block; text-align: center; margin-top: 20px; padding: 12px 20px; background-color: var(--primary); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s ease;">
+      Access Submission Padlet Board
+    </a>
+  </div>
+
+  <!-- CLASS GALLERY SECTION -->
+  <div style="margin-top: 30px;">
+    <h3>Class Gallery & Submission Board</h3>
+    <div style="padding:8px 0; border-radius: 12px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: 15px 0;">
+      <iframe src="https://artslondon.padlet.org/hstokes12/week-1-term-2-as18keb970kmh0re" frameborder="0" allow="camera;microphone;geolocation" style="width:100%;height:500px"></iframe>
+    </div>
+  </div>
+  
+  <!-- Modal for image viewing -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Drag and Drop Functionality
+    const draggables = document.querySelectorAll('.draggable');
+    const dropZone = document.querySelector('.drop-zone');
+    const checkOrderButton = document.getElementById('check-order-button');
+    const orderFeedback = document.getElementById('order-feedback');
+
+    const correctOrder = [
+      "Place image on scanner bed",
+      "Press scan/copy button",
+      "Move image as scan light passes",
+      "Retrieve final distorted result"
+    ];
+
+    draggables.forEach(draggable => {
+      draggable.addEventListener('dragstart', () => {
+        draggable.classList.add('dragging');
+      });
+
+      draggable.addEventListener('dragend', () => {
+        draggable.classList.remove('dragging');
+      });
+    });
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      const dragging = document.querySelector('.dragging');
+      if (dragging) {
+        const afterElement = getDragAfterElement(dropZone, e.clientY);
+        if (afterElement == null) {
+          dropZone.appendChild(dragging);
+        } else {
+          dropZone.insertBefore(dragging, afterElement);
+        }
+      }
+    });
+
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+    });
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    checkOrderButton.addEventListener('click', () => {
+      const droppedItems = dropZone.querySelectorAll('.draggable');
+      let allCorrect = true;
+      
+      if (droppedItems.length < correctOrder.length) {
+        orderFeedback.textContent = "Please place all items in the drop zone.";
+        orderFeedback.className = "feedback incorrect-feedback";
+        orderFeedback.style.display = "block";
+        return;
+      }
+      
+      droppedItems.forEach((item, index) => {
+        if (item.textContent === correctOrder[index]) {
+          item.classList.add('correct');
+          item.classList.remove('incorrect');
+        } else {
+          item.classList.add('incorrect');
+          item.classList.remove('correct');
+          allCorrect = false;
+        }
+      });
+      
+      if (allCorrect) {
+        orderFeedback.textContent = "Correct! You've arranged the steps in the right order.";
+        orderFeedback.className = "feedback correct-feedback";
+      } else {
+        orderFeedback.textContent = "Not quite right. Try rearranging the steps.";
+        orderFeedback.className = "feedback incorrect-feedback";
+      }
+      
+      orderFeedback.style.display = "block";
+    });
+
+    // Multiple Choice Quiz Functionality
+    const options = document.querySelectorAll('.option');
+    const checkQuizButton = document.getElementById('check-quiz-button');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    
+    options.forEach(option => {
+      option.addEventListener('click', () => {
+        // Toggle selection within the same question
+        const questionContainer = option.closest('.question');
+        questionContainer.querySelectorAll('.option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        option.classList.add('selected');
+      });
+    });
+    
+    checkQuizButton.addEventListener('click', () => {
+      const questionContainers = document.querySelectorAll('.question');
+      let correctCount = 0;
+      let totalQuestions = questionContainers.length;
+      
+      questionContainers.forEach(container => {
+        const selectedOption = container.querySelector('.option.selected');
+        
+        if (!selectedOption) {
+          // No selection made
+          return;
+        }
+        
+        if (selectedOption.dataset.correct === "true") {
+          selectedOption.classList.add('correct');
+          correctCount++;
+        } else {
+          selectedOption.classList.add('incorrect');
+          
+          // Optionally highlight the correct answer
+          container.querySelectorAll('.option').forEach(opt => {
+            if (opt.dataset.correct === "true") {
+              opt.classList.add('correct');
+            }
+          });
+        }
+      });
+      
+      // Display feedback
+      if (correctCount === totalQuestions) {
+        quizFeedback.textContent = `Perfect! You got all ${totalQuestions} questions right.`;
+        quizFeedback.className = "feedback correct-feedback";
+      } else {
+        quizFeedback.textContent = `You got ${correctCount} out of ${totalQuestions} questions correct.`;
+        quizFeedback.className = "feedback incorrect-feedback";
+      }
+      
+      quizFeedback.style.display = "block";
+    });
+    
+    // Image Modal Functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const images = document.querySelectorAll('.tool-image, .step-image, .inspiration-image');
+    
+    // Open modal when clicking on images
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+      });
+    });
+    
+    // Close modal when clicking the × symbol
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+    
+    // Close modal when clicking outside the image
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
