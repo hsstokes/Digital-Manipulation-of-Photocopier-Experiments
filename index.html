@@ -599,8 +599,8 @@
       <li><strong>Photocopier</strong>: A machine that makes copies of documents and images</li>
       <li><strong>Digital editing</strong>: Changing images using computer software</li>
       <li><strong>Selection</strong>: Choosing specific parts of an image to edit</li>
-      <li><strong>Filter</strong>: Special effects that change how an image looks</li>
-      <li><strong>Layer</strong>: Different parts of an image that can be edited separately</li>
+      <li><strong>Threshold</strong>: Converting an image to pure black and white with no gray</li>
+      <li><strong>Text on Path</strong>: Making text follow the contours of a shape or line</li>
     </ul>
   </div>
   
@@ -640,7 +640,7 @@
 
   <div class="inspiration-gallery">
     <div class="inspiration-item">
-      <a href="https://tillmans.co.uk/" target="_blank">
+      <a href="https://www.tate.org.uk/art/artworks/tillmans-paper-drop-prinzessinnenstrasse-a-p82413">
         <img class="inspiration-image" src="wolfgang-tillmans.jpg" alt="Wolfgang Tillmans photocopier artwork" />
       </a>
       <div class="inspiration-caption">Wolfgang Tillmans, Paper Drop, 2014</div>
@@ -676,17 +676,17 @@
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
         <h4 style="color: var(--primary); margin-top: 0;">Hour 1</h4>
         <ul>
-          <li>Learn how to select parts of images</li>
-          <li>Use Filter Gallery to add special effects</li>
-          <li>Learn to apply effects to specific areas only</li>
+          <li>Select parts of your photocopied images</li>
+          <li>Create high-contrast images with Threshold</li>
+          <li>Turn selections into paths for text</li>
         </ul>
       </div>
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
         <h4 style="color: var(--primary); margin-top: 0;">Hour 2</h4>
         <ul>
-          <li>Learn about blend modes to combine images</li>
+          <li>Add text on paths in your images</li>
+          <li>Use blend modes to combine elements</li>
           <li>Add quotes and references to your work</li>
-          <li>Work on text and layout</li>
         </ul>
       </div>
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); grid-column: span 2;">
@@ -729,7 +729,7 @@
     
     <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 20px;">
       <h4 style="color: var(--secondary); margin-top: 0;">Artist Factual information Example</h4>
-      <p style="font-style: italic;">"Larson used a Graphic Sciences DEX 1 Teleprinter, a sophisticated early fax machine, which converted pictures, text and sound into digitally-generated audio signals. These signals were transmitted over a telephone line and a stylus burned the image onto a special carbon-based paper, creating a unique “electronic drawing.”"</p>
+      <p style="font-style: italic;">"Larson used a Graphic Sciences DEX 1 Teleprinter, a sophisticated early fax machine, which converted pictures, text and sound into digitally-generated audio signals. These signals were transmitted over a telephone line and a stylus burned the image onto a special carbon-based paper, creating a unique "electronic drawing.""</p>
       <p style="font-size: 0.9em; margin-bottom: 0;">— William Larson, on his Fireflies series (1969-78)</p>
     </div>
     
@@ -762,60 +762,59 @@
         
         <div class="steps-grid">
           <div class="step-box">
-            <div class="step-number">Tool 1: Object Selection Tool</div>
+            <div class="step-number">Tool 1: Magic Wand Tool</div>
             <div class="step-content">
-              <p>This tool helps you select objects quickly:</p>
+              <p>Perfect for selecting areas in high-contrast photocopies:</p>
               <ol>
-                <li>Select Object Selection Tool (<span class="shortcut">W</span>, then toggle)</li>
-                <li>Draw a box around the object</li>
-                <li>Photoshop will automatically select it</li>
-                <li>Hold <span class="shortcut">Shift</span> to add more objects</li>
-                <li>Hold <span class="shortcut">Alt/Option</span> to remove parts</li>
+                <li>Select Magic Wand Tool (<span class="shortcut">W</span>)</li>
+                <li>Set Tolerance (20-40 is good for photocopies)</li>
+                <li>Click on a black or white area</li>
+                <li>Hold <span class="shortcut">Shift</span> to add more areas</li>
+                <li>Hold <span class="shortcut">Alt/Option</span> to remove areas</li>
               </ol>
-              <img class="step-image" src="object-selection.jpg" alt="Object Selection Tool" />
+              <img class="step-image" src="magic-wand.jpg" alt="Magic Wand Tool" />
             </div>
           </div>
           
           <div class="step-box">
-            <div class="step-number">Tool 2: Select Subject</div>
+            <div class="step-number">Tool 2: Quick Selection</div>
             <div class="step-content">
-              <p>This tool uses AI to find the main subject:</p>
+              <p>Quickly select areas by painting:</p>
               <ol>
-                <li>Go to <span class="shortcut">Select → Subject</span></li>
-                <li>Photoshop will find the main objects</li>
-                <li>Good for selecting scanned items</li>
-                <li>You can improve it with Select and Mask</li>
+                <li>Select Quick Selection Tool (also under <span class="shortcut">W</span>)</li>
+                <li>Paint over the area you want to select</li>
+                <li>Adjust brush size with bracket keys [ and ]</li>
+                <li>Good for larger areas in photocopies</li>
               </ol>
-              <img class="step-image" src="select-subject.jpg" alt="Select Subject feature" />
+              <img class="step-image" src="quick-selection.jpg" alt="Quick Selection Tool" />
             </div>
           </div>
           
           <div class="step-box">
-            <div class="step-number">Tool 3: Select and Mask</div>
-            <div class="step-content">
-              <p>This helps you make better edges:</p>
-              <ol>
-                <li>First select something with any tool</li>
-                <li>Click <span class="shortcut">Select and Mask</span> button</li>
-                <li>Use Refine Edge Brush on difficult edges</li>
-                <li>Choose "Output To: Layer Mask"</li>
-                <li>Click OK</li>
-              </ol>
-              <img class="step-image" src="select-and-mask.jpg" alt="Select and Mask dialog" />
-            </div>
-          </div>
-          
-          <div class="step-box">
-            <div class="step-number">Tool 4: Color Range</div>
+            <div class="step-number">Tool 3: Select Color Range</div>
             <div class="step-content">
               <p>Select areas based on color:</p>
               <ol>
                 <li>Go to <span class="shortcut">Select → Color Range</span></li>
                 <li>Click on a color in your image</li>
                 <li>Adjust "Fuzziness" slider to select more or less</li>
-                <li>Good for selecting light areas in photocopies</li>
+                <li>Perfect for selecting all black or white areas</li>
               </ol>
               <img class="step-image" src="color-range.jpg" alt="Color Range dialog" />
+            </div>
+          </div>
+          
+          <div class="step-box">
+            <div class="step-number">Tool 4: Convert Selection to Path</div>
+            <div class="step-content">
+              <p>This is essential for the text-on-path technique:</p>
+              <ol>
+                <li>Make a selection using any method</li>
+                <li>Right-click and choose "Make Work Path"</li>
+                <li>Set Tolerance to 1.0 for smoother paths</li>
+                <li>The path will appear in the Paths panel</li>
+              </ol>
+              <img class="step-image" src="make-work-path.jpg" alt="Make Work Path" />
             </div>
           </div>
         </div>
@@ -832,21 +831,12 @@
           </ol>
           <p><strong>Why this is useful:</strong> You can apply different effects to the same area without having to select it again.</p>
         </div>
-        
-        <!-- VIDEO TUTORIAL SECTION -->
-        <div class="video-tutorial">
-          <div class="video-caption">How to Make Selections</div>
-          <div class="video-wrapper">
-            <!-- Panopto video embed code -->
-            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=505318ca-dfd2-42f0-b56d-b39900a14563" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
       </div>
     </div>
   </div>
   
-  <!-- FILTER GALLERY SECTION -->
-  <h2>Filter Gallery for Special Effects</h2>
+  <!-- THRESHOLD AND TEXT ON PATH SECTION -->
+  <h2>Threshold and Text on Path Technique</h2>
   
   <div class="tool-grid">
     <div class="tool-card">
@@ -854,278 +844,150 @@
         <div class="tool-icon">
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTggMTQuNUExMi41IDEyLjUgMCAwIDAgMTYgOS41Ij48L3BhdGg+PHBhdGggZD0iTTE2IDkuNUExMi41IDEyLjUgMCAwIDEgOCAxNC41Ij48L3BhdGg+PC9zdmc+" />
         </div>
-        <span>Filter Gallery for Creative Effects</span>
+        <span>William Larson-Style Text Effects</span>
       </div>
       
       <div class="tool-steps">
-        <p>The Filter Gallery lets you add special effects to your photocopier experiments:</p>
+        <p>Create striking high-contrast images with text on paths, inspired by William Larson's teleprinter work:</p>
         
         <div class="term-box">
-          <strong>What is a filter?</strong> A filter is an effect that changes how your image looks. Filters can make your image look like a sketch, painting, or add texture.
+          <strong>What is Threshold?</strong> An adjustment that converts your image to pure black and white with no gray tones. Perfect for creating stark contrast like Larson's teleprinter art.
         </div>
         
         <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-          <h4 style="color: var(--primary); margin-top: 0;">⚠️ Important: Smart Objects First</h4>
-          <p>Before using filters, convert your layer to a Smart Object:</p>
-          <ol>
-            <li>Right-click on your layer</li>
-            <li>Select "Convert to Smart Object"</li>
-            <li>This lets you change or remove filters later</li>
-          </ol>
+          <h4 style="color: var(--primary); margin-top: 0;">⚠️ Important: Before You Start</h4>
+          <p>First, duplicate your layer (Ctrl/Cmd+J) to keep your original image safe.</p>
         </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;">
-          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <h4 style="color: var(--secondary); margin-top: 0;">How to Open Filter Gallery</h4>
-            <ol>
-              <li>Select your layer or make a selection</li>
-              <li>Go to <span class="shortcut">Filter → Filter Gallery</span></li>
-              <li>A window will open showing filter options</li>
-            </ol>
-            <img class="step-image" src="filter-gallery-open.jpg" alt="Opening Filter Gallery" />
-          </div>
-          
-          <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <h4 style="color: var(--secondary); margin-top: 0;">Filter Gallery Window</h4>
-            <ol>
-              <li>Left: List of filter types</li>
-              <li>Center: Preview of your image with the effect</li>
-              <li>Right: Settings for the selected filter</li>
-              <li>Bottom: List of applied filters</li>
-            </ol>
-            <img class="step-image" src="filter-gallery-interface.jpg" alt="Filter Gallery Interface" />
-          </div>
-        </div>
-        
-        <h4 style="color: var(--secondary);">Best Filters for Photocopier Art</h4>
         
         <div class="steps-grid">
           <div class="step-box">
-            <div class="step-number">Artistic → Cutout</div>
+            <div class="step-number">Step 1: Apply Threshold Effect</div>
             <div class="step-content">
-              <p>Creates a poster-like effect:</p>
-              <ul>
-                <li>Number of Levels: 4-6</li>
-                <li>Edge Simplicity: 2-4</li>
-                <li>Edge Fidelity: 1-2</li>
-              </ul>
-              <img class="step-image" src="filter-cutout.jpg" alt="Cutout filter example" />
+              <ol>
+                <li>Select your duplicated layer</li>
+                <li>Go to <span class="shortcut">Image → Adjustments → Threshold</span></li>
+                <li>Move the slider until you have good black/white balance</li>
+                <li>Click OK</li>
+              </ol>
+              <img class="step-image" src="threshold-adjustment.jpg" alt="Threshold adjustment dialog" />
             </div>
           </div>
           
           <div class="step-box">
-            <div class="step-number">Sketch → Photocopy</div>
+            <div class="step-number">Step 2: Create a Path from Your Image</div>
             <div class="step-content">
-              <p>Makes your image look more like a photocopy:</p>
-              <ul>
-                <li>Detail: 5-10</li>
-                <li>Darkness: 10-20</li>
-                <li>Good for making photocopier effects stronger</li>
-              </ul>
-              <img class="step-image" src="filter-photocopy.jpg" alt="Photocopy filter example" />
+              <ol>
+                <li>Use the Magic Wand tool (<span class="shortcut">W</span>) to select black or white areas</li>
+                <li>Right-click the selection and choose "Make Work Path"</li>
+                <li>Set Tolerance to 1.0 for smooth paths</li>
+                <li>Now you have a path that follows your image shapes</li>
+              </ol>
+              <img class="step-image" src="make-work-path.jpg" alt="Make Work Path dialog" />
             </div>
           </div>
           
           <div class="step-box">
-            <div class="step-number">Stylize → Find Edges</div>
+            <div class="step-number">Step 3: Add Text on the Path</div>
             <div class="step-content">
-              <p>Shows just the edges in your image:</p>
-              <ul>
-                <li>No settings to adjust</li>
-                <li>Try using on a copy of your layer</li>
-                <li>Set layer blend mode to Multiply or Overlay</li>
-              </ul>
-              <img class="step-image" src="filter-find-edges.jpg" alt="Find Edges filter example" />
+              <ol>
+                <li>Select the Type tool (<span class="shortcut">T</span>)</li>
+                <li>Move your cursor near the path until it changes to a curved text icon</li>
+                <li>Click on the path and start typing</li>
+                <li>Add quotes, references, or your own writing</li>
+                <li>Use a typewriter font like Courier or Orator Std</li>
+              </ol>
+              <img class="step-image" src="text-on-path.jpg" alt="Text following a path" />
             </div>
           </div>
           
           <div class="step-box">
-            <div class="step-number">Distort → Glass</div>
+            <div class="step-number">Step 4: Blend Text with Image</div>
             <div class="step-content">
-              <p>Makes your image look wavy like through glass:</p>
-              <ul>
-                <li>Distortion: 5-15</li>
-                <li>Smoothness: 3-7</li>
-                <li>Texture: Frosted</li>
-                <li>Scaling: 50-100%</li>
-              </ul>
-              <img class="step-image" src="filter-glass.jpg" alt="Glass filter example" />
+              <ol>
+                <li>Try different blend modes for your text layer</li>
+                <li>Multiply: Text integrates with dark areas</li>
+                <li>Screen: Text shows up on dark backgrounds</li>
+                <li>Overlay: Creates high contrast effect</li>
+                <li>Adjust opacity to make text subtle or bold</li>
+              </ol>
+              <img class="step-image" src="text-blend-modes.jpg" alt="Text with different blend modes" />
             </div>
           </div>
         </div>
         
-        <!-- SELECTIVE FILTER APPLICATION -->
-        <div style="margin-top: 20px; padding: 20px; background: #f8f8f8; border-radius: 8px;">
-          <h4 style="color: var(--secondary); margin-top: 0;">Applying Filters to Specific Areas</h4>
+        <!-- William Larson Example -->
+        <div style="margin-top: 20px; padding: 15px; background: #f8f8f8; border-radius: 8px;">
+          <h4 style="color: var(--secondary); margin-top: 0;">William Larson Style Example</h4>
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
-            <div>
-              <p><strong>Why apply filters to specific areas?</strong></p>
-              <ul>
-                <li>Makes important parts stand out</li>
-                <li>Keeps some areas clear and easy to see</li>
-                <li>Creates more interesting designs</li>
-                <li>Looks more professional</li>
-              </ul>
-            </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; align-items: center;">
+            <img src="william-larson-example.jpg" alt="William Larson inspired text on path example" style="width: 100%; border-radius: 5px;" />
             
             <div>
-              <p><strong>How to apply filters to specific areas:</strong></p>
-              <ol>
-                <li>Select an area before applying filter</li>
-                <li>Or apply filter to whole layer, then add mask</li>
-                <li>Or duplicate layer, apply filter, then erase parts</li>
-                <li>Or use Filter Gallery mask controls</li>
-              </ol>
+              <h5 style="color: var(--primary); margin-top: 0;">Why This Works:</h5>
+              <ul>
+                <li>Threshold creates the clean black/white contrast</li>
+                <li>Text on path follows the image contours naturally</li>
+                <li>Typewriter font matches the teleprinter style</li>
+                <li>Multiple text paths create layered information</li>
+                <li>Perfect for adding quotes and citations to your work</li>
+              </ul>
             </div>
           </div>
-          
-          <div style="margin-top: 15px;">
-            <img class="step-image" src="selective-filter.jpg" alt="Example of selective filter application" style="max-width: 100%; height: auto;" />
-            <p style="font-size: 0.9em; text-align: center; margin-top: 5px;">Example: Photocopy filter applied only to parts of the image</p>
-          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ADDITIONAL FILTER TECHNIQUES -->
+  <h2>Additional Special Effects</h2>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+      <h4 style="color: var(--secondary); margin-top: 0;">Other Useful Filters</h4>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 10px;">
+        <div style="background: #f5f5f5; padding: 8px; border-radius: 5px;">
+          <strong>Sketch → Photocopy</strong>
+          <p style="font-size: 0.9em; margin-top: 5px;">Makes your image look more like a photocopy</p>
         </div>
         
-        <!-- VIDEO TUTORIAL SECTION -->
-        <div class="video-tutorial">
-          <div class="video-caption">Filter Gallery Tutorial</div>
-          <div class="video-wrapper">
-            <!-- Panopto video embed code -->
-            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=b3839b74-5113-4c3f-9929-b37d00a206ba" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
+        <div style="background: #f5f5f5; padding: 8px; border-radius: 5px;">
+          <strong>Stylize → Find Edges</strong>
+          <p style="font-size: 0.9em; margin-top: 5px;">Shows just the edges in your image</p>
         </div>
+        
+        <div style="background: #f5f5f5; padding: 8px; border-radius: 5px;">
+          <strong>Artistic → Cutout</strong>
+          <p style="font-size: 0.9em; margin-top: 5px;">Creates a poster-like effect</p>
+        </div>
+        
+        <div style="background: #f5f5f5; padding: 8px; border-radius: 5px;">
+          <strong>Distort → Glass</strong>
+          <p style="font-size: 0.9em; margin-top: 5px;">Makes your image look wavy</p>
+        </div>
+      </div>
+      
+      <p style="margin-top: 15px; font-style: italic;">Try these after applying the Threshold effect for more variety in your designs.</p>
+    </div>
+    
+    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+      <h4 style="color: var(--secondary); margin-top: 0;">Smart Objects Tip</h4>
+      
+      <p style="margin-top: 10px;">Convert your layers to Smart Objects before applying filters:</p>
+      <ol>
+        <li>Right-click on your layer</li>
+        <li>Select "Convert to Smart Object"</li>
+        <li>Now apply filters - they'll be non-destructive</li>
+        <li>You can change or remove filters later</li>
+        <li>Double-click filter name in Layers panel to edit settings</li>
+      </ol>
+      
+      <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-top: 10px;">
+        <p style="margin: 0; font-weight: bold;">Remember: Smart Objects keep your original image quality intact!</p>
       </div>
     </div>
   </div>
 
-  <!-- MASKING TECHNIQUES SECTION -->
-  <h2>Layer Masks to Control Effects</h2>
-  
-  <div class="tool-grid">
-    <div class="tool-card">
-      <div class="tool-header">
-        <div class="tool-icon">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTMgMTNsNS40IDAuNmw1LjQgLTMuNmwtMy42IC01LjRMMTkuNCAwbC0zLjYgNS40TDEzIDEzem0tMTAuNCAxMGw1LjQgLTMuNmwwLjYgLTUuNGw3LjggLTcuOEwxMyAwbC03LjggNy44TC4xIDEzLjZsLTMuNiA1LjRMMSAyMi42bC0xLjEgLTEuMnoiPjwvcGF0aD48L3N2Zz4=" />
-        </div>
-        <span>Layer Masks</span>
-      </div>
-      
-      <div class="tool-steps">
-        <p>Layer masks help you control where effects appear in your image:</p>
-        
-        <div class="term-box">
-          <strong>What is a layer mask?</strong> A layer mask is like using invisible paint to hide parts of a layer. You can show or hide different parts of an effect.
-        </div>
-        
-        <div class="steps-grid">
-          <div class="step-box">
-            <div class="step-number">Basics: Adding a Mask</div>
-            <div class="step-content">
-              <ol>
-                <li>Select your layer</li>
-                <li>Click the "Add Layer Mask" button at bottom of Layers panel</li>
-                <li>A white square appears next to your layer</li>
-                <li>Paint with black brush to hide parts of layer</li>
-                <li>Paint with white brush to show parts of layer</li>
-              </ol>
-              <p style="font-style: italic; margin-top: 10px;">Remember: "Black hides, white shows"</p>
-              <img class="step-image" src="layer-mask-basics.jpg" alt="Layer mask basics" />
-            </div>
-          </div>
-          
-          <div class="step-box">
-            <div class="step-number">Gradient Masks</div>
-            <div class="step-content">
-              <ol>
-                <li>Add a layer mask</li>
-                <li>Select Gradient Tool (<span class="shortcut">G</span>)</li>
-                <li>Choose black-to-white gradient</li>
-                <li>Click and drag across your mask</li>
-                <li>Creates a smooth fade between visible and hidden areas</li>
-              </ol>
-              <img class="step-image" src="gradient-mask.jpg" alt="Gradient mask example" />
-            </div>
-          </div>
-          
-          <div class="step-box">
-            <div class="step-number">Creating Depth with Masks</div>
-            <div class="step-content">
-              <ol>
-                <li>Apply a filter to your photocopier image</li>
-                <li>Add a layer mask</li>
-                <li>Select a soft brush with low opacity (20-30%)</li>
-                <li>Paint with black to gradually show original areas</li>
-                <li>This creates a feeling of depth in your image</li>
-              </ol>
-              <img class="step-image" src="atmospheric-mask.jpg" alt="Creating atmosphere with masks" />
-            </div>
-          </div>
-          
-          <div class="step-box">
-            <div class="step-number">Selection-Based Masks</div>
-            <div class="step-content">
-              <ol>
-                <li>Make a selection using any selection tool</li>
-                <li>Add a layer mask - your selection automatically applies</li>
-                <li>Adjust mask with Brush tool if needed</li>
-                <li>Good for complex shapes in photocopier images</li>
-              </ol>
-              <img class="step-image" src="selection-mask.jpg" alt="Selection-based mask" />
-            </div>
-          </div>
-        </div>
-        
-        <!-- MASK EDITING TIPS -->
-        <div style="margin-top: 20px; background: var(--secondary-light); padding: 15px; border-radius: 8px;">
-          <h4 style="color: var(--secondary); margin-top: 0;">Layer Mask Tips</h4>
-          
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;">
-            <div style="background: white; padding: 10px; border-radius: 5px;">
-              <p><strong>View the Mask:</strong> Alt/Option+click on mask to see it</p>
-            </div>
-            <div style="background: white; padding: 10px; border-radius: 5px;">
-              <p><strong>Invert the Mask:</strong> Ctrl/Cmd+I when mask is selected</p>
-            </div>
-            <div style="background: white; padding: 10px; border-radius: 5px;">
-              <p><strong>Make Edges Better:</strong> Select mask and use Select and Mask</p>
-            </div>
-            <div style="background: white; padding: 10px; border-radius: 5px;">
-              <p><strong>Turn Off/On:</strong> Shift+click on mask</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- APPLICATION EXAMPLES -->
-        <div style="margin-top: 20px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-          <div style="padding: 10px; background: var(--secondary); color: white; font-weight: bold;">
-            Examples: Masking for Artistic Effect
-          </div>
-          <div style="padding: 15px; background: white;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-              <div>
-                <img src="mask-example-1.jpg" alt="Mask example 1" style="width: 100%; border-radius: 5px;" />
-                <p style="font-size: 0.9em; margin-top: 5px;">Example 1: Filter with gradient mask</p>
-              </div>
-              <div>
-                <img src="mask-example-2.jpg" alt="Mask example 2" style="width: 100%; border-radius: 5px;" />
-                <p style="font-size: 0.9em; margin-top: 5px;">Example 2: Multiple filters with selective masking</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- VIDEO TUTORIAL SECTION -->
-        <div class="video-tutorial">
-          <div class="video-caption">Layer Masking Techniques</div>
-          <div class="video-wrapper">
-            <!-- Panopto video embed code -->
-            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=9abedd5a-4837-485a-a9c9-b39900fd9a97" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
   <!-- BLEND MODES SECTION -->
   <h2>Blend Modes for Combining Images</h2>
   
@@ -1147,23 +1009,23 @@
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
           <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-            <h4 style="color: var(--secondary); margin-top: 0;">Best Blend Modes for Photocopier Art</h4>
+            <h4 style="color: var(--secondary); margin-top: 0;">Best Blend Modes for Text on Path</h4>
             
             <div style="margin-top: 15px; border-left: 3px solid var(--primary); padding-left: 15px;">
               <h5 style="margin: 0 0 5px 0; color: var(--primary);">Multiply (正片叠底)</h5>
-              <p style="margin: 0 0 15px 0;">Makes image darker, good for layering photocopied textures</p>
+              <p style="margin: 0 0 15px 0;">Makes text blend into dark areas - good for white text</p>
               
               <h5 style="margin: 0 0 5px 0; color: var(--primary);">Screen (滤色)</h5>
-              <p style="margin: 0 0 15px 0;">Makes image lighter, good for creating light effects</p>
+              <p style="margin: 0 0 15px 0;">Makes text stand out on dark backgrounds - good for black text</p>
               
               <h5 style="margin: 0 0 5px 0; color: var(--primary);">Overlay (叠加)</h5>
-              <p style="margin: 0 0 15px 0;">Increases contrast while keeping highlights and shadows</p>
+              <p style="margin: 0 0 15px 0;">Creates high contrast text that adapts to background</p>
               
               <h5 style="margin: 0 0 5px 0; color: var(--primary);">Difference (差值)</h5>
-              <p style="margin: 0 0 15px 0;">Creates negative-like effects</p>
+              <p style="margin: 0 0 15px 0;">Creates negative-like text effects</p>
               
               <h5 style="margin: 0 0 5px 0; color: var(--primary);">Hard Light (强光)</h5>
-              <p style="margin: 0;">Makes edges and textures stand out</p>
+              <p style="margin: 0;">Makes text stand out with maximum contrast</p>
             </div>
           </div>
           
@@ -1188,42 +1050,22 @@
               <h5 style="color: var(--primary); margin-top: 0;">Base Layer Strategy</h5>
               <ol>
                 <li>Start with your main photocopier experiment</li>
-                <li>Add research images on separate layers</li>
-                <li>Apply blend modes to make layers work together</li>
-                <li>Use masks to show/hide specific areas</li>
+                <li>Apply Threshold to create high contrast</li>
+                <li>Add different text paths on separate layers</li>
+                <li>Apply different blend modes to text layers</li>
               </ol>
             </div>
             
             <div style="background: white; padding: 10px; border-radius: 5px;">
-              <h5 style="color: var(--primary); margin-top: 0;">Effect Layer Strategy</h5>
+              <h5 style="color: var(--primary); margin-top: 0;">Multiple Text Layer Strategy</h5>
               <ol>
-                <li>Duplicate your base layer</li>
-                <li>Apply filter to the duplicate layer</li>
-                <li>Change blend mode of the filtered layer</li>
-                <li>Adjust opacity to control how strong it is</li>
-                <li>Add mask to apply effect to specific areas</li>
+                <li>Create multiple text paths following different contours</li>
+                <li>Use different fonts and sizes for variety</li>
+                <li>Add quotes, references, and your own words</li>
+                <li>Apply different blend modes to each text layer</li>
+                <li>Adjust opacity for text layers to control prominence</li>
               </ol>
             </div>
-            
-            <div style="background: white; padding: 10px; border-radius: 5px;">
-              <h5 style="color: var(--primary); margin-top: 0;">Text Integration Strategy</h5>
-              <ol>
-                <li>Create text layer with quote/reference</li>
-                <li>Position text in a good location</li>
-                <li>Try different blend modes for text layer</li>
-                <li>Try Overlay or Soft Light for subtle text</li>
-                <li>Use layer effects to make text stand out</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        
-        <!-- VIDEO TUTORIAL SECTION -->
-        <div class="video-tutorial">
-          <div class="video-caption">Blend Modes Tutorial</div>
-          <div class="video-wrapper">
-            <!-- Panopto video embed code -->
-            <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=37e1b91d-d690-4bd4-a15d-b39900b5af52" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -1288,27 +1130,6 @@
           <p>Typewriter Condensed - looks good with photocopied materials</p>
         </div>
       </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-        <div>
-          <h5 style="margin-top: 0; color: var(--secondary);">Text Styling Tips</h5>
-          <ul>
-            <li>Use the same text alignment throughout (left alignment is usually best)</li>
-            <li>Use black or dark gray text - it's easiest to read</li>
-            <li>Add semi-transparent boxes behind text to make it readable</li>
-            <li>Group text layers with their backgrounds</li>
-          </ul>
-        </div>
-        <div>
-          <h5 style="margin-top: 0; color: var(--secondary);">Text Effects</h5>
-          <ul>
-            <li>Try Drop Shadow effect to make text stand out</li>
-            <li>Try low-opacity Outer Glow for a soft look</li>
-            <li>Don't use too many decorative effects</li>
-            <li>A thin Stroke effect can help text stand out on busy backgrounds</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
   
@@ -1324,48 +1145,47 @@
         <ul>
           <li>Create new A3 document (300dpi)</li>
           <li>Import your photocopier experiments</li>
-          <li>Import your original research images</li>
           <li>Organize your layers with names</li>
         </ul>
       </div>
       
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <h4 style="margin-top: 0; color: var(--secondary);">2. Selection & Masking (45 mins)</h4>
+        <h4 style="margin-top: 0; color: var(--secondary);">2. Threshold & Selection (45 mins)</h4>
         <ul>
-          <li>Practice making selections</li>
-          <li>Convert selections to masks</li>
-          <li>Create compositions with multiple elements</li>
-          <li>Try gradient masks</li>
+          <li>Apply Threshold adjustment</li>
+          <li>Make selections of interesting areas</li>
+          <li>Convert selections to paths</li>
+          <li>Save your paths in the Paths panel</li>
         </ul>
       </div>
       
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <h4 style="margin-top: 0; color: var(--secondary);">3. Filter Application (45 mins)</h4>
+        <h4 style="margin-top: 0; color: var(--secondary);">3. Text on Path (45 mins)</h4>
         <ul>
-          <li>Convert layers to Smart Objects</li>
-          <li>Apply filters from Filter Gallery</li>
-          <li>Apply filters to specific areas only</li>
-          <li>Try different filter combinations</li>
+          <li>Add text along your saved paths</li>
+          <li>Try different fonts and sizes</li>
+          <li>Add quotes and artist references</li>
+          <li>Experiment with different blend modes</li>
         </ul>
       </div>
       
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <h4 style="margin-top: 0; color: var(--secondary);">4. Blend & Refine (30 mins)</h4>
+        <h4 style="margin-top: 0; color: var(--secondary);">4. Final Composition (30 mins)</h4>
         <ul>
           <li>Try different blend modes</li>
           <li>Adjust opacity levels</li>
-          <li>Add final adjustments</li>
-          <li>Fine-tune your mask details</li>
+          <li>Add additional filters if needed</li>
+          <li>Refine text positioning</li>
         </ul>
       </div>
       
       <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <h4 style="margin-top: 0; color: var(--secondary);">5. Add Text & References (15 mins)</h4>
+        <h4 style="margin-top: 0; color: var(--secondary);">5. Finishing Touches (15 mins)</h4>
         <ul>
-          <li>Add an artist quote with attribution</li>
-          <li>Include proper Harvard references</li>
-          <li>Format text to be easy to read</li>
-          <li>Make sure text is clear and visible</li>
+          <li>Add formal Harvard references</li>
+          <li>Check all text is readable</li>
+          <li>Ensure design connects to your Term 2 project</li>
+          <li>Save your work in PSD format with all layers</li>
         </ul>
       </div>
     </div>
@@ -1425,10 +1245,10 @@
         <h4 style="margin-top: 0; color: var(--secondary);">2. Digital Composition (A3)</h4>
         <p>Upload your final digital work:</p>
         <ul>
-          <li>Show at least 3 techniques from today's class</li>
+          <li>Show threshold and text on path techniques</li>
           <li>Include proper artist reference/quotation</li>
           <li>Show clear connection to Term 2 project</li>
-          <li>Show expressive use of techniques</li>
+          <li>Demonstrate William Larson-inspired style</li>
         </ul>
       </div>
     </div>
@@ -1468,32 +1288,34 @@
       "Retrieve final distorted result"
     ];
 
-    draggables.forEach(draggable => {
-      draggable.addEventListener('dragstart', () => {
-        draggable.classList.add('dragging');
+    if (draggables.length > 0 && dropZone) {
+      draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+          draggable.classList.add('dragging');
+        });
+
+        draggable.addEventListener('dragend', () => {
+          draggable.classList.remove('dragging');
+        });
       });
 
-      draggable.addEventListener('dragend', () => {
-        draggable.classList.remove('dragging');
-      });
-    });
-
-    dropZone.addEventListener('dragover', e => {
-      e.preventDefault();
-      const dragging = document.querySelector('.dragging');
-      if (dragging) {
-        const afterElement = getDragAfterElement(dropZone, e.clientY);
-        if (afterElement == null) {
-          dropZone.appendChild(dragging);
-        } else {
-          dropZone.insertBefore(dragging, afterElement);
+      dropZone.addEventListener('dragover', e => {
+        e.preventDefault();
+        const dragging = document.querySelector('.dragging');
+        if (dragging) {
+          const afterElement = getDragAfterElement(dropZone, e.clientY);
+          if (afterElement == null) {
+            dropZone.appendChild(dragging);
+          } else {
+            dropZone.insertBefore(dragging, afterElement);
+          }
         }
-      }
-    });
+      });
 
-    dropZone.addEventListener('drop', e => {
-      e.preventDefault();
-    });
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+      });
+    }
 
     function getDragAfterElement(container, y) {
       const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
@@ -1509,94 +1331,100 @@
       }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
 
-    checkOrderButton.addEventListener('click', () => {
-      const droppedItems = dropZone.querySelectorAll('.draggable');
-      let allCorrect = true;
-      
-      if (droppedItems.length < correctOrder.length) {
-        orderFeedback.textContent = "Please place all items in the drop zone.";
-        orderFeedback.className = "feedback incorrect-feedback";
-        orderFeedback.style.display = "block";
-        return;
-      }
-      
-      droppedItems.forEach((item, index) => {
-        if (item.textContent === correctOrder[index]) {
-          item.classList.add('correct');
-          item.classList.remove('incorrect');
-        } else {
-          item.classList.add('incorrect');
-          item.classList.remove('correct');
-          allCorrect = false;
+    if (checkOrderButton) {
+      checkOrderButton.addEventListener('click', () => {
+        const droppedItems = dropZone.querySelectorAll('.draggable');
+        let allCorrect = true;
+        
+        if (droppedItems.length < correctOrder.length) {
+          orderFeedback.textContent = "Please place all items in the drop zone.";
+          orderFeedback.className = "feedback incorrect-feedback";
+          orderFeedback.style.display = "block";
+          return;
         }
+        
+        droppedItems.forEach((item, index) => {
+          if (item.textContent === correctOrder[index]) {
+            item.classList.add('correct');
+            item.classList.remove('incorrect');
+          } else {
+            item.classList.add('incorrect');
+            item.classList.remove('correct');
+            allCorrect = false;
+          }
+        });
+        
+        if (allCorrect) {
+          orderFeedback.textContent = "Correct! You've arranged the steps in the right order.";
+          orderFeedback.className = "feedback correct-feedback";
+        } else {
+          orderFeedback.textContent = "Not quite right. Try rearranging the steps.";
+          orderFeedback.className = "feedback incorrect-feedback";
+        }
+        
+        orderFeedback.style.display = "block";
       });
-      
-      if (allCorrect) {
-        orderFeedback.textContent = "Correct! You've arranged the steps in the right order.";
-        orderFeedback.className = "feedback correct-feedback";
-      } else {
-        orderFeedback.textContent = "Not quite right. Try rearranging the steps.";
-        orderFeedback.className = "feedback incorrect-feedback";
-      }
-      
-      orderFeedback.style.display = "block";
-    });
+    }
 
     // Multiple Choice Quiz Functionality
     const options = document.querySelectorAll('.option');
     const checkQuizButton = document.getElementById('check-quiz-button');
     const quizFeedback = document.getElementById('quiz-feedback');
     
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        // Toggle selection within the same question
-        const questionContainer = option.closest('.question');
-        questionContainer.querySelectorAll('.option').forEach(opt => {
-          opt.classList.remove('selected');
-        });
-        option.classList.add('selected');
-      });
-    });
-    
-    checkQuizButton.addEventListener('click', () => {
-      const questionContainers = document.querySelectorAll('.question');
-      let correctCount = 0;
-      let totalQuestions = questionContainers.length;
-      
-      questionContainers.forEach(container => {
-        const selectedOption = container.querySelector('.option.selected');
-        
-        if (!selectedOption) {
-          // No selection made
-          return;
-        }
-        
-        if (selectedOption.dataset.correct === "true") {
-          selectedOption.classList.add('correct');
-          correctCount++;
-        } else {
-          selectedOption.classList.add('incorrect');
-          
-          // Optionally highlight the correct answer
-          container.querySelectorAll('.option').forEach(opt => {
-            if (opt.dataset.correct === "true") {
-              opt.classList.add('correct');
-            }
+    if (options.length > 0) {
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          // Toggle selection within the same question
+          const questionContainer = option.closest('.question');
+          questionContainer.querySelectorAll('.option').forEach(opt => {
+            opt.classList.remove('selected');
           });
-        }
+          option.classList.add('selected');
+        });
       });
-      
-      // Display feedback
-      if (correctCount === totalQuestions) {
-        quizFeedback.textContent = `Perfect! You got all ${totalQuestions} questions right.`;
-        quizFeedback.className = "feedback correct-feedback";
-      } else {
-        quizFeedback.textContent = `You got ${correctCount} out of ${totalQuestions} questions correct.`;
-        quizFeedback.className = "feedback incorrect-feedback";
-      }
-      
-      quizFeedback.style.display = "block";
-    });
+    }
+    
+    if (checkQuizButton && quizFeedback) {
+      checkQuizButton.addEventListener('click', () => {
+        const questionContainers = document.querySelectorAll('.question');
+        let correctCount = 0;
+        let totalQuestions = questionContainers.length;
+        
+        questionContainers.forEach(container => {
+          const selectedOption = container.querySelector('.option.selected');
+          
+          if (!selectedOption) {
+            // No selection made
+            return;
+          }
+          
+          if (selectedOption.dataset.correct === "true") {
+            selectedOption.classList.add('correct');
+            correctCount++;
+          } else {
+            selectedOption.classList.add('incorrect');
+            
+            // Optionally highlight the correct answer
+            container.querySelectorAll('.option').forEach(opt => {
+              if (opt.dataset.correct === "true") {
+                opt.classList.add('correct');
+              }
+            });
+          }
+        });
+        
+        // Display feedback
+        if (correctCount === totalQuestions) {
+          quizFeedback.textContent = `Perfect! You got all ${totalQuestions} questions right.`;
+          quizFeedback.className = "feedback correct-feedback";
+        } else {
+          quizFeedback.textContent = `You got ${correctCount} out of ${totalQuestions} questions correct.`;
+          quizFeedback.className = "feedback incorrect-feedback";
+        }
+        
+        quizFeedback.style.display = "block";
+      });
+    }
     
     // Image Modal Functionality
     const modal = document.getElementById('imageModal');
@@ -1605,24 +1433,28 @@
     const images = document.querySelectorAll('.tool-image, .step-image, .inspiration-image');
     
     // Open modal when clicking on images
-    images.forEach(img => {
-      img.addEventListener('click', () => {
-        modal.style.display = "block";
-        modalImg.src = img.src;
+    if (images.length > 0 && modal && modalImg) {
+      images.forEach(img => {
+        img.addEventListener('click', () => {
+          modal.style.display = "block";
+          modalImg.src = img.src;
+        });
       });
-    });
-    
-    // Close modal when clicking the × symbol
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = "none";
-    });
-    
-    // Close modal when clicking outside the image
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
+      
+      // Close modal when clicking the × symbol
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          modal.style.display = "none";
+        });
       }
-    });
+      
+      // Close modal when clicking outside the image
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
   });
 </script>
 
