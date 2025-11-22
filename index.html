@@ -713,6 +713,204 @@ p {
   border: none;
 }
 
+/* Quiz Game Styles */
+.quiz-game {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 40px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 3px solid var(--primary);
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.quiz-title {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.quiz-description {
+  font-size: 1.1rem;
+  color: var(--dark);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quiz-container {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-question {
+  margin-bottom: 30px;
+  border-bottom: 2px dashed #f0f0f0;
+  padding-bottom: 20px;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.question-number {
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.question-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.quiz-options {
+  margin-left: 50px;
+}
+
+.quiz-option {
+  background: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.quiz-option:hover {
+  background: #f0f0f0;
+  transform: translateX(5px);
+}
+
+.option-letter {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 15px;
+  color: var(--dark);
+  border: 2px solid #ddd;
+}
+
+.quiz-option.correct {
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.quiz-option.incorrect {
+  background: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.quiz-feedback {
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  display: none;
+}
+
+.feedback-correct {
+  background: #d4edda;
+  border-left: 5px solid #28a745;
+  color: #155724;
+}
+
+.feedback-incorrect {
+  background: #f8d7da;
+  border-left: 5px solid #dc3545;
+  color: #721c24;
+}
+
+.quiz-progress {
+  background: #f5f5f5;
+  height: 10px;
+  border-radius: 5px;
+  margin: 30px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.quiz-results {
+  text-align: center;
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.results-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.results-score {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.results-message {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.restart-button {
+  display: inline-block;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.restart-button:hover {
+  background: #077373;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .workflow-steps {
@@ -728,6 +926,20 @@ p {
     height: 32px;
     left: -5px;
     font-size: 1rem;
+  }
+  
+  .quiz-options {
+    margin-left: 15px;
+  }
+  
+  .quiz-option {
+    padding: 10px;
+  }
+  
+  .option-letter {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
   }
 }
 </style>
@@ -1399,6 +1611,31 @@ p {
     </div>
   </div>
 
+  <!-- KNOWLEDGE TEST GAME SECTION -->
+  <div class="quiz-game">
+    <div class="quiz-header">
+      <h2 style="display: block; text-align: center; margin-bottom: 15px;" class="quiz-title">Test Your Photoshop Skills!</h2>
+      <p class="quiz-description">Check your understanding of photocopier editing techniques with this quick quiz. Select the best answer for each question.</p>
+    </div>
+    
+    <div class="quiz-container">
+      <div id="quiz-questions">
+        <!-- Questions will be loaded here by JavaScript -->
+      </div>
+      
+      <div class="quiz-progress">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      
+      <div id="quiz-results" class="quiz-results">
+        <div class="results-icon">🎉</div>
+        <div class="results-score">Your score: <span id="score">0</span>/7</div>
+        <div class="results-message">Great job! You're ready to create amazing photocopier art.</div>
+        <button class="restart-button" id="restart-quiz">Try Again</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal for image viewing -->
   <div id="imageModal" class="modal">
     <span class="close">&times;</span>
@@ -1432,6 +1669,255 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.style.display = "none";
     }
   });
+  
+  // Quiz functionality
+  const quizQuestions = [
+    {
+      question: "What does the Threshold adjustment do to an image?",
+      options: [
+        "Adds a color gradient",
+        "Converts it to pure black and white with no gray",
+        "Makes it blurry",
+        "Increases the contrast slightly"
+      ],
+      correct: 1,
+      feedback: "Threshold converts an image to pure black and white pixels with no gray tones, perfect for creating clear paths."
+    },
+    {
+      question: "Which tool should you use to select areas before converting to paths?",
+      options: [
+        "Brush Tool",
+        "Clone Stamp Tool",
+        "Magic Wand Tool",
+        "Eraser Tool"
+      ],
+      correct: 2,
+      feedback: "The Magic Wand Tool is perfect for selecting areas of similar color, which can then be converted to paths."
+    },
+    {
+      question: "How do you convert a selection to a path in Photoshop?",
+      options: [
+        "Edit → Transform → Path",
+        "Select → Convert → To Path",
+        "Right-click the selection and choose 'Make Work Path'",
+        "Layer → Create Path"
+      ],
+      correct: 2,
+      feedback: "Right-click on your selection and choose 'Make Work Path' to convert it to a path that text can follow."
+    },
+    {
+      question: "When adding text to a path, what should your cursor look like?",
+      options: [
+        "Standard text cursor (I-beam)",
+        "A curved or wavy line with text cursor",
+        "A circle with a line through it",
+        "A crosshair"
+      ],
+      correct: 1,
+      feedback: "When your text tool is properly positioned to add text on a path, the cursor will change to show a curved or wavy line with the text cursor."
+    },
+    {
+      question: "Which blend mode is best for making white text stand out on a dark background?",
+      options: [
+        "Multiply",
+        "Screen",
+        "Overlay",
+        "Difference"
+      ],
+      correct: 1,
+      feedback: "Screen blend mode is excellent for making light or white text stand out against darker backgrounds."
+    },
+    {
+      question: "What's a key benefit of using Smart Objects in Photoshop?",
+      options: [
+        "They make the file size smaller",
+        "They prevent you from making changes later",
+        "They allow non-destructive editing of filters and effects",
+        "They automatically export your work"
+      ],
+      correct: 2,
+      feedback: "Smart Objects allow non-destructive editing, meaning you can change or remove filters and effects later without losing quality."
+    },
+    {
+      question: "When creating a Harvard citation for an artwork in your design, which format is correct?",
+      options: [
+        "Artist Name (Year) Title [Medium]. Location.",
+        "Title by Artist Name, Year, Medium, Location",
+        "Artist Name. Title. Year. Medium. Location.",
+        "Title (Year) by Artist Name, Medium, Location"
+      ],
+      correct: 0,
+      feedback: "The correct Harvard citation format for artwork is: Artist Name (Year) Title [Medium]. Location."
+    }
+  ];
+  
+  // Initialize quiz
+  let currentQuestion = 0;
+  let score = 0;
+  let questionsAnswered = 0;
+  
+  // Load questions
+  function loadQuiz() {
+    const questionsContainer = document.getElementById('quiz-questions');
+    questionsContainer.innerHTML = '';
+    
+    quizQuestions.forEach((q, index) => {
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('quiz-question');
+      if (index !== currentQuestion) {
+        questionDiv.style.display = 'none';
+      }
+      
+      // Question header
+      const questionHeader = document.createElement('div');
+      questionHeader.classList.add('question-header');
+      
+      const questionNumber = document.createElement('div');
+      questionNumber.classList.add('question-number');
+      questionNumber.textContent = index + 1;
+      
+      const questionText = document.createElement('div');
+      questionText.classList.add('question-text');
+      questionText.textContent = q.question;
+      
+      questionHeader.appendChild(questionNumber);
+      questionHeader.appendChild(questionText);
+      questionDiv.appendChild(questionHeader);
+      
+      // Options
+      const optionsContainer = document.createElement('div');
+      optionsContainer.classList.add('quiz-options');
+      
+      q.options.forEach((option, optIndex) => {
+        const optionDiv = document.createElement('div');
+        optionDiv.classList.add('quiz-option');
+        optionDiv.dataset.index = optIndex;
+        
+        const optionLetter = document.createElement('div');
+        optionLetter.classList.add('option-letter');
+        optionLetter.textContent = String.fromCharCode(65 + optIndex); // A, B, C, D
+        
+        const optionText = document.createElement('div');
+        optionText.textContent = option;
+        
+        optionDiv.appendChild(optionLetter);
+        optionDiv.appendChild(optionText);
+        
+        optionDiv.addEventListener('click', (e) => selectAnswer(e, index, optIndex));
+        
+        optionsContainer.appendChild(optionDiv);
+      });
+      
+      questionDiv.appendChild(optionsContainer);
+      
+      // Feedback area
+      const feedbackDiv = document.createElement('div');
+      feedbackDiv.classList.add('quiz-feedback');
+      feedbackDiv.id = `feedback-${index}`;
+      questionDiv.appendChild(feedbackDiv);
+      
+      questionsContainer.appendChild(questionDiv);
+    });
+    
+    // Hide results at start
+    document.getElementById('quiz-results').style.display = 'none';
+  }
+  
+  // Select answer
+  function selectAnswer(e, questionIndex, selectedOption) {
+    const currentQuestionData = quizQuestions[questionIndex];
+    const feedbackElement = document.getElementById(`feedback-${questionIndex}`);
+    const options = document.querySelectorAll(`.quiz-question:nth-child(${questionIndex + 1}) .quiz-option`);
+    
+    // Prevent selecting again
+    if (options[0].classList.contains('correct') || options[0].classList.contains('incorrect')) {
+      return;
+    }
+    
+    // Mark correct and incorrect
+    options.forEach((option, index) => {
+      if (index === currentQuestionData.correct) {
+        option.classList.add('correct');
+      } else {
+        option.classList.add('incorrect');
+      }
+    });
+    
+    // Show feedback
+    feedbackElement.textContent = currentQuestionData.feedback;
+    feedbackElement.style.display = 'block';
+    
+    if (selectedOption === currentQuestionData.correct) {
+      feedbackElement.classList.add('feedback-correct');
+      score++;
+    } else {
+      feedbackElement.classList.add('feedback-incorrect');
+    }
+    
+    // Move to next question after 1.5 seconds
+    questionsAnswered++;
+    updateProgress();
+    
+    setTimeout(() => {
+      if (questionIndex < quizQuestions.length - 1) {
+        goToQuestion(questionIndex + 1);
+      } else {
+        showResults();
+      }
+    }, 1500);
+  }
+  
+  // Go to specific question
+  function goToQuestion(index) {
+    const questions = document.querySelectorAll('.quiz-question');
+    questions.forEach((q, i) => {
+      q.style.display = i === index ? 'block' : 'none';
+    });
+    currentQuestion = index;
+  }
+  
+  // Update progress bar
+  function updateProgress() {
+    const progressBar = document.getElementById('progress-bar');
+    const progressPercentage = (questionsAnswered / quizQuestions.length) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
+  }
+  
+  // Show results
+  function showResults() {
+    document.getElementById('quiz-questions').style.display = 'none';
+    document.getElementById('quiz-results').style.display = 'block';
+    document.getElementById('score').textContent = score;
+    
+    // Customize message based on score
+    const messageElement = document.querySelector('.results-message');
+    if (score === quizQuestions.length) {
+      messageElement.textContent = "Perfect score! You're a photocopier editing master!";
+    } else if (score >= quizQuestions.length * 0.7) {
+      messageElement.textContent = "Great job! You're ready to create amazing photocopier art.";
+    } else if (score >= quizQuestions.length * 0.4) {
+      messageElement.textContent = "Good effort! Review the sections on paths and text to improve your skills.";
+    } else {
+      messageElement.textContent = "Keep practicing! Review the tutorial and try again to improve your score.";
+    }
+  }
+  
+  // Restart quiz
+  function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    questionsAnswered = 0;
+    loadQuiz();
+    updateProgress();
+    document.getElementById('quiz-questions').style.display = 'block';
+    document.getElementById('quiz-results').style.display = 'none';
+  }
+  
+  // Add event listener to restart button
+  document.getElementById('restart-quiz').addEventListener('click', restartQuiz);
+  
+  // Initialize quiz on page load
+  loadQuiz();
 });
 </script>
 
