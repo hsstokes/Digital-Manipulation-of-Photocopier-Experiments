@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Digital Editing of Photocopier Images</title>
+<title>Digital Editing of Photocopier & Scanner Images</title>
 <style>
 :root {
   --primary: #ea37a3;
@@ -133,96 +133,6 @@ p {
   font-size: 1.1rem;
 }
 
-/* Workflow box - NEW COMPONENT */
-.workflow-box {
-  background: #f8f8f8;
-  margin: 35px 0;
-  border-radius: 15px;
-  border: 3px solid var(--secondary);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-
-.workflow-header {
-  background: var(--secondary);
-  color: white;
-  padding: 15px 20px;
-  text-align: center;
-}
-
-.workflow-header h3 {
-  margin: 0;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.workflow-steps {
-  padding: 20px 25px;
-}
-
-.step {
-  position: relative;
-  padding: 20px 20px 20px 50px;
-  background: white;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.step-number {
-  position: absolute;
-  left: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.step-title {
-  color: var(--primary);
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.step-content ul, .step-content ol {
-  margin-left: 20px;
-  margin-bottom: 15px;
-}
-
-.step-content li {
-  margin-bottom: 8px;
-}
-
-.step-image {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  max-height: 300px;
-  border-radius: 8px;
-  margin: 15px auto;
-  display: block;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border: 2px solid #eee;
-  object-fit: contain;
-}
-
-.step-image:hover {
-  transform: scale(1.03);
-  border-color: var(--secondary);
-}
-
 /* Term explanation box */
 .term-box {
   background: #f8f9fa;
@@ -310,119 +220,6 @@ p {
 
 .example-image:hover {
   transform: scale(1.02);
-  border-color: var(--secondary);
-}
-
-/* Tool cards */
-.tool-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin: 25px 0;
-}
-
-.tool-card {
-  border: 2px solid var(--secondary);
-  border-radius: 12px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.tool-card:hover {
-  transform: translateY(-5px);
-}
-
-.tool-header {
-  background: var(--secondary);
-  color: white;
-  padding: 15px 20px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-}
-
-.tool-icon {
-  width: 36px;
-  height: 36px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 15px;
-}
-
-.tool-icon img {
-  width: 24px;
-  height: 24px;
-}
-
-.tool-steps {
-  padding: 20px;
-}
-
-/* Technique grid - NEW COMPONENT */
-.technique-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin: 25px 0;
-}
-
-.technique-card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  border: 2px solid var(--secondary-light);
-}
-
-.technique-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--secondary);
-}
-
-.technique-header {
-  background: var(--secondary-light);
-  padding: 15px 20px;
-  color: var(--secondary);
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-bottom: 2px solid #eee;
-}
-
-.technique-content {
-  padding: 20px;
-}
-
-.technique-content ol {
-  margin-left: 20px;
-  margin-bottom: 15px;
-}
-
-.technique-content li {
-  margin-bottom: 10px;
-}
-
-.technique-image {
-  width: 100%;
-  height: 200px;
-  border-radius: 8px;
-  margin: 15px 0;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  cursor: pointer;
-  border: 2px solid #eee;
-  transition: transform 0.3s ease;
-  object-fit: contain;
-}
-
-.technique-image:hover {
-  transform: scale(1.02);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   border-color: var(--secondary);
 }
 
@@ -720,236 +517,6 @@ p {
   border: none;
 }
 
-/* Quiz Game Styles */
-.quiz-game {
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
-  border-radius: 15px;
-  padding: 30px;
-  margin: 40px 0;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  border: 3px solid var(--primary);
-}
-
-.quiz-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.quiz-title {
-  color: var(--primary);
-  font-size: 2rem;
-  margin-bottom: 10px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.quiz-description {
-  font-size: 1.1rem;
-  color: var(--dark);
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.quiz-container {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.quiz-question {
-  margin-bottom: 30px;
-  border-bottom: 2px dashed #f0f0f0;
-  padding-bottom: 20px;
-}
-
-.question-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.question-number {
-  width: 36px;
-  height: 36px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  margin-right: 15px;
-  flex-shrink: 0;
-}
-
-.question-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--dark);
-}
-
-.quiz-options {
-  margin-left: 50px;
-}
-
-.quiz-option {
-  background: #f5f5f5;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-}
-
-.quiz-option:hover {
-  background: #f0f0f0;
-  transform: translateX(5px);
-}
-
-.option-letter {
-  width: 30px;
-  height: 30px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  margin-right: 15px;
-  color: var(--dark);
-  border: 2px solid #ddd;
-}
-
-.quiz-option.correct {
-  background: #d4edda;
-  border-color: #c3e6cb;
-  color: #155724;
-}
-
-.quiz-option.incorrect {
-  background: #f8d7da;
-  border-color: #f5c6cb;
-  color: #721c24;
-}
-
-.quiz-feedback {
-  margin-top: 10px;
-  padding: 15px;
-  border-radius: 8px;
-  display: none;
-}
-
-.feedback-correct {
-  background: #d4edda;
-  border-left: 5px solid #28a745;
-  color: #155724;
-}
-
-.feedback-incorrect {
-  background: #f8d7da;
-  border-left: 5px solid #dc3545;
-  color: #721c24;
-}
-
-.quiz-progress {
-  background: #f5f5f5;
-  height: 10px;
-  border-radius: 5px;
-  margin: 30px 0;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  width: 0;
-  transition: width 0.5s ease;
-}
-
-.quiz-results {
-  text-align: center;
-  display: none;
-  animation: fadeIn 0.5s ease;
-}
-
-.results-icon {
-  font-size: 80px;
-  margin-bottom: 20px;
-}
-
-.results-score {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: var(--primary);
-}
-
-.results-message {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-}
-
-.restart-button {
-  display: inline-block;
-  background: var(--secondary);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.restart-button:hover {
-  background: #077373;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .workflow-steps {
-    padding: 15px;
-  }
-  
-  .step {
-    padding: 15px 15px 15px 40px;
-  }
-  
-  .step-number {
-    width: 32px;
-    height: 32px;
-    left: -5px;
-    font-size: 1rem;
-  }
-  
-  .quiz-options {
-    margin-left: 15px;
-  }
-  
-  .quiz-option {
-    padding: 10px;
-  }
-  
-  .option-letter {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-  }
-}
-
 /* Workshop Overview Styling */
 .workshop-overview {
   margin: 35px 0;
@@ -1060,12 +627,292 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* NEW TUTORIAL SLIDER STYLES */
+.tutorial-box {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  margin: 40px 0;
+  border: 3px solid var(--secondary);
+  overflow: hidden;
+}
+
+.tutorial-header {
+  background: var(--secondary);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.tutorial-header h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: white;
+}
+
+.tutorial-content {
+  position: relative;
+  min-height: 400px;
+}
+
+.tutorial-step {
+  padding: 30px;
+  display: none;
+  animation: fadeEffect 0.5s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.tutorial-step.active {
+  display: block;
+}
+
+.tutorial-step-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 2px solid #eee;
+  cursor: pointer;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.tutorial-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #f5f5f5;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+.step-counter {
+  font-weight: bold;
+  color: var(--secondary);
+  font-size: 1.1rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 30px;
+  background: var(--secondary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+  background: #097a7a;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.nav-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.progress-container {
+  width: 100%;
+  background: #e0e0e0;
+  height: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.tutorial-step-title {
+  color: var(--secondary);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.tutorial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dot.active {
+  background: var(--secondary);
+  transform: scale(1.2);
+}
+
+.step-tip {
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  padding: 15px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 20px;
+}
+
+.step-tip strong {
+  color: var(--primary);
+}
+
+.tutorial-list {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.tutorial-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.step-shortcut {
+  display: inline-flex;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 2px 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-family: monospace;
+  margin: 0 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 0.9em;
+}
+
+.step-complete {
+  display: inline-block;
+  background: #d4edda;
+  color: #155724;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Blend mode examples */
+.blend-mode-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.blend-mode-example {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #eee;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.blend-mode-example:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  border-color: var(--secondary);
+}
+
+.blend-image {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+}
+
+.blend-name {
+  padding: 8px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Font examples */
+.font-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.font-example {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.courier {
+  font-family: 'Courier New', monospace;
+}
+
+.arial {
+  font-family: Arial, sans-serif;
+}
+
+.times {
+  font-family: 'Times New Roman', serif;
+}
+
+.font-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.font-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Digital Editing of Photocopier Images</h1>
+  <h1>Digital Editing of Photocopier & Scanner Images</h1>
 
   <!-- WORKSHOP OVERVIEW WITH IMPROVED LAYOUT -->
   <div class="workshop-overview">
@@ -1091,12 +938,12 @@ p {
         <ul class="learning-points-list">
           <li class="learning-points-item">How to create high-contrast effects with Threshold</li>
           <li class="learning-points-item">Converting selections to paths for adding text</li>
-          <li class="learning-points-item">Adding typographic elements that follow contours</li>
-          <li class="learning-points-item">Creating compositions inspired by artists like Wade Guyton</li>
-          <li class="learning-points-item">Properly citing artists in your visual research</li>
+          <li class="learning-points-item">Adding text that follows image contours</li>
+          <li class="learning-points-item">Creating compositions inspired by artists</li>
+          <li class="learning-points-item">Properly citing artists in your work</li>
         </ul>
         <div class="workshop-example-note">
-          Featured example: Tutor demonstration showing Artist inspired photocopier/threshold/text techniques.
+          You can use either photocopier or scanner for your experiments.
         </div>
       </div>
     </div>
@@ -1104,639 +951,540 @@ p {
 
   <!-- MOVED: PRE-CLASS PREPARATION - HOMEWORK TO TOP -->
 <div class="prep-box">
-  <h3>⚠️ HOMEWORK: Make Photocopier Experiments Before Class</h3>
+  <h3>⚠️ HOMEWORK: Make 2-3 Experiments Before Class</h3>
 
   <div class="important-notice">
-    <strong>IMPORTANT:</strong> Before coming to class, make 2-3 photocopier experiments using images related to your Term 2 design project.
+    <strong>IMPORTANT:</strong> Choose ONE option:
+    <ul style="margin-top: 10px;">
+      <li>Use a photocopier with your Term 2 project images</li>
+      <li>OR use a scanner with objects or materials</li>
+    </ul>
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem;">Easy Experiment Ideas:</h4>
+      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem;">Photocopier Ideas:</h4>
       <ul>
-        <li>Move images during scanning to create blur</li>
-        <li>Hold scanner lid open for light effects</li>
-        <li>Add paper or plastic on top of your image</li>
-        <li>Make copies of copies (repeat 2-3 times)</li>
+        <li>Move images during copying (blur)</li>
+        <li>Keep lid open for light effects</li>
+        <li>Put materials on top of your image</li>
+        <li>Make copies of copies (2-3 times)</li>
       </ul>
     </div>
 
     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem;">Bring to Class:</h4>
-      <ol>
-        <li>Your 2-3 scanned photocopier experiments (300dpi)</li>
-        <li>Original research images for your project</li>
-        <li>Images of artists that inspire you</li>
-        <li>Notes about what techniques you used</li>
-      </ol>
+      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem;">Scanner Ideas:</h4>
+      <ul>
+        <li>Place objects directly on scanner</li>
+        <li>Try different materials (fabric, mesh)</li>
+        <li>Layer transparent items</li>
+        <li>Arrange objects in interesting ways</li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- NEW SCANNED OBJECT EXAMPLE SECTION -->
+  <div style="margin-top: 25px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+    <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem; text-align: center;">Scanner Example</h4>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 15px; align-items: center; justify-content: center;">
+      <div style="flex: 1; min-width: 250px;">
+        <img src="object-scanning-example.jpg" alt="Example of scanned objects creating abstract textures" style="width: 100%; border-radius: 8px; border: 2px solid var(--secondary); cursor: pointer;" onclick="openModal(this.src)">
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <p style="margin-top: 0;"><strong>Why try scanning?</strong></p>
+        <ul>
+          <li>Easy if you can't access a photocopier</li>
+          <li>Creates interesting textures and patterns</li>
+          <li>Works with everyday objects</li>
+          <li>Perfect for unique abstract designs</li>
+        </ul>
+        <p style="font-style: italic; margin-bottom: 0; font-size: 0.9em;">This student example shows interesting textures created by directly scanning materials.</p>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- VIDEO TUTORIAL SECTION -->
 <div class="video-tutorial-box" style="margin: 30px 0; background: #f5f5f5; padding: 20px; border-radius: 10px; border-left: 5px solid var(--primary);">
-  <h3>📹 Video Tutorial: HOMEWORK: Make Photocopier Experiments Before Class</h3>
+  <h3>📹 Video Tutorial: Making Photocopier or Scanner Experiments</h3>
   
-  <p>Watch this tutorial to learn the techniques we'll be covering in class:</p>
+  <p>Watch this tutorial before class:</p>
   
   <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=4ef10f2c-656c-4b70-8c2f-b39d00d03c43&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" allowfullscreen></iframe>
   </div>
   
   <div class="video-notes" style="background: white; padding: 15px; border-radius: 5px; margin-top: 15px;">
-    <h4 style="margin-top: 0;">Key Points from the Video:</h4>
+    <h4 style="margin-top: 0;">Key Points:</h4>
     <ul>
-      <li>Watch this tutorial before class to get familiar with the techniques</li>
-      <li>Feel free to pause and rewatch sections as needed</li>
-      <li>Try to apply these techniques to your own photocopier experiments</li>
-      <li>Bring any questions about the tutorial to class</li>
+      <li>Watch before class</li>
+      <li>Try these techniques with your own images or objects</li>
+      <li>Bring your experiments to class</li>
+      <li>We'll add text to these images in class</li>
     </ul>
   </div>
 </div>
 
-<p>In this class, you will learn how to edit photocopier images using Photoshop to create interesting text effects that follow the contours of your image. This technique is perfect for adding context, quotes, and references to your design projects.</p>
+<p>In this class, you will learn how to edit your photocopier or scanner experiments using Photoshop. You'll add text that follows the shapes in your images.</p>
 
 <div class="term-box">
   <strong>Key Terms:</strong>
   <ul>
-    <li><strong>Photocopier</strong>: A machine that makes copies of documents and images</li>
-    <li><strong>Digital editing</strong>: Changing images using computer software</li>
-    <li><strong>Threshold</strong>: Converting an image to pure black and white with no gray</li>
-    <li><strong>Path</strong>: A line or shape that text can follow</li>
-    <li><strong>Text on Path</strong>: Making text follow the contours of a shape or line</li>
+    <li><strong>Threshold</strong>: Makes image pure black and white (no gray)</li>
+    <li><strong>Path</strong>: A line that text can follow</li>
+    <li><strong>Text on Path</strong>: Text that follows a shape or line</li>
+    <li><strong>Photocopier Art</strong>: Using a copier to make creative images</li>
+    <li><strong>Scanner Art</strong>: Using a scanner to capture objects directly</li>
   </ul>
 </div>
 
-  <!-- ARTIST INSPIRATION SECTION -->
-  <h2>Artist Examples</h2>
+<!-- ARTIST INSPIRATION SECTION -->
+<h2>Artist Examples</h2>
 
-  <div class="inspiration-gallery">
-    <div class="inspiration-item">
-      <a href="https://www.tate.org.uk/art/artworks/tillmans-paper-drop-prinzessinnenstrasse-a-p82413" target="_blank">
-        <img class="inspiration-image" src="wolfgang-tillmans.jpg" alt="Wolfgang Tillmans photocopier artwork" onclick="openModal(this.src)" />
-      </a>
-      <div class="inspiration-caption">Wolfgang Tillmans, Paper Drop, 2014</div>
+<div class="inspiration-gallery">
+  <div class="inspiration-item">
+    <a href="https://www.tate.org.uk/art/artworks/tillmans-paper-drop-prinzessinnenstrasse-a-p82413" target="_blank">
+      <img class="inspiration-image" src="wolfgang-tillmans.jpg" alt="Wolfgang Tillmans photocopier artwork" onclick="openModal(this.src)" />
+    </a>
+    <div class="inspiration-caption">Wolfgang Tillmans, Paper Drop, 2014</div>
+  </div>
+
+  <div class="inspiration-item">
+    <a href="https://gittermangallery.com/exhibition/100/exhibition_works/2035" target="_blank">
+      <img class="inspiration-image" src="william-larson.jpg" alt="William Larson Fireflies series" onclick="openModal(this.src)" />
+    </a>
+    <div class="inspiration-caption">William Larson, Fireflies series, 1969-78</div>
+  </div>
+
+  <div class="inspiration-item">
+    <a href="https://www.mutualart.com/Artwork/Untitled/F83B3919F4ECB057313C3C54720847B8" target="_blank">
+      <img class="inspiration-image" src="wade-guyton.jpg" alt="Wade Guyton printer manipulation" onclick="openModal(this.src)" />
+    </a>
+    <div class="inspiration-caption">Wade Guyton, Untitled, 2007</div>
+  </div>
+</div>
+
+<div class="citation-reminder">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4NTY0MDQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTEyIDh2NCI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxNmguMDEiPjwvcGF0aD48L3N2Zz4=" />
+  <div>
+    <strong>Remember:</strong> In class, we'll add proper artist citations to your work. Write down any artists you like from these examples.
+  </div>
+</div>
+
+<!-- CLASS ACTIVITY -->
+<div class="class-activity">
+  <h3>Class Activity (2.5 hours)</h3>
+
+  <p style="font-size: 1.1rem; text-align: center;">In today's class, you'll work with your photocopier or scanner experiments:</p>
+
+  <div class="activity-grid">
+    <div class="activity-box">
+      <h4>1. Setup (15 mins)</h4>
+      <ul>
+        <li>Create new A3 document</li>
+        <li>Import your experiments</li>
+        <li>Name your layers</li>
+      </ul>
     </div>
 
-    <div class="inspiration-item">
-      <a href="https://gittermangallery.com/exhibition/100/exhibition_works/2035" target="_blank">
-        <img class="inspiration-image" src="william-larson.jpg" alt="William Larson Fireflies series" onclick="openModal(this.src)" />
-      </a>
-      <div class="inspiration-caption">William Larson, Fireflies series, 1969-78</div>
+    <div class="activity-box">
+      <h4>2. Make High Contrast (45 mins)</h4>
+      <ul>
+        <li>Use Threshold adjustment</li>
+        <li>Select interesting areas</li>
+        <li>Convert selections to paths</li>
+        <li>Save your paths</li>
+      </ul>
     </div>
 
-    <div class="inspiration-item">
-      <a href="https://www.mutualart.com/Artwork/Untitled/F83B3919F4ECB057313C3C54720847B8" target="_blank">
-        <img class="inspiration-image" src="wade-guyton.jpg" alt="Wade Guyton printer manipulation" onclick="openModal(this.src)" />
-      </a>
-      <div class="inspiration-caption">Wade Guyton, Untitled, 2007</div>
+    <div class="activity-box">
+      <h4>3. Add Text (45 mins)</h4>
+      <ul>
+        <li>Add text along your paths</li>
+        <li>Try different fonts</li>
+        <li>Add quotes and references</li>
+        <li>Try different text colors</li>
+      </ul>
+    </div>
+
+    <div class="activity-box">
+      <h4>4. Finish Design (30 mins)</h4>
+      <ul>
+        <li>Try different blend modes</li>
+        <li>Adjust opacity</li>
+        <li>Add filters if you want</li>
+        <li>Position text correctly</li>
+      </ul>
     </div>
   </div>
 
-  <div class="citation-reminder">
+  <div class="citation-reminder" style="margin-top: 25px;">
     <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4NTY0MDQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTEyIDh2NCI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxNmguMDEiPjwvcGF0aD48L3N2Zz4=" />
     <div>
-      <strong>Remember:</strong> In class, you will add proper citations for these artists in your digital work. Write down any artists that inspire you.
+      <strong>Remember:</strong> Save your work often! Keep the PSD file with all layers.
     </div>
   </div>
-  <!-- CLASS ACTIVITY -->
-  <div class="class-activity">
-    <h3>Class Activity (2.5 hours)</h3>
+</div>
 
-    <p style="font-size: 1.1rem; text-align: center;">During today's class, create a digital composition using your photocopier experiments. Follow these steps:</p>
+<!-- NEW INTERACTIVE TUTORIAL SLIDER -->
+<h2>Photoshop Tutorial: Step by Step</h2>
 
-    <div class="activity-grid">
-      <div class="activity-box">
-        <h4>1. Setup (15 mins)</h4>
-        <ul>
-          <li>Create new A3 document (300dpi)</li>
-          <li>Import your photocopier experiments</li>
-          <li>Organize your layers with names</li>
-        </ul>
-      </div>
-
-      <div class="activity-box">
-        <h4>2. Threshold & Selection (45 mins)</h4>
-        <ul>
-          <li>Apply Threshold adjustment</li>
-          <li>Make selections of interesting areas</li>
-          <li>Convert selections to paths</li>
-          <li>Save your paths in the Paths panel</li>
-        </ul>
-      </div>
-
-      <div class="activity-box">
-        <h4>3. Text on Path (45 mins)</h4>
-        <ul>
-          <li>Add text along your saved paths</li>
-          <li>Try different fonts and sizes</li>
-          <li>Add quotes and artist references</li>
-          <li>Experiment with different blend modes</li>
-        </ul>
-      </div>
-
-      <div class="activity-box">
-        <h4>4. Final Composition (30 mins)</h4>
-        <ul>
-          <li>Try different blend modes</li>
-          <li>Adjust opacity levels</li>
-          <li>Add additional filters if needed</li>
-          <li>Refine text positioning</li>
-        </ul>
-      </div>
-
-      <div class="activity-box">
-        <h4>5. Finishing Touches (15 mins)</h4>
-        <ul>
-          <li>Add formal Harvard references</li>
-          <li>Check all text is readable</li>
-          <li>Ensure design connects to your Term 2 project</li>
-          <li>Save your work in PSD format with all layers</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="citation-reminder" style="margin-top: 25px;">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4NTY0MDQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBhdGggZD0iTTEyIDh2NCI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxNmguMDEiPjwvcGF0aD48L3N2Zz4=" />
-      <div>
-        <strong>Remember:</strong> Save your work often! Keep the PSD file with all layers for future editing.
-      </div>
+<div class="tutorial-box">
+  <div class="tutorial-header">
+    <h3>Interactive Photoshop Guide</h3>
+    <div class="progress-container">
+      <div id="tutorialProgress" class="progress-bar"></div>
     </div>
   </div>
-
-  <!-- NEW SECTION: CLEAR STEP-BY-STEP WORKFLOW -->
-  <div class="workflow-box">
-    <div class="workflow-header">
-      <h3>Complete Workflow</h3>
-    </div>
-    <div class="workflow-steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-title">Prepare Your Image</div>
-        <div class="step-content">
-          <p>Start by creating a new document and importing your photocopied image:</p>
-          <ol>
-            <li>Create a new document (A3 size, 300dpi)</li>
-            <li>Import your photocopied experiment</li>
-            <li>Duplicate your layer (<span class="shortcut">Ctrl/Cmd+J</span>) to keep the original safe</li>
-          </ol>
-          <div style="background: rgba(234, 55, 163, 0.15); padding: 12px 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--primary);">
-            <strong style="color: var(--primary);">Important:</strong> Always work on a duplicate layer to preserve your original image.
-          </div>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-title">Apply Threshold Effect</div>
-        <div class="step-content">
-          <p>Create high-contrast black and white with the Threshold adjustment:</p>
-          <ol>
-            <li>Select your duplicated layer</li>
-            <li>Go to <span class="shortcut">Image → Adjustments → Threshold</span></li>
-            <li>Move the slider to adjust the black/white balance</li>
-            <li>Click OK to apply</li>
-          </ol>
-          <img class="step-image" src="threshold-adjustment.jpg" alt="Threshold adjustment dialog" onclick="openModal(this.src)">
-          <p>This creates pure black and white contrast with no gray tones, perfect for making clear paths for text to follow.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-title">Make Selections & Create Paths</div>
-        <div class="step-content">
-          <p>Select areas of your image and convert them to paths:</p>
-          <ol>
-            <li>Use the Magic Wand tool (<span class="shortcut">W</span>) to click on black or white areas</li>
-            <li>Hold <span class="shortcut">Shift</span> to add more areas if needed</li>
-            <li>Right-click on your selection and choose <span class="shortcut">Make Work Path</span></li>
-            <li>Set Tolerance to 1.0 pixels for smoother paths</li>
-            <li>Click OK</li>
-          </ol>
-          <img class="step-image" src="make-work-path.jpg" alt="Make Work Path dialog" onclick="openModal(this.src)">
-          <p>Your selection is now converted to a path that text can follow. The path will appear in the Paths panel.</p>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">4</div>
-        <div class="step-title">Add Text on Path</div>
-        <div class="step-content">
-          <p>Make your text follow the path you created:</p>
-          <ol>
-            <li>Select the Type tool (<span class="shortcut">T</span>)</li>
-            <li>Move your cursor near the path until it changes to a curved text icon</li>
-            <li>Click on the path to position your text</li>
-            <li>Type your text - it will follow the contours of the path</li>
-            <li>Choose a font like Courier or Orator Std for a typewriter effect</li>
-          </ol>
-          <img class="step-image" src="text-on-path.jpg" alt="Text on path example" onclick="openModal(this.src)">
-          <div style="background: rgba(10, 128, 128, 0.15); padding: 12px 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid var(--secondary);">
-            <strong style="color: var(--secondary);">Tip:</strong> If your cursor doesn't change to the "on path" icon, make sure your path is selected in the Paths panel.
-          </div>
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">5</div>
-        <div class="step-title">Apply Blend Modes</div>
-        <div class="step-content">
-          <p>Use blend modes to integrate your text with the image:</p>
-          <ol>
-            <li>Select your text layer in the Layers panel</li>
-            <li>Try different blend modes from the dropdown menu:</li>
-            <ul>
-              <li><strong>Multiply:</strong> Good for dark text on light backgrounds</li>
-              <li><strong>Screen:</strong> Good for light text on dark backgrounds</li>
-              <li><strong>Overlay:</strong> Creates high-contrast effect</li>
-            </ul>
-            <li>Adjust layer opacity to control the effect strength</li>
-          </ol>
-          <img class="step-image" src="text-blend-modes.jpg" alt="Text with blend modes" onclick="openModal(this.src)">
-        </div>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">6</div>
-        <div class="step-title">Add Quotes and References</div>
-        <div class="step-content">
-          <p>Add artist quotes and proper citations to your work:</p>
-          <ol>
-            <li>Create additional text paths using different contours in your image</li>
-            <li>Add artist quotes with quotation marks and attribution</li>
-            <li>Include formal Harvard references in typewriter font</li>
-            <li>Position references near the bottom of your composition</li>
-          </ol>
-          <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; margin-top: 15px; border-left: 4px solid var(--secondary);">
-            <p style="margin-bottom: 8px; font-style: italic;">"I became interested in the idea that you could send image information over telephone lines..."</p>
-            <p style="text-align: right; margin-top: 0; margin-bottom: 15px; color: #555;">— William Larson (1978)</p>
-            <p style="margin-bottom: 0;">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. MoMA, New York.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXAMPLE INSPIRATION SECTION -->
-  <h2>Example: William Larson Style</h2>
-
-  <div class="example-section">
-    <h3 class="example-title">Student Example (Paolo Bensimon 2024)</h3>
-
-    <!-- Main image with enhanced click-to-enlarge functionality -->
-    <div class="example-image-container">
-      <img src="william-larson-example.jpg" alt="William Larson inspired research page"
-        class="example-image" onclick="openModal(this.src)">
-      <div class="zoom-indicator">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          <line x1="11" y1="8" x2="11" y2="14"></line>
-          <line x1="8" y1="11" x2="14" y2="11"></line>
-        </svg>
-        Click image to enlarge
-      </div>
-    </div>
-
-    <p style="font-style: italic; margin-bottom: 25px; text-align: center;">This student example shows photocopier experiments with digital editing</p>
-
-    <div class="info-box">
-      <h4>Artist Factual Information Example</h4>
-      <p style="font-style: italic;">"Larson used a Graphic Sciences DEX 1 Teleprinter, a sophisticated early fax machine, which converted pictures, text and sound into digitally-generated audio signals. These signals were transmitted over a telephone line and a stylus burned the image onto a special carbon-based paper, creating a unique "electronic drawing.""</p>
-      <p style="font-size: 0.9em; margin-bottom: 0;">— William Larson, on his Fireflies series (1969-78)</p>
-    </div>
-
-    <!-- Harvard Reference Example -->
-    <div class="reference-example">
-      <h4>Harvard Reference Example</h4>
-      <p class="reference-text">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. The Museum of Modern Art, New York.</p>
-      <p class="reference-text">Tillmans, W. (2014) <em>Paper Drop</em> [Photographic print]. Tate Modern, London.</p>
-    </div>
-  </div>
-
-  <!-- TUTORIAL VIDEO SECTION -->
-  <h2>Text on Path Tutorial</h2>
   
-  <div class="video-tutorial">
-    <h4 style="background: var(--secondary); color: white; padding: 12px 20px; margin: 0; font-size: 1.2rem;">Text on Path Tutorial</h4>
-    <div class="video-wrapper">
-      <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=8ef81560-950d-4338-b945-b39d00f1d1b8" title="Text on Path in Photoshop Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="video-caption">
-      Watch this tutorial to learn how to add text to a path in Photoshop
-    </div>
-  </div>
-
-  <!-- COMMON PROBLEMS AND SOLUTIONS -->
-  <h2>Troubleshooting Text on Path</h2>
-
-  <div class="technique-grid">
-    <div class="technique-card">
-      <div class="technique-header">Problem: Text cursor doesn't change</div>
-      <div class="technique-content">
-        <p><strong>When your cursor doesn't show the "curved text" icon near a path:</strong></p>
-        <ol>
-          <li>Make sure your path is visible in the Paths panel</li>
-          <li>Click on the path in the Paths panel to select it</li>
-          <li>Verify that the Type tool (T) is selected</li>
-          <li>Try moving closer to the path - the cursor should change</li>
-        </ol>
-        <div style="background: #f5f5f5; padding: 12px 15px; border-radius: 8px; margin-top: 15px;">
-          <strong>Remember:</strong> Paths created from high-contrast images (after Threshold) work best.
-        </div>
+  <div class="tutorial-content">
+    <!-- Step 1 -->
+    <div class="tutorial-step active" id="step1">
+      <h3 class="tutorial-step-title"><span class="step-number">1</span> Prepare Your Image</h3>
+      
+      <p>First, let's set up your document and import your experiment:</p>
+      
+      <ul class="tutorial-list">
+        <li>Create a new document (File → New)</li>
+        <li>Set size to A3, and resolution to 300dpi</li>
+        <li>Import your photocopier or scanner experiment</li>
+        <li>Duplicate your layer (<span class="step-shortcut">Ctrl/Cmd+J</span>)</li>
+      </ul>
+      
+      <img src="document-setup.jpg" alt="Setting up a new document in Photoshop" class="tutorial-step-image" onclick="openModal(this.src)">
+      
+      <div class="step-tip">
+        <strong>Pro Tip:</strong> Always work on a duplicate layer to keep your original safe!
       </div>
-    </div>
-
-    <div class="technique-card">
-      <div class="technique-header">Problem: Text appears but looks wrong</div>
-      <div class="technique-content">
-        <p><strong>When your text doesn't follow the path correctly:</strong></p>
-        <ol>
-          <li>The path might be too complex with too many anchor points</li>
-          <li>Try using the Direct Selection tool (white arrow) to simplify the path</li>
-          <li>Delete unnecessary anchor points</li>
-          <li>Adjust the position of existing points to smooth the path</li>
-        </ol>
-        <div style="background: #f5f5f5; padding: 12px 15px; border-radius: 8px; margin-top: 15px;">
-          <strong>Tip:</strong> Sometimes drawing your own path with the Pen tool gives better results than converted selections.
-        </div>
-      </div>
-    </div>
-
-    <div class="technique-card">
-      <div class="technique-header">Problem: Text is hard to read</div>
-      <div class="technique-content">
-        <p><strong>When your text doesn't stand out from the background:</strong></p>
-        <ol>
-          <li>Try changing the text color for better contrast</li>
-          <li>Experiment with different blend modes</li>
-          <li>Add a stroke around the text (right-click layer → Blending Options)</li>
-          <li>Try adjusting the text opacity</li>
-        </ol>
-        <div style="background: #f5f5f5; padding: 12px 15px; border-radius: 8px; margin-top: 15px;">
-          <strong>For quotes:</strong> Consider adding a semi-transparent rectangle behind important text.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BLEND MODES SECTION -->
-  <h2>Blend Modes for Text Integration</h2>
-
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 25px;">
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem; margin-bottom: 20px;">Best Blend Modes for Text on Path</h4>
-
-      <div style="margin-top: 15px; border-left: 4px solid var(--primary); padding-left: 20px;">
-        <h5 style="margin: 0 0 8px 0; color: var(--primary); font-size: 1.1rem;">Multiply</h5>
-        <p style="margin: 0 0 20px 0;">Makes text blend into dark areas - good for white text</p>
-
-        <h5 style="margin: 0 0 8px 0; color: var(--primary); font-size: 1.1rem;">Screen</h5>
-        <p style="margin: 0 0 20px 0;">Makes text stand out on dark backgrounds - good for black text</p>
-
-        <h5 style="margin: 0 0 8px 0; color: var(--primary); font-size: 1.1rem;">Overlay</h5>
-        <p style="margin: 0 0 20px 0;">Creates high contrast text that adapts to background</p>
-
-        <h5 style="margin: 0 0 8px 0; color: var(--primary); font-size: 1.1rem;">Difference</h5>
-        <p style="margin: 0 0 20px 0;">Creates negative-like text effects</p>
-
-        <h5 style="margin: 0 0 8px 0; color: var(--primary); font-size: 1.1rem;">Hard Light</h5>
-        <p style="margin: 0;">Makes text stand out with maximum contrast</p>
-      </div>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem; margin-bottom: 20px;">Blend Mode Examples</h4>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-        <img src="blend-mode-multiply.jpg" alt="Multiply blend mode" 
-             style="width: 100%; height: 120px; border-radius: 8px; border: 2px solid #eee; cursor: pointer; object-fit: cover;" 
-             onclick="openModal(this.src)" />
-        <img src="blend-mode-screen.jpg" alt="Screen blend mode" 
-             style="width: 100%; height: 120px; border-radius: 8px; border: 2px solid #eee; cursor: pointer; object-fit: cover;" 
-             onclick="openModal(this.src)" />
-        <img src="blend-mode-overlay.jpg" alt="Overlay blend mode" 
-             style="width: 100%; height: 120px; border-radius: 8px; border: 2px solid #eee; cursor: pointer; object-fit: cover;" 
-             onclick="openModal(this.src)" />
-        <img src="blend-mode-difference.jpg" alt="Difference blend mode" 
-             style="width: 100%; height: 120px; border-radius: 8px; border: 2px solid #eee; cursor: pointer; object-fit: cover;" 
-             onclick="openModal(this.src)" />
-      </div>
-    </div>
-  </div>
-
-  <!-- ADDITIONAL EFFECTS SECTION -->
-  <h2>Additional Special Effects</h2>
-
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 25px 0;">
-    <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.3rem; border-bottom: 2px solid var(--secondary-light); padding-bottom: 10px; margin-bottom: 20px;">Other Useful Filters</h4>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px;">
-        <div style="background: #f5f5f5; padding: 12px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
-          <strong>Sketch → Photocopy</strong>
-          <p style="font-size: 0.95em; margin-top: 8px; margin-bottom: 0;">Makes your image look more like a photocopy</p>
-        </div>
-
-        <div style="background: #f5f5f5; padding: 12px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
-          <strong>Stylize → Find Edges</strong>
-          <p style="font-size: 0.95em; margin-top: 8px; margin-bottom: 0;">Shows just the edges in your image</p>
-        </div>
-
-        <div style="background: #f5f5f5; padding: 12px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
-          <strong>Artistic → Cutout</strong>
-          <p style="font-size: 0.95em; margin-top: 8px; margin-bottom: 0;">Creates a poster-like effect</p>
-        </div>
-
-        <div style="background: #f5f5f5; padding: 12px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
-          <strong>Distort → Glass</strong>
-          <p style="font-size: 0.95em; margin-top: 8px; margin-bottom: 0;">Makes your image look wavy</p>
-        </div>
-      </div>
-
-      <p style="margin-top: 20px; font-style: italic;">Try these after applying the Threshold effect for more variety in your designs.</p>
-    </div>
-
-    <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.3rem; border-bottom: 2px solid var(--secondary-light); padding-bottom: 10px; margin-bottom: 20px;">Smart Objects Tip</h4>
-
-      <p style="margin-top: 10px; font-size: 1.1rem;">Convert your layers to Smart Objects before applying filters:</p>
-      <ol style="margin-left: 20px; line-height: 1.8;">
-        <li>Right-click on your layer</li>
-        <li>Select "Convert to Smart Object"</li>
-        <li>Now apply filters - they'll be non-destructive</li>
-        <li>You can change or remove filters later</li>
-        <li>Double-click filter name in Layers panel to edit settings</li>
-      </ol>
-
-      <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid var(--secondary);">
-        <p style="margin: 0; font-weight: bold; font-size: 1.1rem;">Remember: Smart Objects keep your original image quality intact!</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ADDING TEXT AND REFERENCES SECTION -->
-  <h2>Adding Text and References</h2>
-
-  <div style="background: var(--secondary-light); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin: 30px 0; border: 2px solid var(--secondary);">
-    <h3 style="color: var(--secondary); text-align: center; margin-top: 0; margin-bottom: 25px; font-size: 1.6rem;">Adding Text and Citations</h3>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 25px 0;">
-      <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-        <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem; margin-bottom: 15px;">Adding Artist Quotes</h4>
-        <ol style="margin-left: 20px; line-height: 1.7;">
-          <li>Create new text layer (<span class="shortcut">T</span> key)</li>
-          <li>Select a good font (see list below)</li>
-          <li>Type or paste your quote</li>
-          <li>Make quote text italic</li>
-          <li>Add quotation marks and artist name</li>
-          <li>Add a semi-transparent background for better reading</li>
-        </ol>
-        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--primary);">
-          <p style="font-style: italic; margin-bottom: 8px;">"I became interested in the idea that you could send image information over telephone lines... and that you could interfere with that information."</p>
-          <p style="text-align: right; margin-top: 0; font-size: 0.95em; color: #555;">— William Larson (1978)</p>
-        </div>
-      </div>
-
-      <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-        <h4 style="color: var(--secondary); margin-top: 0; font-size: 1.2rem; margin-bottom: 15px;">Harvard References</h4>
-        <ol style="margin-left: 20px; line-height: 1.7;">
-          <li>Create new text layer</li>
-          <li>Use a typewriter font (Courier, Andale Mono)</li>
-          <li>Include full Harvard reference format:</li>
-        </ol>
-        <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.95em; margin-top: 15px; border-left: 4px solid var(--secondary);">
-          <p style="margin-bottom: 8px;">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. The Museum of Modern Art, New York.</p>
-          <p style="margin-bottom: 8px;">Tillmans, W. (2014) <em>Paper Drop</em> [Photographic print]. Tate Modern, London.</p>
-          <p style="margin-bottom: 0;">Guyton, W. (2007) <em>Untitled</em> [Digital print on linen]. The Museum of Modern Art, New York.</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top: 25px; padding: 20px; background: #f5f5f5; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-      <h4 style="color: var(--secondary); margin-top: 0; text-align: center; font-size: 1.2rem; margin-bottom: 20px;">Good Fonts to Use</h4>
-
-      <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
-        <h4 style="color: var(--primary); margin-top: 0; font-size: 1.1rem; margin-bottom: 15px; text-align: center;">Recommended Fonts:</h4>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-          <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; font-family: 'Andale Mono', monospace;">
-            <p style="margin: 0; font-size: 1.1rem;"><strong>Andale Mono</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">clean look for references</p>
-          </div>
-
-          <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace;">
-            <p style="margin: 0; font-size: 1.1rem;"><strong>Orator Std</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">good spacing, good for quotes</p>
-          </div>
-
-          <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace;">
-            <p style="margin: 0; font-size: 1.1rem;"><strong>Typewriter Condensed</strong></p>
-            <p style="margin-top: 5px; font-size: 0.9rem;">looks good with photocopied materials</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUBMISSION SECTION -->
-  <h2>Finishing & Uploading to Padlet</h2>
-
-  <div class="prep-box" style="background-color: var(--secondary-light); border-color: var(--secondary);">
-    <h3 style="color: var(--secondary);">Before Uploading Your Work:</h3>
-
-    <div class="prep-list">
-      <div class="prep-item">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTQgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjgiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSIxNCAyIDE0IDggMjAgOCI+PC9wb2x5bGluZT48bGluZSB4MT0iMTYiIHkxPSIxMyIgeDI9IjgiIHkyPSIxMyI+PC9saW5lPjxsaW5lIHgxPSIxNiIgeTE9IjE3IiB4Mj0iOCIgeTI9IjE3Ij48L2xpbmU+PHBvbHlsaW5lIHBvaW50cz0iMTAgOSA5IDkgOCA5Ij48L3BvbHlsaW5lPjwvc3ZnPg==" />
-        <span>Check connection to Term 2 project</span>
-      </div>
-      <div class="prep-item">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI5IDExIDEyIDE0IDE2IDEwIj48L3BvbHlsaW5lPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIj48L2NpcmNsZT48L3N2Zz4=" />
-        <span>Make sure all references are included</span>
-      </div>
-      <div class="prep-item">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTkgMjFINWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmgxMWw1IDV2MTFhMiAyIDAgMCAxLTIgMnoiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSIxNyAyMSAxNyAxMyA3IDEzIDcgMjEiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iNyAzIDcgOCAxNSA4Ij48L3BvbHlsaW5lPjwvc3ZnPg==" />
-        <span>Save PSD files with all layers</span>
-      </div>
-      <div class="prep-item">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnYtNCI+PC9wYXRoPjxwb2x5bGluZSBwb2ludHM9IjcgMTAgMTIgMTUgMTcgMTAiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjEyIiB5MT0iMTUiIHgyPSIxMiIgeTI9IjMiPjwvbGluZT48L3N2Zz4=" />
-        <span>Export as JPG for upload</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="class-activity" style="border-color: var(--primary);">
-    <h3>Uploading to Padlet</h3>
-
-    <p style="font-size: 1.1rem; text-align: center; font-weight: bold;">Upload two items that connect to your Term 2 design project:</p>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 25px 0;">
-      <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-        <h4 style="margin-top: 0; color: var(--secondary); font-size: 1.2rem; margin-bottom: 15px;">1. Original Photocopier Experiments</h4>
-        <p>Upload your scanned photocopier experiments:</p>
-        <ul>
-          <li>Include at least 2 different techniques</li>
-          <li>Write a short description of what you did</li>
-          <li>Explain how they relate to your Term 2 project</li>
-        </ul>
-      </div>
-
-      <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-        <h4 style="margin-top: 0; color: var(--secondary); font-size: 1.2rem; margin-bottom: 15px;">2. Digital Composition (A3)</h4>
-        <p>Upload your final digital work:</p>
-        <ul>
-          <li>Show threshold and text on path techniques</li>
-          <li>Include proper artist reference/quotation</li>
-          <li>Show clear connection to Term 2 project</li>
-          <li>Demonstrate William Larson-inspired style</li>
-        </ul>
-      </div>
-    </div>
-
-    <a href="https://artslondon.padlet.org/hstokes12/week-1-term-2-as18keb970kmh0re" target="_blank" class="submit-button">
-      Go to Padlet Submission Board
-    </a>
-  </div>
-
-  <!-- GALLERY SECTION -->
-  <div style="margin-top: 40px;">
-    <h3 style="text-align: center; margin-bottom: 20px;">Class Gallery & Submission Board</h3>
-    <div class="padlet-container">
-      <iframe src="https://artslondon.padlet.org/hstokes12/week-2-term-2-stpbw5it1itoa6v3" frameborder="0" allow="camera;microphone;geolocation" class="padlet-iframe"></iframe>
-    </div>
-  </div>
-
-  <!-- KNOWLEDGE TEST GAME SECTION -->
-  <div class="quiz-game">
-    <div class="quiz-header">
-      <h2 style="display: block; text-align: center; margin-bottom: 15px;" class="quiz-title">Test Your Photoshop Skills!</h2>
-      <p class="quiz-description">Check your understanding of photocopier editing techniques with this quick quiz. Select the best answer for each question.</p>
+      
+      <div class="step-complete">Ready to move to step 2 →</div>
     </div>
     
-    <div class="quiz-container">
-      <div id="quiz-questions">
-        <!-- Questions will be loaded here by JavaScript -->
+    <!-- Step 2 -->
+    <div class="tutorial-step" id="step2">
+      <h3 class="tutorial-step-title"><span class="step-number">2</span> Make Black & White</h3>
+      
+      <p>Next, let's create high-contrast black and white using Threshold:</p>
+      
+      <ul class="tutorial-list">
+        <li>Select your duplicated layer in the Layers panel</li>
+        <li>Go to <span class="step-shortcut">Image → Adjustments → Threshold</span></li>
+        <li>Move the slider to adjust the black/white balance</li>
+        <li>Click OK when you're happy with the result</li>
+      </ul>
+      
+      <img src="threshold-adjustment.jpg" alt="Threshold adjustment dialog" class="tutorial-step-image" onclick="openModal(this.src)">
+      
+      <div class="step-tip">
+        <strong>Remember:</strong> Threshold makes your image pure black and white with NO gray tones. This makes it easier to create clear paths.
+      </div>
+    </div>
+    
+    <!-- Step 3 -->
+    <div class="tutorial-step" id="step3">
+      <h3 class="tutorial-step-title"><span class="step-number">3</span> Make Selections</h3>
+      
+      <p>Now select interesting areas in your image:</p>
+      
+      <ul class="tutorial-list">
+        <li>Select the Magic Wand tool (<span class="step-shortcut">W</span>)</li>
+        <li>Click on black areas or white areas you want to use</li>
+        <li>Hold <span class="step-shortcut">Shift</span> to add more areas</li>
+        <li>Experiment with selecting different shapes</li>
+      </ul>
+      
+      <img src="magic-wand-selection.jpg" alt="Using Magic Wand tool to make selections" class="tutorial-step-image" onclick="openModal(this.src)">
+      
+      <div class="step-tip">
+        <strong>Try This:</strong> Select areas that would look interesting with text following their edges.
+      </div>
+    </div>
+    
+    <!-- Step 4 -->
+    <div class="tutorial-step" id="step4">
+      <h3 class="tutorial-step-title"><span class="step-number">4</span> Convert to Paths</h3>
+      
+      <p>Convert your selections to paths that text can follow:</p>
+      
+      <ul class="tutorial-list">
+        <li>With your selection active, right-click</li>
+        <li>Choose <span class="step-shortcut">Make Work Path</span> from the menu</li>
+        <li>Set Tolerance to 1.0 pixels for smooth paths</li>
+        <li>Click OK</li>
+      </ul>
+      
+      <img src="make-work-path.jpg" alt="Make Work Path dialog" class="tutorial-step-image" onclick="openModal(this.src)">
+      
+      <div class="step-tip">
+        <strong>Important:</strong> Your path will appear in the Paths panel. If you don't see the Paths panel, go to <span class="step-shortcut">Window → Paths</span> to show it.
+      </div>
+    </div>
+    
+    <!-- Step 5 -->
+    <div class="tutorial-step" id="step5">
+      <h3 class="tutorial-step-title"><span class="step-number">5</span> Add Text on Path</h3>
+      
+      <p>Now let's add text that follows your path:</p>
+      
+      <ul class="tutorial-list">
+        <li>Select the Type tool (<span class="step-shortcut">T</span>)</li>
+        <li>Move your cursor near the path until it changes to a curved text icon</li>
+        <li>Click on the path to position your text</li>
+        <li>Type your text - it will follow the path!</li>
+      </ul>
+      
+      <img src="text-on-path.jpg" alt="Text on path example" class="tutorial-step-image" onclick="openModal(this.src)">
+      
+      <div class="step-tip">
+        <strong>Troubleshooting:</strong> If your cursor doesn't change to the curved text icon, make sure your path is selected in the Paths panel.
+      </div>
+    </div>
+    
+    <!-- Step 6 -->
+    <div class="tutorial-step" id="step6">
+      <h3 class="tutorial-step-title"><span class="step-number">6</span> Try Different Fonts</h3>
+      
+      <p>Experiment with different fonts for your text:</p>
+      
+      <div class="font-examples">
+        <div class="font-example courier">
+          <div class="font-name">Courier New</div>
+          <div class="font-desc">Good for typewriter style</div>
+        </div>
+        
+        <div class="font-example arial">
+          <div class="font-name">Arial</div>
+          <div class="font-desc">Clear and simple</div>
+        </div>
+        
+        <div class="font-example times">
+          <div class="font-name">Times New Roman</div>
+          <div class="font-desc">Traditional style</div>
+        </div>
       </div>
       
-      <div class="quiz-progress">
-        <div class="progress-bar" id="progress-bar"></div>
+      <ul class="tutorial-list" style="margin-top: 20px;">
+        <li>Select your text layer</li>
+        <li>Use the Options bar at the top to change the font</li>
+        <li>Try different sizes and colors</li>
+        <li>Some fonts work better than others on paths</li>
+      </ul>
+      
+      <div class="step-tip">
+        <strong>Design Tip:</strong> Typewriter-style fonts like Courier New work well with photocopier and scanner art.
+      </div>
+    </div>
+    
+    <!-- Step 7 -->
+    <div class="tutorial-step" id="step7">
+      <h3 class="tutorial-step-title"><span class="step-number">7</span> Try Blend Modes</h3>
+      
+      <p>Make your text blend with your image:</p>
+      
+      <ul class="tutorial-list">
+        <li>Select your text layer in the Layers panel</li>
+        <li>Try different blend modes from the dropdown menu</li>
+        <li>Adjust the opacity slider if needed</li>
+      </ul>
+      
+      <div class="blend-mode-examples">
+        <div class="blend-mode-example">
+          <img src="blend-mode-multiply.jpg" alt="Multiply blend mode" class="blend-image" onclick="openModal(this.src)">
+          <div class="blend-name">Multiply</div>
+        </div>
+        
+        <div class="blend-mode-example">
+          <img src="blend-mode-screen.jpg" alt="Screen blend mode" class="blend-image" onclick="openModal(this.src)">
+          <div class="blend-name">Screen</div>
+        </div>
+        
+        <div class="blend-mode-example">
+          <img src="blend-mode-overlay.jpg" alt="Overlay blend mode" class="blend-image" onclick="openModal(this.src)">
+          <div class="blend-name">Overlay</div>
+        </div>
+        
+        <div class="blend-mode-example">
+          <img src="blend-mode-difference.jpg" alt="Difference blend mode" class="blend-image" onclick="openModal(this.src)">
+          <div class="blend-name">Difference</div>
+        </div>
       </div>
       
-      <div id="quiz-results" class="quiz-results">
-        <div class="results-icon">🎉</div>
-        <div class="results-score">Your score: <span id="score">0</span>/7</div>
-        <div class="results-message">Great job! You're ready to create amazing photocopier art.</div>
-        <button class="restart-button" id="restart-quiz">Try Again</button>
+      <div class="step-tip" style="margin-top: 20px;">
+        <strong>Quick Guide:</strong>
+        <ul style="margin-top: 10px; margin-bottom: 5px;">
+          <li><strong>Multiply:</strong> Good for white backgrounds</li>
+          <li><strong>Screen:</strong> Good for dark backgrounds</li>
+          <li><strong>Overlay:</strong> Creates high contrast</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Step 8 -->
+    <div class="tutorial-step" id="step8">
+      <h3 class="tutorial-step-title"><span class="step-number">8</span> Add Artist Quotes & References</h3>
+      
+      <p>Add artist quotes and proper citations to your work:</p>
+      
+      <ul class="tutorial-list">
+        <li>Create more text paths in different areas</li>
+        <li>Add artist quotes in italic with quotation marks</li>
+        <li>Include the artist name</li>
+        <li>Add Harvard references at the bottom</li>
+      </ul>
+      
+      <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; margin: 20px 0; border-left: 4px solid var(--secondary);">
+        <p style="margin-bottom: 10px; font-style: italic;">"I became interested in the idea that you could send image information over telephone lines..."</p>
+        <p style="text-align: right; margin-bottom: 15px; color: #555;">— William Larson (1978)</p>
+        
+        <p style="margin-bottom: 0; font-size: 0.9em;">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. MoMA, New York.</p>
+      </div>
+      
+      <div class="step-tip">
+        <strong>Final Check:</strong> Make sure your text is readable and your references are correct before finishing your design.
       </div>
     </div>
   </div>
-
-  <!-- Modal for image viewing -->
-  <div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
+  
+  <div class="tutorial-dots">
+    <div class="dot active" data-step="1"></div>
+    <div class="dot" data-step="2"></div>
+    <div class="dot" data-step="3"></div>
+    <div class="dot" data-step="4"></div>
+    <div class="dot" data-step="5"></div>
+    <div class="dot" data-step="6"></div>
+    <div class="dot" data-step="7"></div>
+    <div class="dot" data-step="8"></div>
   </div>
+  
+  <div class="tutorial-nav">
+    <div class="step-counter">Step <span id="currentStep">1</span> of 8</div>
+    <div class="nav-buttons">
+      <button id="prevBtn" class="nav-button" disabled>← Previous</button>
+      <button id="nextBtn" class="nav-button">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXAMPLE INSPIRATION SECTION -->
+<h2>Student Example</h2>
+
+<div class="example-section">
+  <h3 class="example-title">Student Example</h3>
+
+  <!-- Main image with enhanced click-to-enlarge functionality -->
+  <div class="example-image-container">
+    <img src="william-larson-example.jpg" alt="William Larson inspired research page"
+      class="example-image" onclick="openModal(this.src)">
+    <div class="zoom-indicator">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        <line x1="11" y1="8" x2="11" y2="14"></line>
+        <line x1="8" y1="11" x2="14" y2="11"></line>
+      </svg>
+      Click to zoom
+    </div>
+  </div>
+
+  <p style="font-style: italic; margin-bottom: 25px; text-align: center;">Student work showing photocopier experiments with text</p>
+
+  <div class="info-box">
+    <h4>Artist Quote Example</h4>
+    <p style="font-style: italic;">"Larson used a Graphic Sciences DEX 1 Teleprinter, a sophisticated early fax machine, which converted pictures, text and sound into digitally-generated audio signals."</p>
+    <p style="font-size: 0.9em; margin-bottom: 0;">— William Larson, on his Fireflies series (1969-78)</p>
+  </div>
+
+  <!-- Harvard Reference Example -->
+  <div class="reference-example">
+    <h4>Harvard Reference Example</h4>
+    <p class="reference-text">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. The Museum of Modern Art, New York.</p>
+  </div>
+</div>
+
+<!-- TUTORIAL VIDEO SECTION -->
+<h2>Text on Path Tutorial</h2>
+
+<div class="video-tutorial">
+  <h4 style="background: var(--secondary); color: white; padding: 12px 20px; margin: 0; font-size: 1.2rem;">Text on Path Tutorial</h4>
+  <div class="video-wrapper">
+    <iframe width="560" height="315" src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=8ef81560-950d-4338-b945-b39d00f1d1b8" title="Text on Path in Photoshop Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="video-caption">
+    Learn how to add text to a path in Photoshop
+  </div>
+</div>
+
+<!-- SUBMISSION SECTION -->
+<h2>Finishing & Uploading to Padlet</h2>
+
+<div class="prep-box" style="background-color: var(--secondary-light); border-color: var(--secondary);">
+  <h3 style="color: var(--secondary);">Before Uploading Your Work:</h3>
+
+  <div class="prep-list">
+    <div class="prep-item">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTQgMkg2YTIgMiAwIDAgMC0yIDJ2MTZhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0yVjgiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSIxNCAyIDE0IDggMjAgOCI+PC9wb2x5bGluZT48bGluZSB4MT0iMTYiIHkxPSIxMyIgeDI9IjgiIHkyPSIxMyI+PC9saW5lPjxsaW5lIHgxPSIxNiIgeTE9IjE3IiB4Mj0iOCIgeTI9IjE3Ij48L2xpbmU+PHBvbHlsaW5lIHBvaW50cz0iMTAgOSA5IDkgOCA5Ij48L3BvbHlsaW5lPjwvc3ZnPg==" />
+      <span>Check connection to Term 2 project</span>
+    </div>
+    <div class="prep-item">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI5IDExIDEyIDE0IDE2IDEwIj48L3BvbHlsaW5lPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIj48L2NpcmNsZT48L3N2Zz4=" />
+      <span>Add all references</span>
+    </div>
+    <div class="prep-item">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTkgMjFINWEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmgxMWw1IDV2MTFhMiAyIDAgMCAxLTIgMnoiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSIxNyAyMSAxNyAxMyA3IDEzIDcgMjEiPjwvcG9seWxpbmU+PHBvbHlsaW5lIHBvaW50cz0iNyAzIDcgOCAxNSA4Ij48L3BvbHlsaW5lPjwvc3ZnPg==" />
+      <span>Save PSD with layers</span>
+    </div>
+    <div class="prep-item">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYTgwODAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnYtNCI+PC9wYXRoPjxwb2x5bGluZSBwb2ludHM9IjcgMTAgMTIgMTUgMTcgMTAiPjwvcG9seWxpbmU+PGxpbmUgeDE9IjEyIiB5MT0iMTUiIHgyPSIxMiIgeTI9IjMiPjwvbGluZT48L3N2Zz4=" />
+      <span>Export as JPG</span>
+    </div>
+  </div>
+</div>
+
+<div class="class-activity" style="border-color: var(--primary);">
+  <h3>Uploading to Padlet</h3>
+
+  <p style="font-size: 1.1rem; text-align: center; font-weight: bold;">Upload two items:</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 25px 0;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+      <h4 style="margin-top: 0; color: var(--secondary); font-size: 1.2rem; margin-bottom: 15px;">1. Original Experiments</h4>
+      <p>Upload your photocopier or scanner experiments:</p>
+      <ul>
+        <li>Include at least 2 different techniques</li>
+        <li>Write what you did</li>
+        <li>Explain how they relate to your project</li>
+      </ul>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+      <h4 style="margin-top: 0; color: var(--secondary); font-size: 1.2rem; margin-bottom: 15px;">2. Final Design</h4>
+      <p>Upload your edited work:</p>
+      <ul>
+        <li>Show threshold effect</li>
+        <li>Include text on path</li>
+        <li>Add artist reference</li>
+        <li>Connect to your Term 2 project</li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="https://artslondon.padlet.org/hstokes12/week-1-term-2-as18keb970kmh0re" target="_blank" class="submit-button">
+    Go to Padlet
+  </a>
+</div>
+
+<!-- GALLERY SECTION -->
+<div style="margin-top: 40px;">
+  <h3 style="text-align: center; margin-bottom: 20px;">Class Gallery</h3>
+  <div class="padlet-container">
+    <iframe src="https://artslondon.padlet.org/hstokes12/week-2-term-2-stpbw5it1itoa6v3" frameborder="0" allow="camera;microphone;geolocation" class="padlet-iframe"></iframe>
+  </div>
+</div>
+
+<!-- Modal for image viewing -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
 </div>
 
 <script>
@@ -1766,254 +1514,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  // Quiz functionality
-  const quizQuestions = [
-    {
-      question: "What does the Threshold adjustment do to an image?",
-      options: [
-        "Adds a color gradient",
-        "Converts it to pure black and white with no gray",
-        "Makes it blurry",
-        "Increases the contrast slightly"
-      ],
-      correct: 1,
-      feedback: "Threshold converts an image to pure black and white pixels with no gray tones, perfect for creating clear paths."
-    },
-    {
-      question: "Which tool should you use to select areas before converting to paths?",
-      options: [
-        "Brush Tool",
-        "Clone Stamp Tool",
-        "Magic Wand Tool",
-        "Eraser Tool"
-      ],
-      correct: 2,
-      feedback: "The Magic Wand Tool is perfect for selecting areas of similar color, which can then be converted to paths."
-    },
-    {
-      question: "How do you convert a selection to a path in Photoshop?",
-      options: [
-        "Edit → Transform → Path",
-        "Select → Convert → To Path",
-        "Right-click the selection and choose 'Make Work Path'",
-        "Layer → Create Path"
-      ],
-      correct: 2,
-      feedback: "Right-click on your selection and choose 'Make Work Path' to convert it to a path that text can follow."
-    },
-    {
-      question: "When adding text to a path, what should your cursor look like?",
-      options: [
-        "Standard text cursor (I-beam)",
-        "A curved or wavy line with text cursor",
-        "A circle with a line through it",
-        "A crosshair"
-      ],
-      correct: 1,
-      feedback: "When your text tool is properly positioned to add text on a path, the cursor will change to show a curved or wavy line with the text cursor."
-    },
-    {
-      question: "Which blend mode is best for making white text stand out on a dark background?",
-      options: [
-        "Multiply",
-        "Screen",
-        "Overlay",
-        "Difference"
-      ],
-      correct: 1,
-      feedback: "Screen blend mode is excellent for making light or white text stand out against darker backgrounds."
-    },
-    {
-      question: "What's a key benefit of using Smart Objects in Photoshop?",
-      options: [
-        "They make the file size smaller",
-        "They prevent you from making changes later",
-        "They allow non-destructive editing of filters and effects",
-        "They automatically export your work"
-      ],
-      correct: 2,
-      feedback: "Smart Objects allow non-destructive editing, meaning you can change or remove filters and effects later without losing quality."
-    },
-    {
-      question: "When creating a Harvard citation for an artwork in your design, which format is correct?",
-      options: [
-        "Artist Name (Year) Title [Medium]. Location.",
-        "Title by Artist Name, Year, Medium, Location",
-        "Artist Name. Title. Year. Medium. Location.",
-        "Title (Year) by Artist Name, Medium, Location"
-      ],
-      correct: 0,
-      feedback: "The correct Harvard citation format for artwork is: Artist Name (Year) Title [Medium]. Location."
+  // Tutorial slider functionality
+  let currentStepIndex = 1;
+  const totalSteps = 8;
+  
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const currentStepElement = document.getElementById('currentStep');
+  const progressBar = document.getElementById('tutorialProgress');
+  const dots = document.querySelectorAll('.dot');
+  
+  // Initial state
+  updateNavButtons();
+  updateProgressBar();
+  
+  // Next button click
+  nextBtn.addEventListener('click', () => {
+    if (currentStepIndex < totalSteps) {
+      hideStep(currentStepIndex);
+      currentStepIndex++;
+      showStep(currentStepIndex);
+      updateNavButtons();
+      updateProgressBar();
+      updateDots();
     }
-  ];
+  });
   
-  // Initialize quiz
-  let currentQuestion = 0;
-  let score = 0;
-  let questionsAnswered = 0;
-  
-  // Load questions
-  function loadQuiz() {
-    const questionsContainer = document.getElementById('quiz-questions');
-    questionsContainer.innerHTML = '';
-    
-    quizQuestions.forEach((q, index) => {
-      const questionDiv = document.createElement('div');
-      questionDiv.classList.add('quiz-question');
-      if (index !== currentQuestion) {
-        questionDiv.style.display = 'none';
-      }
-      
-      // Question header
-      const questionHeader = document.createElement('div');
-      questionHeader.classList.add('question-header');
-      
-      const questionNumber = document.createElement('div');
-      questionNumber.classList.add('question-number');
-      questionNumber.textContent = index + 1;
-      
-      const questionText = document.createElement('div');
-      questionText.classList.add('question-text');
-      questionText.textContent = q.question;
-      
-      questionHeader.appendChild(questionNumber);
-      questionHeader.appendChild(questionText);
-      questionDiv.appendChild(questionHeader);
-      
-      // Options
-      const optionsContainer = document.createElement('div');
-      optionsContainer.classList.add('quiz-options');
-      
-      q.options.forEach((option, optIndex) => {
-        const optionDiv = document.createElement('div');
-        optionDiv.classList.add('quiz-option');
-        optionDiv.dataset.index = optIndex;
-        
-        const optionLetter = document.createElement('div');
-        optionLetter.classList.add('option-letter');
-        optionLetter.textContent = String.fromCharCode(65 + optIndex); // A, B, C, D
-        
-        const optionText = document.createElement('div');
-        optionText.textContent = option;
-        
-        optionDiv.appendChild(optionLetter);
-        optionDiv.appendChild(optionText);
-        
-        optionDiv.addEventListener('click', (e) => selectAnswer(e, index, optIndex));
-        
-        optionsContainer.appendChild(optionDiv);
-      });
-      
-      questionDiv.appendChild(optionsContainer);
-      
-      // Feedback area
-      const feedbackDiv = document.createElement('div');
-      feedbackDiv.classList.add('quiz-feedback');
-      feedbackDiv.id = `feedback-${index}`;
-      questionDiv.appendChild(feedbackDiv);
-      
-      questionsContainer.appendChild(questionDiv);
-    });
-    
-    // Hide results at start
-    document.getElementById('quiz-results').style.display = 'none';
-  }
-  
-  // Select answer
-  function selectAnswer(e, questionIndex, selectedOption) {
-    const currentQuestionData = quizQuestions[questionIndex];
-    const feedbackElement = document.getElementById(`feedback-${questionIndex}`);
-    const options = document.querySelectorAll(`.quiz-question:nth-child(${questionIndex + 1}) .quiz-option`);
-    
-    // Prevent selecting again
-    if (options[0].classList.contains('correct') || options[0].classList.contains('incorrect')) {
-      return;
+  // Previous button click
+  prevBtn.addEventListener('click', () => {
+    if (currentStepIndex > 1) {
+      hideStep(currentStepIndex);
+      currentStepIndex--;
+      showStep(currentStepIndex);
+      updateNavButtons();
+      updateProgressBar();
+      updateDots();
     }
-    
-    // Mark correct and incorrect
-    options.forEach((option, index) => {
-      if (index === currentQuestionData.correct) {
-        option.classList.add('correct');
-      } else {
-        option.classList.add('incorrect');
+  });
+  
+  // Dot click functionality
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const stepIndex = parseInt(dot.getAttribute('data-step'));
+      if (stepIndex !== currentStepIndex) {
+        hideStep(currentStepIndex);
+        currentStepIndex = stepIndex;
+        showStep(currentStepIndex);
+        updateNavButtons();
+        updateProgressBar();
+        updateDots();
       }
     });
-    
-    // Show feedback
-    feedbackElement.textContent = currentQuestionData.feedback;
-    feedbackElement.style.display = 'block';
-    
-    if (selectedOption === currentQuestionData.correct) {
-      feedbackElement.classList.add('feedback-correct');
-      score++;
-    } else {
-      feedbackElement.classList.add('feedback-incorrect');
-    }
-    
-    // Move to next question after 1.5 seconds
-    questionsAnswered++;
-    updateProgress();
-    
-    setTimeout(() => {
-      if (questionIndex < quizQuestions.length - 1) {
-        goToQuestion(questionIndex + 1);
-      } else {
-        showResults();
-      }
-    }, 1500);
-  }
+  });
   
-  // Go to specific question
-  function goToQuestion(index) {
-    const questions = document.querySelectorAll('.quiz-question');
-    questions.forEach((q, i) => {
-      q.style.display = i === index ? 'block' : 'none';
-    });
-    currentQuestion = index;
+  // Update navigation buttons state
+  function updateNavButtons() {
+    prevBtn.disabled = currentStepIndex === 1;
+    nextBtn.disabled = currentStepIndex === totalSteps;
+    currentStepElement.textContent = currentStepIndex;
   }
   
   // Update progress bar
-  function updateProgress() {
-    const progressBar = document.getElementById('progress-bar');
-    const progressPercentage = (questionsAnswered / quizQuestions.length) * 100;
-    progressBar.style.width = `${progressPercentage}%`;
+  function updateProgressBar() {
+    const progress = (currentStepIndex / totalSteps) * 100;
+    progressBar.style.width = `${progress}%`;
   }
   
-  // Show results
-  function showResults() {
-    document.getElementById('quiz-questions').style.display = 'none';
-    document.getElementById('quiz-results').style.display = 'block';
-    document.getElementById('score').textContent = score;
-    
-    // Customize message based on score
-    const messageElement = document.querySelector('.results-message');
-    if (score === quizQuestions.length) {
-      messageElement.textContent = "Perfect score! You're a photocopier editing master!";
-    } else if (score >= quizQuestions.length * 0.7) {
-      messageElement.textContent = "Great job! You're ready to create amazing photocopier art.";
-    } else if (score >= quizQuestions.length * 0.4) {
-      messageElement.textContent = "Good effort! Review the sections on paths and text to improve your skills.";
-    } else {
-      messageElement.textContent = "Keep practicing! Review the tutorial and try again to improve your score.";
-    }
+  // Update dots
+  function updateDots() {
+    dots.forEach(dot => {
+      const dotStep = parseInt(dot.getAttribute('data-step'));
+      if (dotStep === currentStepIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
   }
   
-  // Restart quiz
-  function restartQuiz() {
-    currentQuestion = 0;
-    score = 0;
-    questionsAnswered = 0;
-    loadQuiz();
-    updateProgress();
-    document.getElementById('quiz-questions').style.display = 'block';
-    document.getElementById('quiz-results').style.display = 'none';
+  // Hide step
+  function hideStep(index) {
+    document.getElementById(`step${index}`).classList.remove('active');
   }
   
-  // Add event listener to restart button
-  document.getElementById('restart-quiz').addEventListener('click', restartQuiz);
-  
-  // Initialize quiz on page load
-  loadQuiz();
+  // Show step
+  function showStep(index) {
+    document.getElementById(`step${index}`).classList.add('active');
+  }
 });
 </script>
 
