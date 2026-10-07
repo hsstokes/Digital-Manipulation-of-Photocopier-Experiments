@@ -489,17 +489,17 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
 
     <div class="artist-grid">
       <a href="https://www.tate.org.uk/art/artworks/tillmans-paper-drop-prinzessinnenstrasse-a-p82413" target="_blank" class="artist-card">
-        <div class="artist-ph">📠</div>
+        <div class="artist-ph"><img src="images/wolfgang-tillmans.jpg" alt="Wolfgang Tillmans artwork" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='📠'"></div>
         <h3>Wolfgang Tillmans</h3>
         <p>Paper Drop, 2014</p>
       </a>
       <a href="https://gittermangallery.com/exhibition/100/exhibition_works/2035" target="_blank" class="artist-card">
-        <div class="artist-ph">🖨️</div>
+        <div class="artist-ph"><img src="images/william-larson.jpg" alt="William Larson artwork" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='🖨️'"></div>
         <h3>William Larson</h3>
         <p>Fireflies, 1969–78</p>
       </a>
       <a href="https://www.mutualart.com/Artwork/Untitled/F83B3919F4ECB057313C3C54720847B8" target="_blank" class="artist-card">
-        <div class="artist-ph">🖨️</div>
+        <div class="artist-ph"><img src="images/wade-guyton.jpg" alt="Wade Guyton artwork" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='🖨️'"></div>
         <h3>Wade Guyton</h3>
         <p>Untitled, 2007</p>
       </a>
@@ -533,6 +533,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           <div class="step-toggle">▶</div>
         </div>
         <div class="step-body">
+          <img class="step-img" src="images/document-setup.jpg" alt="New document setup in Photoshop" onerror="this.style.display='none'">
           <ul>
             <li>New document: <span class="key">File → New</span> — A3, 300dpi</li>
             <li>Import your photocopier or scanner experiment</li>
@@ -549,6 +550,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           <div class="step-toggle">▶</div>
         </div>
         <div class="step-body">
+          <img class="step-img" src="images/threshold-adjustment.jpg" alt="Threshold adjustment dialog in Photoshop" onerror="this.style.display='none'">
           <div class="vid-wrap">
             <iframe src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=8ef81560-950d-4338-b945-b39d00f1d1b8" allowfullscreen allow="autoplay"></iframe>
           </div>
@@ -568,11 +570,25 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           <div class="step-toggle">▶</div>
         </div>
         <div class="step-body">
+          <img class="step-img" src="images/magic-wand-selection.jpg" alt="Magic Wand selection in Photoshop" onerror="this.style.display='none'">
           <ul>
             <li>Magic Wand tool: <span class="key">W</span></li>
             <li>Click a black or white shape you like</li>
             <li>Hold <span class="key">Shift</span> to add more areas</li>
           </ul>
+          <div class="info-box">
+            <strong>Two other ways to select:</strong>
+            <div class="two-col" style="margin-top:8px;">
+              <div class="col-card" style="padding:8px;">
+                <img class="step-img" style="margin-bottom:6px;" src="images/quick-selection.jpg" alt="Quick Selection tool in Photoshop" onerror="this.style.display='none'">
+                <p style="font-size:0.76rem;margin:0;">Quick Selection — drag over an area</p>
+              </div>
+              <div class="col-card" style="padding:8px;">
+                <img class="step-img" style="margin-bottom:6px;" src="images/color-range.jpg" alt="Color Range tool in Photoshop" onerror="this.style.display='none'">
+                <p style="font-size:0.76rem;margin:0;">Color Range — selects by colour</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -583,6 +599,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           <div class="step-toggle">▶</div>
         </div>
         <div class="step-body">
+          <img class="step-img" src="images/make-work-path.jpg" alt="Make Work Path dialog in Photoshop" onerror="this.style.display='none'">
           <ul>
             <li>Right-click your selection → <span class="key">Make Work Path</span></li>
             <li>Tolerance: <strong>1.0 pixels</strong>. Click OK.</li>
@@ -639,6 +656,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           <div class="step-toggle">▶</div>
         </div>
         <div class="step-body">
+          <img class="step-img" src="images/text-on-path.jpg" alt="Text on a path in Photoshop" onerror="this.style.display='none'">
           <ul>
             <li>Move your cursor near the path</li>
             <li>Wait for the cursor to change</li>
@@ -718,6 +736,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           <div class="step-toggle">▶</div>
         </div>
         <div class="step-body">
+          <img class="step-img" src="images/text-blend-modes.jpg" alt="Blend mode dropdown on a text layer in Photoshop" onerror="this.style.display='none'">
           <ul>
             <li>Select your text layer in the Layers panel</li>
             <li>Find the blend mode dropdown — it says "Normal"</li>
@@ -759,10 +778,10 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
 
     <h2>Blend Mode Ideas</h2>
     <div class="blend-grid">
-      <div class="blend-card"><h4>Multiply</h4><p>Darkens. Good on white backgrounds.</p></div>
-      <div class="blend-card"><h4>Screen</h4><p>Lightens. Good on dark backgrounds.</p></div>
-      <div class="blend-card"><h4>Overlay</h4><p>High contrast effect.</p></div>
-      <div class="blend-card"><h4>Difference</h4><p>Dramatic colour change.</p></div>
+      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-multiply.jpg" alt="Multiply blend mode example" onerror="this.style.display='none'"><h4>Multiply</h4><p>Darkens. Good on white backgrounds.</p></div>
+      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-screen.jpg" alt="Screen blend mode example" onerror="this.style.display='none'"><h4>Screen</h4><p>Lightens. Good on dark backgrounds.</p></div>
+      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-overlay.jpg" alt="Overlay blend mode example" onerror="this.style.display='none'"><h4>Overlay</h4><p>High contrast effect.</p></div>
+      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-difference.jpg" alt="Difference blend mode example" onerror="this.style.display='none'"><h4>Difference</h4><p>Dramatic colour change.</p></div>
     </div>
 
     <h2>Citation Example</h2>
@@ -772,15 +791,39 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
       <p class="ref">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. MoMA, New York.</p>
     </div>
 
-    <h2>Student Example</h2>
+    <h2>Student Examples</h2>
     <div class="eg-grid">
-      <div class="eg-card" onclick="openLB('images/william-larson-example.jpg','Photocopier experiment with text on path and artist citation')">
+      <div class="eg-card" onclick="openLB('images/william-larson-example.jpg','Text on path, inspired by William Larson')">
         <div class="eg-img">
           <img src="images/william-larson-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="ph-box"><span>🖼️</span><span>william-larson-example.jpg</span></div>
           <span class="zoom-hint">🔍 enlarge</span>
         </div>
-        <div class="eg-cap">Text on path with artist citation</div>
+        <div class="eg-cap">Inspired by William Larson</div>
+      </div>
+      <div class="eg-card" onclick="openLB('images/wade-guyton-example.jpg','Text on path, inspired by Wade Guyton')">
+        <div class="eg-img">
+          <img src="images/wade-guyton-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph-box"><span>🖼️</span><span>wade-guyton-example.jpg</span></div>
+          <span class="zoom-hint">🔍 enlarge</span>
+        </div>
+        <div class="eg-cap">Inspired by Wade Guyton</div>
+      </div>
+      <div class="eg-card" onclick="openLB('images/photocopier-example.jpg','Photocopier experiment, finished design')">
+        <div class="eg-img">
+          <img src="images/photocopier-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph-box"><span>🖼️</span><span>photocopier-example.jpg</span></div>
+          <span class="zoom-hint">🔍 enlarge</span>
+        </div>
+        <div class="eg-cap">Photocopier experiment</div>
+      </div>
+      <div class="eg-card" onclick="openLB('images/object-scanning-example.jpg','Scanner experiment, finished design')">
+        <div class="eg-img">
+          <img src="images/object-scanning-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph-box"><span>🖼️</span><span>object-scanning-example.jpg</span></div>
+          <span class="zoom-hint">🔍 enlarge</span>
+        </div>
+        <div class="eg-cap">Scanner experiment</div>
       </div>
     </div>
 
