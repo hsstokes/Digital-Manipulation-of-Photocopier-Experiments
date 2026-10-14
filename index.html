@@ -16,6 +16,8 @@
   --pink-light: #fdf1f5;
   --purple: #6c35c9;
   --purple-light: #f3eeff;
+  --blue: #2563a8;
+  --blue-light: #eef4ff;
   --gold: #c87900;
   --gold-light: #fff8e6;
   --warm-mid: #d4cfc8;
@@ -109,7 +111,7 @@ body::before {
 /* NAV GRID */
 .nav-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 7px;
   margin-bottom: 28px;
 }
@@ -394,6 +396,25 @@ li { font-size: 0.86rem; margin-bottom: 5px; line-height: 1.7; }
 .lb-close { position: absolute; top: 14px; right: 20px; color: white; font-size: 2.2rem; cursor: pointer; background: none; border: none; opacity: 0.7; }
 .lb-close:hover { opacity: 1; color: var(--pink); }
 
+/* PROGRESS REPORT */
+.b-blue { background: var(--blue-light); color: var(--blue); }
+.step-num.blue { background: var(--blue); }
+.step-title-text.blue { color: var(--blue); }
+.reflection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.8rem 0; }
+@media (max-width: 560px) { .reflection-grid { grid-template-columns: 1fr; } }
+.reflection-card { background: white; border: 2px solid var(--blue); border-top: 4px solid var(--blue); border-radius: 3px; padding: 12px; }
+.reflection-card h3 { color: var(--blue); font-size: 0.76rem; margin-top: 0; }
+.reflection-card p { font-size: 0.76rem; color: var(--concrete); margin: 0; }
+.cta-blue { background: var(--blue); }
+.checklist.blue { border-color: var(--blue); }
+.checklist.blue h3 { color: var(--blue); border-color: var(--blue); }
+.checklist.blue .chk { border-color: var(--blue); }
+.checklist.blue .chk.checked { background: var(--blue); }
+.checklist.blue .cl { color: var(--blue); }
+.btn-next.blue { background: var(--blue); border-color: var(--blue); }
+.submit-item:nth-child(3) { background: var(--blue-light); border-color: var(--blue); }
+.submit-item:nth-child(3) h4 { color: var(--blue); }
+
 footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--warm-mid); margin-top: 40px; font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--concrete); }
 
 @media (max-width: 600px) {
@@ -418,13 +439,14 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
       <div class="header-eyebrow">Spring Term · IELS Level 5</div>
       <h1>Digital Editing:<br><em>Photocopier &amp; Scanner</em></h1>
     </div>
-    <div class="header-meta">3 tasks<br>↓<br>then submit</div>
+    <div class="header-meta">3 tasks + report<br>↓<br>then submit</div>
   </header>
 
   <div class="timing-strip">
     <span class="t-badge" style="background:var(--teal-light);color:var(--teal);border-color:var(--teal);">⚫ Task 1 · Threshold &amp; Paths</span>
     <span class="t-badge" style="background:var(--pink-light);color:var(--pink);border-color:var(--pink);">✍️ Task 2 · Text on Path</span>
     <span class="t-badge" style="background:var(--purple-light);color:var(--purple);border-color:var(--purple);">🎨 Task 3 · Blend &amp; Cite</span>
+    <span class="t-badge" style="background:var(--blue-light);color:var(--blue);border-color:var(--blue);">📝 Progress Report</span>
     <span class="t-badge" style="background:var(--gold-light);color:var(--gold);border-color:var(--gold);">📤 Submit</span>
   </div>
 
@@ -435,6 +457,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
     <div class="nav-block" data-sec="task1"><span class="nav-icon">⚫</span><span class="nav-label">Task 1</span><span class="nav-sub">Threshold</span></div>
     <div class="nav-block" data-sec="task2"><span class="nav-icon">✍️</span><span class="nav-label">Task 2</span><span class="nav-sub">Text on path</span></div>
     <div class="nav-block" data-sec="task3"><span class="nav-icon">🎨</span><span class="nav-label">Task 3</span><span class="nav-sub">Blend &amp; cite</span></div>
+    <div class="nav-block" data-sec="report"><span class="nav-icon">📝</span><span class="nav-label">Report</span><span class="nav-sub">Reflect</span></div>
     <div class="nav-block" data-sec="submit"><span class="nav-icon">📤</span><span class="nav-label">Submit</span><span class="nav-sub">Padlet</span></div>
   </div>
 
@@ -476,6 +499,11 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         <div class="ov-icon">🎨</div>
         <h4>Task 3</h4>
         <p>Blend your text. Add an artist reference.</p>
+      </div>
+      <div class="ov-card" style="background:var(--blue-light);border-color:var(--blue);color:var(--blue);" onclick="goTo('report')">
+        <div class="ov-icon">📝</div>
+        <h4>Report</h4>
+        <p>Reflect. Download your PDF.</p>
       </div>
       <div class="ov-card ov-sub" onclick="goTo('submit')">
         <div class="ov-icon">📤</div>
@@ -833,10 +861,104 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
       <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Added an artist quote and Harvard reference</span></div>
       <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Saved PSD with all layers</span></div>
       <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Exported as JPEG</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Screenshots taken for your report</span></div>
     </div>
 
     <div class="nav-btns">
       <button class="nav-btn btn-prev" onclick="goTo('task2')">← Task 2</button>
+      <button class="nav-btn btn-next blue" onclick="goTo('report')">Progress Report →</button>
+    </div>
+  </div>
+
+  <!-- ═══ PROGRESS REPORT ═══ -->
+  <div id="report" class="section">
+
+    <div class="section-banner b-blue">📝 Progress Report — Document &amp; Reflect</div>
+
+    <div class="info-box" style="background:var(--blue-light);border-color:var(--blue);">
+      <strong style="color:var(--blue);">Why?</strong> It shows <em>how</em> you learned. Reflection is assessed at Level 5.
+    </div>
+
+    <h2>Steps — click to expand</h2>
+    <div class="steps-list">
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num blue">1</div>
+          <div class="step-title-text blue">Open the tool</div>
+          <div class="step-toggle">▶</div>
+        </div>
+        <div class="step-body">
+          <div style="text-align:center;margin:12px 0;">
+            <a href="https://hsstokes.github.io/Progress_Documentation/" target="_blank" class="cta-btn cta-blue">📝 Open Progress Report Tool →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num blue">2</div>
+          <div class="step-title-text blue">Name + screenshots</div>
+          <div class="step-toggle">▶</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Type your full name</li>
+            <li>Upload <strong>2–3 screenshots</strong> — Threshold, text on path, final design</li>
+            <li>Add a short caption to each</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num blue">3</div>
+          <div class="step-title-text blue">Answer 4 questions</div>
+          <div class="step-toggle">▶</div>
+        </div>
+        <div class="step-body">
+          <div class="reflection-grid">
+            <div class="reflection-card"><h3>1. Techniques</h3><p>Which tools did you use?</p></div>
+            <div class="reflection-card"><h3>2. Challenges</h3><p>What was difficult? How did you fix it?</p></div>
+            <div class="reflection-card"><h3>3. What worked</h3><p>What are you happy with?</p></div>
+            <div class="reflection-card"><h3>4. Next time</h3><p>What will you change?</p></div>
+          </div>
+          <div class="tip-box">
+            <h4>💡 Useful phrases</h4>
+            <ul>
+              <li><em>"I used … to …"</em></li>
+              <li><em>"This worked because …"</em></li>
+              <li><em>"This was difficult because …"</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-header" onclick="toggleStep(this)">
+          <div class="step-num blue">4</div>
+          <div class="step-title-text blue">Download PDF</div>
+          <div class="step-toggle">▶</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li>Click <strong>Download Progress Report (PDF)</strong></li>
+            <li>Save it — you upload it to Padlet next</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="checklist blue">
+      <h3>Report Checklist ✓</h3>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">2–3 screenshots with captions</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Answered all 4 questions</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Downloaded the PDF</span></div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="nav-btn btn-prev" onclick="goTo('task3')">← Task 3</button>
       <button class="nav-btn btn-next gold" onclick="goTo('submit')">Submit →</button>
     </div>
   </div>
@@ -847,10 +969,11 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
     <div class="section-banner b-gold">📤 Submit Your Work</div>
 
     <div class="submit-box">
-      <h3>Upload Two Items</h3>
+      <h3>Upload Three Items</h3>
       <div class="submit-items">
-        <div class="submit-item"><h4>1. Original Experiments</h4><p>2–3 photocopier or scanner experiments, with a short note on technique</p></div>
-        <div class="submit-item"><h4>2. Final Design</h4><p>Shows Threshold, text on path, blend mode, and an artist reference</p></div>
+        <div class="submit-item"><h4>1. Original Experiments</h4><p>2–3 photocopier or scanner experiments</p></div>
+        <div class="submit-item"><h4>2. Final Design</h4><p>JPEG · Threshold, text on path, blend mode, reference</p></div>
+        <div class="submit-item"><h4>3. Progress Report</h4><p>PDF from the report tool</p></div>
       </div>
       <a href="https://artslondon.padlet.org/hstokes12/week-1-term-2-stpbw5it1itoa6v3" target="_blank" class="cta-btn cta-teal">📤 Upload to Padlet →</a>
     </div>
@@ -859,6 +982,7 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
       <h3>Final Checklist ✓</h3>
       <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Uploaded 2–3 original experiments with notes</span></div>
       <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Uploaded final design with text on path</span></div>
+      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Uploaded Progress Report PDF</span></div>
       <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Saved your PSD file</span></div>
     </div>
 
@@ -872,11 +996,12 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         <li><strong>Text on path</strong> — text that follows a shape</li>
         <li><strong>Blend modes</strong> — creative text effects</li>
         <li><strong>Citations</strong> — referencing an artist properly</li>
+        <li><strong>Reflection</strong> — explaining your process</li>
       </ul>
     </div>
 
     <div class="nav-btns">
-      <button class="nav-btn btn-prev" onclick="goTo('task3')">← Task 3</button>
+      <button class="nav-btn btn-prev" onclick="goTo('report')">← Report</button>
       <button class="nav-btn btn-next" onclick="goTo('overview')">↩ Back to Start</button>
     </div>
   </div>
@@ -886,8 +1011,8 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
 <footer>© 2026 Digital Editing: Photocopier &amp; Scanner · IELS Level 5</footer>
 
 <script>
-const sections = ['overview','task1','task2','task3','submit'];
-const progress  = { overview:10, task1:35, task2:60, task3:85, submit:100 };
+const sections = ['overview','task1','task2','task3','report','submit'];
+const progress  = { overview:10, task1:30, task2:50, task3:70, report:85, submit:100 };
 let current = 'overview';
 
 function goTo(id) {
