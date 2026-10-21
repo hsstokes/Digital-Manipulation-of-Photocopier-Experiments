@@ -1,478 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Digital Editing: Photocopier &amp; Scanner — Text on Path</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
   --ink: #1a1a1a;
   --paper: #f2ede8;
-  --teal: #0a7a7a;
-  --teal-light: #e0f0f0;
-  --pink: #ea37a3;
-  --pink-light: #fdf1f5;
-  --purple: #6c35c9;
-  --purple-light: #f3eeff;
-  --blue: #2563a8;
-  --blue-light: #eef4ff;
-  --gold: #c87900;
-  --gold-light: #fff8e6;
-  --warm-mid: #d4cfc8;
   --grid: #ddd8d2;
+  --teal: #0a7a7a;
+  --teal-light: #e3f2f2;
+  --pink: #ea37a3;
+  --pink-light: #fde8f4;
+  --purple: #6c35c9;
+  --purple-light: #efe8fb;
+  --blue: #2563a8;
+  --blue-light: #e6eef8;
+  --gold: #c87900;
+  --gold-light: #fbf0dc;
+  --green: #1f7a3d;
+  --green-light: #e4f4e9;
+  --warm-mid: #d4cfc8;
   --concrete: #8a8a8a;
+  --white: #ffffff;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
   background-color: var(--paper);
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 40px 40px;
-  color: var(--ink);
-  font-size: 14px;
-  line-height: 1.7;
+  background-attachment: fixed;
+  padding: 24px 16px 40px;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: -10%; left: 48%;
-  width: 4px; height: 120vh;
-  background: rgba(255,255,255,0.6);
-  transform: rotate(12deg);
-  pointer-events: none;
-  z-index: 0;
-}
+.page { max-width: 1000px; margin: 0 auto; }
+a { color: var(--teal); font-weight: 600; }
+a:hover { color: var(--pink); }
 
-.container {
-  max-width: 1060px;
-  margin: 0 auto;
-  padding: 36px 28px 60px;
-  position: relative;
-  z-index: 1;
-}
-
-/* HEADER */
-.site-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 16px;
-  border-bottom: 3px solid var(--ink);
+/* ---------- Header ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
   padding-bottom: 18px;
-  margin-bottom: 10px;
+  border-bottom: 3px solid var(--ink);
+  margin-bottom: 18px;
 }
-.header-eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
+.eyebrow {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 6px;
+  color: var(--concrete);
+  margin-bottom: 8px;
 }
-.site-header h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.6rem, 4vw, 2.8rem);
+h1 {
+  font-family: "DM Serif Display", serif;
   font-weight: 400;
-  line-height: 1.1;
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
+  line-height: 1.05;
 }
-.site-header h1 em { color: var(--teal); font-style: italic; }
-.header-meta {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.68rem;
+h1 em { color: var(--teal); font-style: italic; display: block; }
+.meta {
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
   text-align: right;
   color: var(--concrete);
-  line-height: 1.8;
 }
+.meta strong { color: var(--ink); display: block; font-size: 0.95rem; }
+@media (max-width: 600px) { .meta { text-align: left; } }
 
-/* TIMING STRIP */
-.timing-strip { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+/* ---------- Timing strip ---------- */
+.timing-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .t-badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
+  font-family: "Space Mono", monospace;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  border: 2px solid;
+  padding: 4px 12px;
+  border: 2px solid var(--c);
+  background: var(--cl);
+  color: var(--c);
 }
 
-/* PROGRESS */
-.progress-wrap { height: 6px; background: var(--warm-mid); margin-bottom: 18px; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--teal)); transition: width 0.4s ease; }
-
-/* NAV GRID */
+/* ---------- Progress + nav ---------- */
+.progress-track { height: 8px; background: var(--warm-mid); margin-bottom: 16px; overflow: hidden; }
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--pink), var(--teal));
+  transition: width 0.3s ease;
+}
 .nav-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 7px;
-  margin-bottom: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
 }
-@media (max-width: 640px) { .nav-grid { grid-template-columns: repeat(3, 1fr); } }
-
 .nav-block {
-  border: 2px solid var(--warm-mid);
-  background: white;
-  padding: 12px 8px;
-  text-align: center;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-top: 6px solid var(--c);
+  padding: 12px 10px;
+  text-align: left;
   cursor: pointer;
-  transition: all 0.2s;
-  font-family: 'Space Mono', monospace;
-  border-radius: 3px;
-  min-height: 66px;
+  font: inherit;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nav-block:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--ink); }
+.nav-block .n {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--c);
+  font-weight: 700;
+  display: block;
+}
+.nav-block .t { font-size: 0.9rem; font-weight: 600; display: block; line-height: 1.3; }
+.nav-block.active { background: var(--c); color: var(--white); box-shadow: 3px 3px 0 var(--ink); }
+.nav-block.active .n { color: var(--white); }
+
+/* ---------- Sections ---------- */
+.content-section { display: none; }
+.content-section.active { display: block; animation: fade 0.3s ease; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+.section-banner {
+  background: var(--c);
+  color: var(--white);
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  margin-bottom: 18px;
+}
+h2 {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-size: 1.8rem;
   display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 30px 0 10px;
+}
+h2::before { content: ""; width: 5px; height: 28px; background: var(--pink); flex-shrink: 0; }
+.intro { margin-bottom: 14px; max-width: 70ch; }
+.muted { color: var(--concrete); font-size: 0.9rem; }
+
+.rule {
+  height: 6px;
+  margin: 36px 0;
+  background: linear-gradient(90deg, var(--pink), var(--teal));
+  transform: skewX(-15deg);
+}
+
+/* ---------- Info boxes ---------- */
+.box-note {
+  border-left: 5px solid var(--bc, var(--c));
+  background: var(--bl, var(--cl));
+  padding: 12px 16px;
+  margin: 14px 0;
+}
+.box-note strong { color: var(--bc, var(--c)); }
+.box-note ul { list-style: none; margin-top: 6px; }
+.box-note li { padding-left: 18px; position: relative; margin-bottom: 4px; }
+.box-note li::before { content: "→"; position: absolute; left: 0; color: var(--bc, var(--c)); }
+.box-note.pink { --bc: var(--pink); --bl: var(--pink-light); }
+.box-note.gold { --bc: var(--gold); --bl: var(--gold-light); }
+.box-note.green { --bc: var(--green); --bl: var(--green-light); }
+
+/* ---------- Cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  padding: 16px;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.card .label {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cc, var(--teal));
+  margin-bottom: 6px;
+}
+button.card {
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-top: 6px solid var(--cc);
+  transition: transform 0.15s ease;
+}
+button.card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.card .icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+
+/* Artist cards */
+.artist-card { display: block; text-decoration: none; color: inherit; font-weight: 400; padding: 0; overflow: hidden; }
+.artist-card:hover { color: inherit; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.artist-img {
+  height: 150px;
+  background: var(--pink-light);
+  border-bottom: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  overflow: hidden;
+}
+.artist-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.artist-body { padding: 12px 14px; }
+.artist-body .label { color: var(--pink); margin-bottom: 0; }
+.artist-body span { font-size: 0.85rem; color: var(--concrete); }
+
+/* ---------- Key + menu badges ---------- */
+.key {
+  display: inline-block;
+  font-family: "Space Mono", monospace;
+  font-size: 0.82em;
+  font-weight: 700;
+  background: var(--white);
+  border: 1.5px solid var(--ink);
+  border-bottom-width: 3px;
+  padding: 0 7px;
+  margin: 0 1px;
+  white-space: nowrap;
+}
+.menu {
+  font-family: "Space Mono", monospace;
+  font-size: 0.85em;
+  background: var(--teal-light);
+  padding: 1px 6px;
+}
+
+/* ---------- Accordion ---------- */
+.accordion { display: grid; gap: 10px; }
+.acc { background: var(--white); border: 2px solid var(--ink); }
+.acc-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: none;
+  border: none;
+  padding: 12px 14px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.acc-num {
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  background: var(--c);
+  color: var(--white);
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.acc-title { flex: 1; font-family: "Space Mono", monospace; font-weight: 700; font-size: 0.95rem; }
+.acc-arrow { font-size: 1.1rem; transition: transform 0.2s ease; }
+.acc.open .acc-arrow { transform: rotate(90deg); }
+.acc-body { display: none; padding: 4px 18px 18px 66px; }
+.acc.open .acc-body { display: block; }
+@media (max-width: 600px) { .acc-body { padding: 4px 14px 16px; } }
+.acc-body ul { list-style: none; }
+.acc-body ul li { padding-left: 18px; position: relative; margin-bottom: 4px; }
+.acc-body ul li::before { content: "→"; position: absolute; left: 0; color: var(--c); }
+.acc-body p { margin-bottom: 8px; }
+
+/* ---------- Video ---------- */
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  margin: 10px 0 14px;
+}
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Images ---------- */
+.thumb {
+  position: relative;
+  cursor: zoom-in;
+  border: 2px solid var(--warm-mid);
+  background: #2c2c2c;
+  overflow: hidden;
+  margin: 6px 0 12px;
+}
+.thumb img { width: 100%; max-height: 340px; object-fit: contain; display: block; background: var(--white); }
+.thumb .enlarge {
+  position: absolute;
+  bottom: 8px; right: 8px;
+  background: rgba(26,26,26,0.85);
+  color: var(--white);
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+}
+.thumb .missing-note {
+  display: none;
+  min-height: 140px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--concrete);
+}
+.thumb.missing { cursor: default; }
+.thumb.missing img, .thumb.missing .enlarge { display: none; }
+.thumb.missing .missing-note { display: flex; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+.two-col .thumb img { height: 160px; object-fit: cover; }
+.two-col p { font-size: 0.9rem; }
+
+/* ---------- Dark panel ---------- */
+.dark-panel { background: var(--ink); color: var(--paper); padding: 22px; }
+.panel-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.example-grid .thumb img { height: 190px; object-fit: cover; }
+.caption { font-family: "Space Mono", monospace; font-size: 0.8rem; color: var(--warm-mid); }
+
+/* ---------- Citation ---------- */
+.citation {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--purple);
+  padding: 16px 18px;
+}
+.citation .quote { font-family: "DM Serif Display", serif; font-size: 1.25rem; font-style: italic; line-height: 1.4; margin-bottom: 8px; }
+.citation .credit { text-align: right; color: var(--concrete); font-size: 0.9rem; }
+.citation .ref {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--warm-mid);
+  font-family: "Space Mono", monospace;
+  font-size: 0.82rem;
+}
+.keywords {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 2;
+  color: var(--teal);
+}
+
+/* Font + blend samples */
+.font-sample { font-size: 1.3rem; margin-bottom: 4px; }
+.blend-card .thumb img { height: 130px; object-fit: cover; }
+.blend-card .label { color: var(--purple); }
+
+/* ---------- Tip box ---------- */
+.tip-box {
+  background: var(--gold-light);
+  border: 2px dashed var(--gold);
+  padding: 12px 16px;
+  margin: 14px 0;
+}
+.tip-box strong { color: var(--gold); font-family: "Space Mono", monospace; font-size: 0.85rem; }
+.tip-box ul { list-style: none; margin-top: 4px; }
+.tip-box li { padding-left: 18px; position: relative; }
+.tip-box li::before { content: "→"; position: absolute; left: 0; color: var(--gold); }
+
+/* ---------- Report ---------- */
+.reflect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 6px 0; }
+.reflect { background: var(--blue-light); border: 2px solid var(--blue); padding: 12px; }
+.reflect .label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px 20px;
+  border: 2px solid var(--ink);
+  background: var(--c);
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  margin-top: 8px;
+}
+.btn:hover { color: var(--white); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px dashed var(--warm-mid);
+}
+.prev-btn, .next-btn {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 16px;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+}
+.prev-btn { background: var(--white); color: var(--ink); }
+.prev-btn[disabled] { opacity: 0.35; cursor: default; }
+.next-btn { background: var(--ink); color: var(--white); margin-left: auto; }
+
+/* ---------- Submit ---------- */
+.padlet-box {
+  background: var(--gold-light);
+  border: 3px dashed var(--gold);
+  padding: 22px;
+  text-align: center;
+}
+.padlet-box h3 {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+}
+.padlet-box .card-grid { text-align: left; margin-bottom: 14px; }
+
+/* ---------- Checklist ---------- */
+.checklist { background: var(--white); border: 2px solid var(--c); padding: 18px 20px; margin-top: 28px; }
+.checklist h3 {
+  font-family: "Space Mono", monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--c);
+  margin-bottom: 8px;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px dashed var(--warm-mid);
+  padding: 10px 2px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.check-item:last-of-type { border-bottom: none; }
+.box {
+  width: 24px; height: 24px;
+  border: 2px solid var(--c);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  color: var(--white);
+}
+.check-item.done .box { background: var(--c); }
+.check-item.done .box::after { content: "✓"; }
+.check-item.done .text { text-decoration: line-through; color: var(--concrete); }
+.check-count { margin-top: 8px; font-family: "Space Mono", monospace; font-size: 0.8rem; color: var(--concrete); text-align: right; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,26,0.92);
+  z-index: 1000;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  padding: 20px;
 }
-.nav-block:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.nav-block.active { background: var(--ink); color: white; border-color: var(--ink); }
-.nav-block .nav-icon { font-size: 1.2rem; }
-.nav-block .nav-label { font-weight: 700; font-size: 0.68rem; }
-.nav-block .nav-sub { color: var(--concrete); font-size: 0.58rem; }
-.nav-block.active .nav-sub { color: var(--warm-mid); }
-
-/* SECTIONS */
-.section { display: none; }
-.section.active { display: block; animation: fadeUp 0.35s ease; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-/* TYPOGRAPHY */
-h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.4rem;
-  font-weight: 400;
-  margin: 1.8rem 0 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-h2::before { content: ''; display: inline-block; width: 5px; height: 22px; background: var(--pink); flex-shrink: 0; }
-h3 {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--teal);
-  margin: 1rem 0 0.5rem;
-}
-p { margin-bottom: 0.9em; font-size: 0.88rem; line-height: 1.8; }
-a { color: var(--teal); font-weight: 600; }
-a:hover { color: var(--pink); }
-ul { margin-left: 18px; margin-bottom: 0.8em; }
-li { font-size: 0.86rem; margin-bottom: 5px; line-height: 1.7; }
-
-.diagonal-rule { height: 3px; background: linear-gradient(90deg, var(--pink), var(--teal)); margin: 24px 0; transform: skewX(-15deg); }
-
-/* BANNERS */
-.section-banner {
-  padding: 12px 18px;
-  margin-bottom: 22px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-left: 6px solid currentColor;
-  border-radius: 0 4px 4px 0;
-}
-.b-teal   { background: var(--teal-light);   color: var(--teal);   }
-.b-pink   { background: var(--pink-light);   color: var(--pink);   }
-.b-purple { background: var(--purple-light); color: var(--purple); }
-.b-gold   { background: var(--gold-light);   color: var(--gold);   }
-
-/* INFO / NOTICE / TIP */
-.info-box {
-  border-left: 4px solid var(--teal);
-  background: var(--teal-light);
-  padding: 10px 14px;
-  border-radius: 0 4px 4px 0;
-  margin: 12px 0;
-  font-size: 0.86rem;
-}
-.info-box strong { color: var(--teal); }
-.info-box.pink { background: var(--pink-light); border-color: var(--pink); }
-.info-box.pink strong { color: var(--pink); }
-.info-box.purple { background: var(--purple-light); border-color: var(--purple); }
-.info-box.purple strong { color: var(--purple); }
-.info-box.green { background: #e8f5e9; border-color: #4caf50; }
-.info-box ul { margin-top: 6px; margin-bottom: 0; }
-
-.notice {
-  background: rgba(234,55,163,0.08);
-  border-left: 4px solid var(--pink);
-  padding: 10px 14px;
-  margin: 12px 0;
-  border-radius: 0 4px 4px 0;
-  font-size: 0.84rem;
-}
-.notice strong { color: var(--pink); }
-
-.tip-box {
-  background: #fffbea;
-  border: 2px solid #e6c200;
-  border-radius: 4px;
-  padding: 12px 16px;
-  margin: 12px 0;
-  font-size: 0.84rem;
-}
-.tip-box h4 { color: #a08800; font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 6px; }
-.tip-box ul { margin-left: 14px; }
-.tip-box li { margin-bottom: 3px; }
-
-/* OVERVIEW CARDS */
-.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 1.2rem 0; }
-.ov-card { border: 2px solid; border-radius: 3px; padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
-.ov-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.ov-card .ov-icon { font-size: 1.6rem; margin-bottom: 6px; }
-.ov-card h4 { font-family: 'Space Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.ov-card p { font-size: 0.74rem; margin: 0; }
-.ov-t1 { background: var(--teal-light);   border-color: var(--teal);   color: var(--teal);   }
-.ov-t2 { background: var(--pink-light);   border-color: var(--pink);   color: var(--pink);   }
-.ov-t3 { background: var(--purple-light); border-color: var(--purple); color: var(--purple); }
-.ov-sub{ background: var(--gold-light);   border-color: var(--gold);   color: var(--gold);   }
-
-/* ACCORDION STEPS */
-.steps-list { margin: 1rem 0; }
-.step-item { background: white; border-radius: 4px; margin-bottom: 8px; border: 2px solid var(--warm-mid); overflow: hidden; }
-.step-header { display: flex; align-items: center; gap: 12px; padding: 12px 14px; cursor: pointer; user-select: none; transition: background 0.2s; }
-.step-header:hover { background: var(--teal-light); }
-.step-num {
-  width: 28px; height: 28px;
-  background: var(--teal);
-  color: white;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  font-size: 0.82rem;
-  flex-shrink: 0;
-}
-.step-title-text { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--teal); font-size: 0.84rem; flex: 1; }
-.step-toggle { font-size: 0.75rem; color: var(--concrete); transition: transform 0.2s; }
-.step-body { padding: 0 14px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.2s; }
-.step-body.open { padding: 0 14px 14px; max-height: 900px; }
-.step-body ul { margin-left: 14px; }
-.step-body li { font-size: 0.84rem; margin-bottom: 4px; line-height: 1.6; }
-.step-body p { font-size: 0.84rem; margin-bottom: 0.6em; }
-
-/* STEP IMAGES */
-.step-img { width: 100%; display: block; margin: 0 0 10px; border: 2px solid var(--warm-mid); border-radius: 3px; }
-.step-img.highlight { border-color: var(--pink); border-style: dashed; }
-
-/* VIDEO */
-.vid-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 2px solid var(--ink); border-radius: 4px; margin: 12px 0; }
-.vid-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-/* KEY */
-.key { display: inline-block; background: #f2f2f2; border: 1px solid #ccc; border-radius: 3px; padding: 1px 6px; font-family: monospace; font-size: 0.8em; margin: 0 2px; }
-
-/* TWO COL */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0.8rem 0; }
-@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
-.col-card { background: white; border: 2px solid var(--warm-mid); border-radius: 4px; padding: 14px; border-top: 4px solid var(--teal); }
-.col-card.pink { border-top-color: var(--pink); }
-.col-card h4 { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--teal); margin-bottom: 8px; }
-.col-card.pink h4 { color: var(--pink); }
-.col-card ul { margin-left: 16px; }
-.col-card li { font-size: 0.82rem; margin-bottom: 6px; }
-
-/* FONT GRID */
-.font-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 1rem 0; }
-.font-card { background: white; border: 2px solid var(--warm-mid); border-radius: 4px; padding: 12px; text-align: center; }
-.font-sample { font-size: 1.1rem; margin-bottom: 4px; }
-.font-card p { font-size: 0.72rem; color: var(--concrete); margin: 0; }
-
-/* BLEND GRID */
-.blend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 1rem 0; }
-.blend-card { background: white; border: 2px solid var(--warm-mid); border-radius: 4px; padding: 12px; text-align: center; }
-.blend-card h4 { font-family: 'Space Mono', monospace; font-size: 0.76rem; color: var(--purple); margin-bottom: 4px; }
-.blend-card p { font-size: 0.72rem; color: var(--concrete); margin: 0; }
-
-/* CITATION BOX */
-.citation-box { background: var(--paper); border-left: 4px solid var(--purple); border-radius: 0 4px 4px 0; padding: 14px 16px; margin: 1rem 0; }
-.citation-box .quote { font-style: italic; font-size: 0.86rem; margin-bottom: 6px; }
-.citation-box .credit { text-align: right; font-size: 0.78rem; color: var(--concrete); margin-bottom: 8px; }
-.citation-box .ref { font-size: 0.74rem; color: var(--concrete); font-family: 'Space Mono', monospace; }
-
-/* ARTIST GRID */
-.artist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 1rem 0; }
-.artist-card {
-  background: white; border: 2px solid var(--warm-mid); border-radius: 3px;
-  padding: 12px; text-align: center; transition: all 0.2s; text-decoration: none; display: block;
-}
-.artist-card:hover { border-color: var(--pink); transform: translateY(-3px); }
-.artist-card .artist-ph {
-  width: 100%; height: 90px; border-radius: 2px; border: 2px solid var(--pink); margin-bottom: 6px;
-  background: var(--pink-light); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
-}
-.artist-card h3 { color: var(--pink); font-size: 0.76rem; margin: 0 0 3px; }
-.artist-card p { font-size: 0.7rem; color: var(--concrete); margin: 0; }
-
-/* STUDENT EXAMPLE CARDS */
-.eg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 1rem 0; }
-.eg-card { background: white; border: 2px solid var(--warm-mid); border-radius: 4px; overflow: hidden; transition: all 0.22s; cursor: zoom-in; }
-.eg-card:hover { border-color: var(--pink); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.eg-img { width: 100%; height: 160px; background: var(--paper); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.eg-img img { width: 100%; height: 100%; object-fit: cover; }
-.ph-box { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 100%; height: 100%; }
-.ph-box span:first-child { font-size: 1.8rem; opacity: 0.2; }
-.ph-box span:last-child { font-size: 0.62rem; color: var(--concrete); }
-.zoom-hint { position: absolute; bottom: 5px; right: 5px; background: rgba(0,0,0,0.5); color: white; font-size: 0.55rem; padding: 2px 5px; border-radius: 2px; pointer-events: none; }
-.eg-cap { padding: 8px 10px; font-size: 0.72rem; color: var(--concrete); }
-
-/* SUBMIT BOX */
-.submit-box { background: white; border: 3px dashed var(--teal); border-radius: 4px; padding: 22px; text-align: center; margin: 1.2rem 0; }
-.submit-box h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 14px; text-transform: none; letter-spacing: 0; color: var(--ink); }
-.submit-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 1.2rem 0; }
-.submit-item { background: var(--teal-light); border: 1px solid var(--teal); border-radius: 3px; padding: 12px; text-align: left; }
-.submit-item:nth-child(2) { background: var(--pink-light); border-color: var(--pink); }
-.submit-item h4 { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--teal); margin-bottom: 3px; }
-.submit-item:nth-child(2) h4 { color: var(--pink); }
-.submit-item p { font-size: 0.7rem; color: var(--concrete); margin: 0; }
-
-.cta-btn {
-  display: inline-block; color: white; padding: 12px 24px; border-radius: 3px; text-decoration: none;
-  font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
-  transition: all 0.2s;
-}
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); color: white; }
-.cta-teal { background: var(--teal); }
-.cta-gold { background: var(--gold); }
-
-/* CHECKLIST */
-.checklist { background: white; border: 2px solid var(--teal); border-radius: 4px; padding: 18px; margin: 20px 0; }
-.checklist.pink { border-color: var(--pink); }
-.checklist.purple { border-color: var(--purple); }
-.checklist.gold { border-color: var(--gold); }
-.checklist h3 { font-size: 0.78rem; text-align: center; border-bottom: 2px dashed var(--teal); padding-bottom: 10px; margin-bottom: 14px; color: var(--teal); }
-.checklist.pink h3 { color: var(--pink); border-color: var(--pink); }
-.checklist.purple h3 { color: var(--purple); border-color: var(--purple); }
-.checklist.gold h3 { color: var(--gold); border-color: var(--gold); }
-.ci { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
-.chk { width: 20px; height: 20px; border: 2px solid var(--teal); border-radius: 3px; flex-shrink: 0; cursor: pointer; position: relative; margin-top: 2px; transition: background 0.2s; }
-.checklist.pink .chk { border-color: var(--pink); }
-.checklist.purple .chk { border-color: var(--purple); }
-.checklist.gold .chk { border-color: var(--gold); }
-.chk.checked { background: var(--teal); }
-.checklist.pink .chk.checked { background: var(--pink); }
-.checklist.purple .chk.checked { background: var(--purple); }
-.checklist.gold .chk.checked { background: var(--gold); }
-.chk.checked::after { content: '✓'; position: absolute; color: white; font-size: 12px; font-weight: 700; top: 0; left: 3px; }
-.cl { font-family: 'Space Mono', monospace; font-size: 0.76rem; font-weight: 700; color: var(--teal); padding-top: 1px; }
-.checklist.pink .cl { color: var(--pink); }
-.checklist.purple .cl { color: var(--purple); }
-.checklist.gold .cl { color: var(--gold); }
-
-/* NAV BUTTONS */
-.nav-btns { display: flex; justify-content: space-between; margin: 28px 0 10px; gap: 10px; }
-.nav-btn {
-  padding: 10px 20px; border: 2px solid var(--ink); border-radius: 3px;
-  font-family: 'Space Mono', monospace; font-size: 0.72rem; font-weight: 700;
-  cursor: pointer; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.05em;
-}
-.nav-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-.btn-prev { background: white; color: var(--ink); }
-.btn-next { background: var(--ink); color: white; }
-.btn-next.pink { background: var(--pink); border-color: var(--pink); }
-.btn-next.purple { background: var(--purple); border-color: var(--purple); }
-.btn-next.gold { background: var(--gold); border-color: var(--gold); }
-.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
-
-/* LIGHTBOX */
-.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; flex-direction: column; padding: 20px; cursor: zoom-out; }
 .lightbox.open { display: flex; }
-.lightbox img { max-width: 88vw; max-height: 78vh; border: 3px solid white; border-radius: 3px; object-fit: contain; }
-.lb-cap { color: #ccc; font-family: 'Space Mono', monospace; font-size: 0.72rem; margin-top: 10px; }
-.lb-close { position: absolute; top: 14px; right: 20px; color: white; font-size: 2.2rem; cursor: pointer; background: none; border: none; opacity: 0.7; }
-.lb-close:hover { opacity: 1; color: var(--pink); }
+.lightbox img { max-width: 100%; max-height: 82vh; border: 3px solid var(--white); background: var(--white); }
+.lb-cap { color: var(--warm-mid); font-family: "Space Mono", monospace; font-size: 0.8rem; margin-top: 10px; text-align: center; }
+.lightbox-close {
+  position: absolute;
+  top: 10px; right: 16px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
 
-/* PROGRESS REPORT */
-.b-blue { background: var(--blue-light); color: var(--blue); }
-.step-num.blue { background: var(--blue); }
-.step-title-text.blue { color: var(--blue); }
-.reflection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.8rem 0; }
-@media (max-width: 560px) { .reflection-grid { grid-template-columns: 1fr; } }
-.reflection-card { background: white; border: 2px solid var(--blue); border-top: 4px solid var(--blue); border-radius: 3px; padding: 12px; }
-.reflection-card h3 { color: var(--blue); font-size: 0.76rem; margin-top: 0; }
-.reflection-card p { font-size: 0.76rem; color: var(--concrete); margin: 0; }
-.cta-blue { background: var(--blue); }
-.checklist.blue { border-color: var(--blue); }
-.checklist.blue h3 { color: var(--blue); border-color: var(--blue); }
-.checklist.blue .chk { border-color: var(--blue); }
-.checklist.blue .chk.checked { background: var(--blue); }
-.checklist.blue .cl { color: var(--blue); }
-.btn-next.blue { background: var(--blue); border-color: var(--blue); }
-.submit-item:nth-child(3) { background: var(--blue-light); border-color: var(--blue); }
-.submit-item:nth-child(3) h4 { color: var(--blue); }
-
-footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--warm-mid); margin-top: 40px; font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--concrete); }
-
-@media (max-width: 600px) {
-  .container { padding: 20px 14px 40px; }
-  .site-header { grid-template-columns: 1fr; }
-  .header-meta { text-align: left; }
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 2px dashed var(--warm-mid);
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--concrete);
 }
 </style>
 </head>
 <body>
+<div class="page">
 
-<div class="lightbox" id="lightbox" onclick="closeLB()">
-  <button class="lb-close" onclick="closeLB()">✕</button>
-  <img id="lb-img" src="" alt="">
-  <div class="lb-cap" id="lb-cap"></div>
-</div>
-
-<div class="container">
-
-  <header class="site-header">
+  <header>
     <div>
-      <div class="header-eyebrow">Spring Term · IELS Level 5</div>
-      <h1>Digital Editing:<br><em>Photocopier &amp; Scanner</em></h1>
+      <div class="eyebrow">Spring Term · IELS Level 5</div>
+      <h1>Digital Editing:<em>Photocopier &amp; Scanner</em></h1>
     </div>
-    <div class="header-meta">3 tasks + report<br>↓<br>then submit</div>
+    <div class="meta"><strong>3 tasks + report ↓</strong>then submit</div>
   </header>
 
   <div class="timing-strip">
-    <span class="t-badge" style="background:var(--teal-light);color:var(--teal);border-color:var(--teal);">⚫ Task 1 · Threshold &amp; Paths</span>
-    <span class="t-badge" style="background:var(--pink-light);color:var(--pink);border-color:var(--pink);">✍️ Task 2 · Text on Path</span>
-    <span class="t-badge" style="background:var(--purple-light);color:var(--purple);border-color:var(--purple);">🎨 Task 3 · Blend &amp; Cite</span>
-    <span class="t-badge" style="background:var(--blue-light);color:var(--blue);border-color:var(--blue);">📝 Progress Report</span>
-    <span class="t-badge" style="background:var(--gold-light);color:var(--gold);border-color:var(--gold);">📤 Submit</span>
+    <span class="t-badge" style="--c: var(--teal); --cl: var(--teal-light)">⚫ Task 1 · Threshold &amp; Paths</span>
+    <span class="t-badge" style="--c: var(--pink); --cl: var(--pink-light)">✍️ Task 2 · Text on Path</span>
+    <span class="t-badge" style="--c: var(--purple); --cl: var(--purple-light)">🎨 Task 3 · Blend &amp; Cite</span>
+    <span class="t-badge" style="--c: var(--blue); --cl: var(--blue-light)">📝 Progress Report</span>
+    <span class="t-badge" style="--c: var(--gold); --cl: var(--gold-light)">📤 Submit</span>
   </div>
 
-  <div class="progress-wrap"><div class="progress-fill" id="progressBar" style="width:10%"></div></div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
-  <div class="nav-grid">
-    <div class="nav-block active" data-sec="overview"><span class="nav-icon">🏠</span><span class="nav-label">Overview</span><span class="nav-sub">Start here</span></div>
-    <div class="nav-block" data-sec="task1"><span class="nav-icon">⚫</span><span class="nav-label">Task 1</span><span class="nav-sub">Threshold</span></div>
-    <div class="nav-block" data-sec="task2"><span class="nav-icon">✍️</span><span class="nav-label">Task 2</span><span class="nav-sub">Text on path</span></div>
-    <div class="nav-block" data-sec="task3"><span class="nav-icon">🎨</span><span class="nav-label">Task 3</span><span class="nav-sub">Blend &amp; cite</span></div>
-    <div class="nav-block" data-sec="report"><span class="nav-icon">📝</span><span class="nav-label">Report</span><span class="nav-sub">Reflect</span></div>
-    <div class="nav-block" data-sec="submit"><span class="nav-icon">📤</span><span class="nav-label">Submit</span><span class="nav-sub">Padlet</span></div>
-  </div>
+  <nav class="nav-grid">
+    <button class="nav-block" data-section="overview" style="--c: var(--ink)"><span class="n">🏠 Start</span><span class="t">Overview</span></button>
+    <button class="nav-block" data-section="task1" style="--c: var(--teal)"><span class="n">⚫ Task 1</span><span class="t">Threshold</span></button>
+    <button class="nav-block" data-section="task2" style="--c: var(--pink)"><span class="n">✍️ Task 2</span><span class="t">Text on path</span></button>
+    <button class="nav-block" data-section="task3" style="--c: var(--purple)"><span class="n">🎨 Task 3</span><span class="t">Blend &amp; cite</span></button>
+    <button class="nav-block" data-section="report" style="--c: var(--blue)"><span class="n">📝 Report</span><span class="t">Reflect</span></button>
+    <button class="nav-block" data-section="submit" style="--c: var(--gold)"><span class="n">📤 Submit</span><span class="t">Padlet</span></button>
+  </nav>
 
-  <!-- ═══ OVERVIEW ═══ -->
-  <div id="overview" class="section active">
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="content-section" id="overview" style="--c: var(--teal); --cl: var(--teal-light)">
+    <div class="section-banner">🏠 What You Will Do Today</div>
 
-    <div class="section-banner b-teal">🏠 What You Will Do Today</div>
+    <p class="intro">You made photocopier or scanner experiments for homework. Today you turn them into a <strong>text on path</strong> design. This is text that follows the shapes in your image.</p>
 
-    <p>You made photocopier or scanner experiments for homework. Today you turn them into a <strong>text on path</strong> design — text that follows the shapes in your image.</p>
-
-    <div class="notice">
-      <strong>Before this lesson:</strong> you should have completed <a href="https://hsstokes.github.io/Photocopier-Homework/" target="_blank">Photocopier &amp; Scanner · Homework</a>. Bring your saved files to class.
+    <div class="box-note pink">
+      <strong>Before this lesson:</strong> you should have completed <a href="https://hsstokes.github.io/Photocopier-Homework/" target="_blank" rel="noopener">Photocopier &amp; Scanner · Homework</a>. Bring your saved files to class.
     </div>
 
-    <div class="info-box">
+    <div class="box-note">
       <strong>Key words:</strong>
       <ul>
         <li><strong>Threshold</strong> — turns your image pure black and white</li>
@@ -481,195 +590,170 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
       </ul>
     </div>
 
-    <div class="diagonal-rule"></div>
+    <div class="rule"></div>
 
     <h2>Today's Tasks</h2>
-    <div class="overview-grid">
-      <div class="ov-card ov-t1" onclick="goTo('task1')">
-        <div class="ov-icon">⚫</div>
-        <h4>Task 1</h4>
-        <p>Apply Threshold. Turn your shapes into a path.</p>
-      </div>
-      <div class="ov-card ov-t2" onclick="goTo('task2')">
-        <div class="ov-icon">✍️</div>
-        <h4>Task 2</h4>
-        <p>Add text that follows your path.</p>
-      </div>
-      <div class="ov-card ov-t3" onclick="goTo('task3')">
-        <div class="ov-icon">🎨</div>
-        <h4>Task 3</h4>
-        <p>Blend your text. Add an artist reference.</p>
-      </div>
-      <div class="ov-card" style="background:var(--blue-light);border-color:var(--blue);color:var(--blue);" onclick="goTo('report')">
-        <div class="ov-icon">📝</div>
-        <h4>Report</h4>
-        <p>Reflect. Download your PDF.</p>
-      </div>
-      <div class="ov-card ov-sub" onclick="goTo('submit')">
-        <div class="ov-icon">📤</div>
-        <h4>Submit</h4>
-        <p>Upload your work to Padlet.</p>
-      </div>
+    <div class="card-grid">
+      <button class="card" type="button" data-go="task1" style="--cc: var(--teal)"><span class="icon">⚫</span><div class="label">Task 1</div>Apply Threshold. Turn your shapes into a path.</button>
+      <button class="card" type="button" data-go="task2" style="--cc: var(--pink)"><span class="icon">✍️</span><div class="label">Task 2</div>Add text that follows your path.</button>
+      <button class="card" type="button" data-go="task3" style="--cc: var(--purple)"><span class="icon">🎨</span><div class="label">Task 3</div>Blend your text. Add an artist reference.</button>
+      <button class="card" type="button" data-go="report" style="--cc: var(--blue)"><span class="icon">📝</span><div class="label">Report</div>Reflect. Download your PDF.</button>
+      <button class="card" type="button" data-go="submit" style="--cc: var(--gold)"><span class="icon">📤</span><div class="label">Submit</div>Upload your work to Padlet.</button>
     </div>
 
     <h2>Artist Inspiration</h2>
-    <p style="font-size:0.82rem;color:var(--concrete);margin-bottom:1rem;">These artists use photocopiers and scanners to make work.</p>
-
-    <div class="artist-grid">
-      <a href="https://www.tate.org.uk/art/artworks/tillmans-paper-drop-prinzessinnenstrasse-a-p82413" target="_blank" class="artist-card">
-        <div class="artist-ph"><img src="images/wolfgang-tillmans.jpg" alt="Wolfgang Tillmans artwork" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='📠'"></div>
-        <h3>Wolfgang Tillmans</h3>
-        <p>Paper Drop, 2014</p>
+    <p class="intro muted">These artists use photocopiers and scanners to make work. Click a card to see more.</p>
+    <div class="card-grid">
+      <a class="card artist-card" href="https://www.tate.org.uk/art/artworks/tillmans-paper-drop-prinzessinnenstrasse-a-p82413" target="_blank" rel="noopener">
+        <div class="artist-img"><img src="images/wolfgang-tillmans.jpg" alt="Wolfgang Tillmans artwork" onerror="this.parentElement.textContent='📠'"></div>
+        <div class="artist-body"><div class="label">Wolfgang Tillmans</div><span>Paper Drop, 2014</span></div>
       </a>
-      <a href="https://gittermangallery.com/exhibition/100/exhibition_works/2035" target="_blank" class="artist-card">
-        <div class="artist-ph"><img src="images/william-larson.jpg" alt="William Larson artwork" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='🖨️'"></div>
-        <h3>William Larson</h3>
-        <p>Fireflies, 1969–78</p>
+      <a class="card artist-card" href="https://gittermangallery.com/exhibition/100/exhibition_works/2035" target="_blank" rel="noopener">
+        <div class="artist-img"><img src="images/william-larson.jpg" alt="William Larson artwork" onerror="this.parentElement.textContent='🖨️'"></div>
+        <div class="artist-body"><div class="label">William Larson</div><span>Fireflies, 1969–78</span></div>
       </a>
-      <a href="https://www.mutualart.com/Artwork/Untitled/F83B3919F4ECB057313C3C54720847B8" target="_blank" class="artist-card">
-        <div class="artist-ph"><img src="images/wade-guyton.jpg" alt="Wade Guyton artwork" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.textContent='🖨️'"></div>
-        <h3>Wade Guyton</h3>
-        <p>Untitled, 2007</p>
+      <a class="card artist-card" href="https://www.mutualart.com/Artwork/Untitled/F83B3919F4ECB057313C3C54720847B8" target="_blank" rel="noopener">
+        <div class="artist-img"><img src="images/wade-guyton.jpg" alt="Wade Guyton artwork" onerror="this.parentElement.textContent='🖨️'"></div>
+        <div class="artist-body"><div class="label">Wade Guyton</div><span>Untitled, 2007</span></div>
       </a>
     </div>
 
     <div class="tip-box">
-      <h4>💡 Remember</h4>
+      <strong>💡 Remember</strong>
       <ul><li>Write down any artists you like. You will add a proper citation in Task 3.</li></ul>
     </div>
 
-    <div class="nav-btns">
-      <button class="nav-btn btn-prev" disabled>← Back</button>
-      <button class="nav-btn btn-next" onclick="goTo('task1')">Task 1: Threshold &amp; Paths →</button>
+    <div class="nav-buttons">
+      <button class="prev-btn" disabled>← Back</button>
+      <button class="next-btn" data-go="task1">Task 1: Threshold &amp; Paths →</button>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ TASK 1 ═══ -->
-  <div id="task1" class="section">
+  <!-- ===================== TASK 1 ===================== -->
+  <section class="content-section" id="task1" style="--c: var(--teal); --cl: var(--teal-light)">
+    <div class="section-banner">⚫ Task 1 — Threshold &amp; Paths</div>
+    <div class="box-note"><strong>Goal:</strong> make your image high-contrast. Then turn the shapes into a path for text to follow.</div>
 
-    <div class="section-banner b-teal">⚫ Task 1 — Threshold &amp; Paths</div>
-
-    <div class="info-box"><strong>Goal:</strong> make your image high-contrast, then turn the shapes into a path for text to follow.</div>
-
-    <h2>Steps — click to expand</h2>
-    <div class="steps-list">
-
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">1</div>
-          <div class="step-title-text">Set Up Your Document</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <img class="step-img" src="images/document-setup.jpg" alt="New document setup in Photoshop" onerror="this.style.display='none'">
+    <h2>Steps — click to open</h2>
+    <div class="accordion">
+      <div class="acc open">
+        <button class="acc-head" type="button"><span class="acc-num">1</span><span class="acc-title">Set up your document</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="thumb" data-src="images/document-setup.jpg" data-cap="New document setup in Photoshop">
+            <img src="images/document-setup.jpg" alt="New document setup in Photoshop">
+            <div class="missing-note">Image not found:<br>images/document-setup.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
           <ul>
-            <li>New document: <span class="key">File → New</span> — A3, 300dpi</li>
+            <li>New document: <span class="menu">File → New</span> — A3, 300dpi</li>
             <li>Import your photocopier or scanner experiment</li>
-            <li>Duplicate your layer: <span class="key">Cmd/Ctrl + J</span></li>
+            <li>Duplicate your layer: <span class="key">Cmd/Ctrl</span>+<span class="key">J</span></li>
           </ul>
-          <div class="tip-box"><h4>💡 Tip</h4><ul><li>Always work on the duplicate. Keep your original safe.</li></ul></div>
+          <div class="tip-box"><strong>💡 Tip</strong><ul><li>Always work on the duplicate. Keep your original safe.</li></ul></div>
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">2</div>
-          <div class="step-title-text">Apply Threshold</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <img class="step-img" src="images/threshold-adjustment.jpg" alt="Threshold adjustment dialog in Photoshop" onerror="this.style.display='none'">
-          <div class="vid-wrap">
-            <iframe src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=8ef81560-950d-4338-b945-b39d00f1d1b8" allowfullscreen allow="autoplay"></iframe>
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">2</span><span class="acc-title">Apply Threshold</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="video">
+            <iframe src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=8ef81560-950d-4338-b945-b39d00f1d1b8" title="Threshold tutorial" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
+          <div class="thumb" data-src="images/threshold-adjustment.jpg" data-cap="Threshold adjustment dialog in Photoshop">
+            <img src="images/threshold-adjustment.jpg" alt="Threshold adjustment dialog in Photoshop">
+            <div class="missing-note">Image not found:<br>images/threshold-adjustment.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
           </div>
           <ul>
             <li>Select your duplicated layer</li>
-            <li><span class="key">Image → Adjustments → Threshold</span></li>
+            <li><span class="menu">Image → Adjustments → Threshold</span></li>
             <li>Move the slider. Click OK.</li>
           </ul>
-          <div class="notice"><strong>What Threshold does:</strong> makes your image pure black and white. No grey. This gives you clear shapes.</div>
+          <div class="box-note pink"><strong>What Threshold does:</strong> makes your image pure black and white. No grey. This gives you clear shapes.</div>
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">3</div>
-          <div class="step-title-text">Make a Selection</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <img class="step-img" src="images/magic-wand-selection.jpg" alt="Magic Wand selection in Photoshop" onerror="this.style.display='none'">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">3</span><span class="acc-title">Make a selection</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="thumb" data-src="images/magic-wand-selection.jpg" data-cap="Magic Wand selection in Photoshop">
+            <img src="images/magic-wand-selection.jpg" alt="Magic Wand selection in Photoshop">
+            <div class="missing-note">Image not found:<br>images/magic-wand-selection.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
           <ul>
             <li>Magic Wand tool: <span class="key">W</span></li>
             <li>Click a black or white shape you like</li>
             <li>Hold <span class="key">Shift</span> to add more areas</li>
           </ul>
-          <div class="info-box">
+          <div class="box-note">
             <strong>Two other ways to select:</strong>
-            <div class="two-col" style="margin-top:8px;">
-              <div class="col-card" style="padding:8px;">
-                <img class="step-img" style="margin-bottom:6px;" src="images/quick-selection.jpg" alt="Quick Selection tool in Photoshop" onerror="this.style.display='none'">
-                <p style="font-size:0.76rem;margin:0;">Quick Selection — drag over an area</p>
+            <div class="two-col">
+              <div>
+                <div class="thumb" data-src="images/quick-selection.jpg" data-cap="Quick Selection tool in Photoshop">
+                  <img src="images/quick-selection.jpg" alt="Quick Selection tool in Photoshop">
+                  <div class="missing-note">Image not found:<br>images/quick-selection.jpg</div>
+                  <span class="enlarge">🔍 Enlarge</span>
+                </div>
+                <p>Quick Selection — drag over an area</p>
               </div>
-              <div class="col-card" style="padding:8px;">
-                <img class="step-img" style="margin-bottom:6px;" src="images/color-range.jpg" alt="Color Range tool in Photoshop" onerror="this.style.display='none'">
-                <p style="font-size:0.76rem;margin:0;">Color Range — selects by colour</p>
+              <div>
+                <div class="thumb" data-src="images/color-range.jpg" data-cap="Color Range tool in Photoshop">
+                  <img src="images/color-range.jpg" alt="Color Range tool in Photoshop">
+                  <div class="missing-note">Image not found:<br>images/color-range.jpg</div>
+                  <span class="enlarge">🔍 Enlarge</span>
+                </div>
+                <p>Color Range — selects by colour</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">4</div>
-          <div class="step-title-text">Turn Your Selection Into a Path</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <img class="step-img" src="images/make-work-path.jpg" alt="Make Work Path dialog in Photoshop" onerror="this.style.display='none'">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">4</span><span class="acc-title">Turn your selection into a path</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="thumb" data-src="images/make-work-path.jpg" data-cap="Make Work Path dialog in Photoshop">
+            <img src="images/make-work-path.jpg" alt="Make Work Path dialog in Photoshop">
+            <div class="missing-note">Image not found:<br>images/make-work-path.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
           <ul>
-            <li>Right-click your selection → <span class="key">Make Work Path</span></li>
+            <li>Right-click your selection → <span class="menu">Make Work Path</span></li>
             <li>Tolerance: <strong>1.0 pixels</strong>. Click OK.</li>
-            <li>Open <span class="key">Window → Paths</span> to see it</li>
+            <li>Open <span class="menu">Window → Paths</span> to see it</li>
             <li>Double-click "Work Path" to save it with a name</li>
           </ul>
         </div>
       </div>
-
     </div>
 
-    <div class="checklist">
-      <h3>Task 1 Checklist ✓</h3>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Created A3 document and duplicated layer</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Applied Threshold adjustment</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Made a selection with Magic Wand</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Converted selection to a path and saved it</span></div>
+    <div class="checklist" data-key="pcs-task1">
+      <h3>✅ Task 1 Checklist</h3>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Created A3 document and duplicated layer</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Applied Threshold adjustment</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Made a selection with Magic Wand</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Converted selection to a path and saved it</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Screenshot taken</span></button>
+      <div class="check-count"></div>
     </div>
 
-    <div class="nav-btns">
-      <button class="nav-btn btn-prev" onclick="goTo('overview')">← Overview</button>
-      <button class="nav-btn btn-next pink" onclick="goTo('task2')">Task 2: Text on Path →</button>
+    <div class="nav-buttons">
+      <button class="prev-btn" data-go="overview">← Overview</button>
+      <button class="next-btn" data-go="task2">Task 2: Text on Path →</button>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ TASK 2 ═══ -->
-  <div id="task2" class="section">
+  <!-- ===================== TASK 2 ===================== -->
+  <section class="content-section" id="task2" style="--c: var(--pink); --cl: var(--pink-light)">
+    <div class="section-banner">✍️ Task 2 — Add Text on Path</div>
+    <div class="box-note"><strong>Goal:</strong> add text that follows the path you made in Task 1.</div>
 
-    <div class="section-banner b-pink">✍️ Task 2 — Add Text on Path</div>
-
-    <div class="info-box pink"><strong>Goal:</strong> add text that follows the path you made in Task 1.</div>
-
-    <h2>Steps — click to expand</h2>
-    <div class="steps-list">
-
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">1</div>
-          <div class="step-title-text">Select the Type Tool</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
+    <h2>Steps — click to open</h2>
+    <div class="accordion">
+      <div class="acc open">
+        <button class="acc-head" type="button"><span class="acc-num">1</span><span class="acc-title">Select the Type tool</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
           <ul>
             <li>Press <span class="key">T</span></li>
             <li>Select your path in the Paths panel first</li>
@@ -677,30 +761,26 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">2</div>
-          <div class="step-title-text">Click on the Path</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <img class="step-img" src="images/text-on-path.jpg" alt="Text on a path in Photoshop" onerror="this.style.display='none'">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">2</span><span class="acc-title">Click on the path</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="thumb" data-src="images/text-on-path.jpg" data-cap="Text on a path in Photoshop">
+            <img src="images/text-on-path.jpg" alt="Text on a path in Photoshop">
+            <div class="missing-note">Image not found:<br>images/text-on-path.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
           <ul>
             <li>Move your cursor near the path</li>
             <li>Wait for the cursor to change</li>
             <li>Click where you want the text to start</li>
           </ul>
-          <div class="notice"><strong>Cursor not changing?</strong> Check your path is selected in the Paths panel.</div>
+          <div class="box-note gold"><strong>Cursor not changing?</strong> Check your path is selected in the Paths panel.</div>
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">3</div>
-          <div class="step-title-text">Type Your Text</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">3</span><span class="acc-title">Type your text</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
           <p>Your text will follow the path. Try:</p>
           <ul>
             <li><strong>An artist quote</strong> — from an artist you like</li>
@@ -708,63 +788,61 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           </ul>
         </div>
       </div>
-
     </div>
 
     <h2>Text Ideas</h2>
-    <div class="two-col">
-      <div class="col-card pink">
-        <h4>Artist Quote</h4>
-        <div class="citation-box" style="margin:0;">
+    <div class="card-grid">
+      <div class="card" style="--cc: var(--pink)">
+        <div class="label">Artist quote</div>
+        <div class="citation" style="box-shadow: none;">
           <p class="quote">"I am interested not in individual readings, but in constructing networks of images and meanings."</p>
           <p class="credit">— Wolfgang Tillmans</p>
         </div>
       </div>
-      <div class="col-card">
-        <h4>Keywords</h4>
-        <p style="font-family:'Space Mono',monospace;font-size:0.8rem;text-align:center;letter-spacing:1px;">TEXTURE · MEMORY<br>DECAY · TRACE<br>DISTORTION</p>
+      <div class="card" style="--cc: var(--teal)">
+        <div class="label">Keywords</div>
+        <p class="keywords">TEXTURE · MEMORY<br>DECAY · TRACE<br>DISTORTION</p>
       </div>
     </div>
 
     <h2>Choose a Font</h2>
-    <div class="font-grid">
-      <div class="font-card"><div class="font-sample" style="font-family:'Andale Mono',monospace;">Andale Mono</div><p>Clean monospace</p></div>
-      <div class="font-card"><div class="font-sample" style="font-family:'Courier New',monospace;">Courier New</div><p>Typewriter feel</p></div>
-      <div class="font-card"><div class="font-sample" style="font-family:'American Typewriter',serif;">Typewriter</div><p>Authentic look</p></div>
+    <div class="card-grid">
+      <div class="card"><div class="font-sample" style="font-family: 'Andale Mono', monospace;">Andale Mono</div><span class="muted">Clean monospace</span></div>
+      <div class="card"><div class="font-sample" style="font-family: 'Courier New', monospace;">Courier New</div><span class="muted">Typewriter feel</span></div>
+      <div class="card"><div class="font-sample" style="font-family: 'American Typewriter', serif;">Typewriter</div><span class="muted">Authentic look</span></div>
     </div>
 
-    <div class="checklist pink">
-      <h3>Task 2 Checklist ✓</h3>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Added text on your path</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Text is a quote or keywords</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Chosen a font that fits</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Text is readable</span></div>
+    <div class="checklist" data-key="pcs-task2">
+      <h3>✅ Task 2 Checklist</h3>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Added text on your path</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Text is a quote or keywords</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Chosen a font that fits</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Text is readable</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Screenshot taken</span></button>
+      <div class="check-count"></div>
     </div>
 
-    <div class="nav-btns">
-      <button class="nav-btn btn-prev" onclick="goTo('task1')">← Task 1</button>
-      <button class="nav-btn btn-next purple" onclick="goTo('task3')">Task 3: Blend &amp; Cite →</button>
+    <div class="nav-buttons">
+      <button class="prev-btn" data-go="task1">← Task 1</button>
+      <button class="next-btn" data-go="task3">Task 3: Blend &amp; Cite →</button>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ TASK 3 ═══ -->
-  <div id="task3" class="section">
+  <!-- ===================== TASK 3 ===================== -->
+  <section class="content-section" id="task3" style="--c: var(--purple); --cl: var(--purple-light)">
+    <div class="section-banner">🎨 Task 3 — Blend Modes &amp; Artist References</div>
+    <div class="box-note"><strong>Goal:</strong> style your text and add a proper artist citation.</div>
 
-    <div class="section-banner b-purple">🎨 Task 3 — Blend Modes &amp; Artist References</div>
-
-    <div class="info-box purple"><strong>Goal:</strong> style your text and add a proper artist citation.</div>
-
-    <h2>Steps — click to expand</h2>
-    <div class="steps-list">
-
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">1</div>
-          <div class="step-title-text">Apply a Blend Mode to Your Text</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <img class="step-img" src="images/text-blend-modes.jpg" alt="Blend mode dropdown on a text layer in Photoshop" onerror="this.style.display='none'">
+    <h2>Steps — click to open</h2>
+    <div class="accordion">
+      <div class="acc open">
+        <button class="acc-head" type="button"><span class="acc-num">1</span><span class="acc-title">Apply a blend mode to your text</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="thumb" data-src="images/text-blend-modes.jpg" data-cap="Blend mode dropdown on a text layer in Photoshop">
+            <img src="images/text-blend-modes.jpg" alt="Blend mode dropdown on a text layer in Photoshop">
+            <div class="missing-note">Image not found:<br>images/text-blend-modes.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
           <ul>
             <li>Select your text layer in the Layers panel</li>
             <li>Find the blend mode dropdown — it says "Normal"</li>
@@ -773,13 +851,9 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">2</div>
-          <div class="step-title-text">Add an Artist Reference</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">2</span><span class="acc-title">Add an artist reference</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
           <ul>
             <li>Add the artist's name with your quote</li>
             <li>Add a Harvard reference at the bottom of your design</li>
@@ -787,13 +861,9 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num">3</div>
-          <div class="step-title-text">Final Check</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">3</span><span class="acc-title">Final check</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
           <ul>
             <li>Check your text is readable</li>
             <li>Save your PSD with all layers</li>
@@ -801,107 +871,123 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
           </ul>
         </div>
       </div>
-
     </div>
 
     <h2>Blend Mode Ideas</h2>
-    <div class="blend-grid">
-      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-multiply.jpg" alt="Multiply blend mode example" onerror="this.style.display='none'"><h4>Multiply</h4><p>Darkens. Good on white backgrounds.</p></div>
-      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-screen.jpg" alt="Screen blend mode example" onerror="this.style.display='none'"><h4>Screen</h4><p>Lightens. Good on dark backgrounds.</p></div>
-      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-overlay.jpg" alt="Overlay blend mode example" onerror="this.style.display='none'"><h4>Overlay</h4><p>High contrast effect.</p></div>
-      <div class="blend-card"><img class="step-img" style="margin-bottom:6px;" src="images/blend-mode-difference.jpg" alt="Difference blend mode example" onerror="this.style.display='none'"><h4>Difference</h4><p>Dramatic colour change.</p></div>
+    <div class="card-grid">
+      <div class="card blend-card">
+        <div class="thumb" data-src="images/blend-mode-multiply.jpg" data-cap="Multiply blend mode example">
+          <img src="images/blend-mode-multiply.jpg" alt="Multiply blend mode example">
+          <div class="missing-note">images/blend-mode-multiply.jpg</div>
+          <span class="enlarge">🔍</span>
+        </div>
+        <div class="label">Multiply</div>Darkens. Good on white backgrounds.
+      </div>
+      <div class="card blend-card">
+        <div class="thumb" data-src="images/blend-mode-screen.jpg" data-cap="Screen blend mode example">
+          <img src="images/blend-mode-screen.jpg" alt="Screen blend mode example">
+          <div class="missing-note">images/blend-mode-screen.jpg</div>
+          <span class="enlarge">🔍</span>
+        </div>
+        <div class="label">Screen</div>Lightens. Good on dark backgrounds.
+      </div>
+      <div class="card blend-card">
+        <div class="thumb" data-src="images/blend-mode-overlay.jpg" data-cap="Overlay blend mode example">
+          <img src="images/blend-mode-overlay.jpg" alt="Overlay blend mode example">
+          <div class="missing-note">images/blend-mode-overlay.jpg</div>
+          <span class="enlarge">🔍</span>
+        </div>
+        <div class="label">Overlay</div>High contrast effect.
+      </div>
+      <div class="card blend-card">
+        <div class="thumb" data-src="images/blend-mode-difference.jpg" data-cap="Difference blend mode example">
+          <img src="images/blend-mode-difference.jpg" alt="Difference blend mode example">
+          <div class="missing-note">images/blend-mode-difference.jpg</div>
+          <span class="enlarge">🔍</span>
+        </div>
+        <div class="label">Difference</div>Dramatic colour change.
+      </div>
     </div>
 
     <h2>Citation Example</h2>
-    <div class="citation-box">
+    <div class="citation">
       <p class="quote">"A constant focus of my work was the challenge to conceptualize 'time' through the essentially static medium of photography."</p>
       <p class="credit">— William Larson (1978)</p>
       <p class="ref">Larson, W. (1978) <em>Fireflies</em> [Teleprinter prints]. MoMA, New York.</p>
     </div>
 
     <h2>Student Examples</h2>
-    <div class="eg-grid">
-      <div class="eg-card" onclick="openLB('images/william-larson-example.jpg','Text on path, inspired by William Larson')">
-        <div class="eg-img">
-          <img src="images/william-larson-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="ph-box"><span>🖼️</span><span>william-larson-example.jpg</span></div>
-          <span class="zoom-hint">🔍 enlarge</span>
-        </div>
-        <div class="eg-cap">Inspired by William Larson</div>
-      </div>
-      <div class="eg-card" onclick="openLB('images/wade-guyton-example.jpg','Text on path, inspired by Wade Guyton')">
-        <div class="eg-img">
-          <img src="images/wade-guyton-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="ph-box"><span>🖼️</span><span>wade-guyton-example.jpg</span></div>
-          <span class="zoom-hint">🔍 enlarge</span>
-        </div>
-        <div class="eg-cap">Inspired by Wade Guyton</div>
-      </div>
-      <div class="eg-card" onclick="openLB('images/photocopier-example.jpg','Photocopier experiment, finished design')">
-        <div class="eg-img">
-          <img src="images/photocopier-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="ph-box"><span>🖼️</span><span>photocopier-example.jpg</span></div>
-          <span class="zoom-hint">🔍 enlarge</span>
-        </div>
-        <div class="eg-cap">Photocopier experiment</div>
-      </div>
-      <div class="eg-card" onclick="openLB('images/object-scanning-example.jpg','Scanner experiment, finished design')">
-        <div class="eg-img">
-          <img src="images/object-scanning-example.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="ph-box"><span>🖼️</span><span>object-scanning-example.jpg</span></div>
-          <span class="zoom-hint">🔍 enlarge</span>
-        </div>
-        <div class="eg-cap">Scanner experiment</div>
-      </div>
-    </div>
-
-    <div class="checklist purple">
-      <h3>Task 3 Checklist ✓</h3>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Applied a blend mode to your text layer</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Added an artist quote and Harvard reference</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Saved PSD with all layers</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Exported as JPEG</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Screenshots taken for your report</span></div>
-    </div>
-
-    <div class="nav-btns">
-      <button class="nav-btn btn-prev" onclick="goTo('task2')">← Task 2</button>
-      <button class="nav-btn btn-next blue" onclick="goTo('report')">Progress Report →</button>
-    </div>
-  </div>
-
-  <!-- ═══ PROGRESS REPORT ═══ -->
-  <div id="report" class="section">
-
-    <div class="section-banner b-blue">📝 Progress Report — Document &amp; Reflect</div>
-
-    <div class="info-box" style="background:var(--blue-light);border-color:var(--blue);">
-      <strong style="color:var(--blue);">Why?</strong> It shows <em>how</em> you learned. Reflection is assessed at Level 5.
-    </div>
-
-    <h2>Steps — click to expand</h2>
-    <div class="steps-list">
-
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num blue">1</div>
-          <div class="step-title-text blue">Open the tool</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <div style="text-align:center;margin:12px 0;">
-            <a href="https://hsstokes.github.io/Progress_Documentation/" target="_blank" class="cta-btn cta-blue">📝 Open Progress Report Tool →</a>
+    <div class="dark-panel">
+      <div class="panel-label">Finished designs · click to enlarge</div>
+      <div class="example-grid">
+        <div>
+          <div class="thumb" data-src="images/william-larson-example.jpg" data-cap="Text on path, inspired by William Larson">
+            <img src="images/william-larson-example.jpg" alt="Student text on path design inspired by William Larson">
+            <div class="missing-note">Image not found:<br>images/william-larson-example.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
           </div>
+          <div class="caption">Inspired by William Larson</div>
+        </div>
+        <div>
+          <div class="thumb" data-src="images/wade-guyton-example.jpg" data-cap="Text on path, inspired by Wade Guyton">
+            <img src="images/wade-guyton-example.jpg" alt="Student text on path design inspired by Wade Guyton">
+            <div class="missing-note">Image not found:<br>images/wade-guyton-example.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
+          <div class="caption">Inspired by Wade Guyton</div>
+        </div>
+        <div>
+          <div class="thumb" data-src="images/photocopier-example.jpg" data-cap="Photocopier experiment, finished design">
+            <img src="images/photocopier-example.jpg" alt="Student photocopier experiment, finished design">
+            <div class="missing-note">Image not found:<br>images/photocopier-example.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
+          <div class="caption">Photocopier experiment</div>
+        </div>
+        <div>
+          <div class="thumb" data-src="images/object-scanning-example.jpg" data-cap="Scanner experiment, finished design">
+            <img src="images/object-scanning-example.jpg" alt="Student scanner experiment, finished design">
+            <div class="missing-note">Image not found:<br>images/object-scanning-example.jpg</div>
+            <span class="enlarge">🔍 Enlarge</span>
+          </div>
+          <div class="caption">Scanner experiment</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist" data-key="pcs-task3">
+      <h3>✅ Task 3 Checklist</h3>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Applied a blend mode to your text layer</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Added an artist quote and Harvard reference</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Saved PSD with all layers</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Exported as JPEG</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Screenshots taken for your report</span></button>
+      <div class="check-count"></div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="prev-btn" data-go="task2">← Task 2</button>
+      <button class="next-btn" data-go="report">Progress Report →</button>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRESS REPORT ===================== -->
+  <section class="content-section" id="report" style="--c: var(--blue); --cl: var(--blue-light)">
+    <div class="section-banner">📝 Progress Report — Document &amp; Reflect</div>
+    <div class="box-note"><strong>Why?</strong> It shows <em>how</em> you learned. Reflection is assessed at Level 5.</div>
+
+    <h2>Steps — click to open</h2>
+    <div class="accordion">
+      <div class="acc open">
+        <button class="acc-head" type="button"><span class="acc-num">1</span><span class="acc-title">Open the tool</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <a class="btn" href="https://hsstokes.github.io/Progress_Documentation/" target="_blank" rel="noopener">📝 Open Progress Report Tool ↗</a>
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num blue">2</div>
-          <div class="step-title-text blue">Name + screenshots</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">2</span><span class="acc-title">Name + screenshots</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
           <ul>
             <li>Type your full name</li>
             <li>Upload <strong>2–3 screenshots</strong> — Threshold, text on path, final design</li>
@@ -910,21 +996,17 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num blue">3</div>
-          <div class="step-title-text blue">Answer 4 questions</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
-          <div class="reflection-grid">
-            <div class="reflection-card"><h3>1. Techniques</h3><p>Which tools did you use?</p></div>
-            <div class="reflection-card"><h3>2. Challenges</h3><p>What was difficult? How did you fix it?</p></div>
-            <div class="reflection-card"><h3>3. What worked</h3><p>What are you happy with?</p></div>
-            <div class="reflection-card"><h3>4. Next time</h3><p>What will you change?</p></div>
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">3</span><span class="acc-title">Answer 4 questions</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
+          <div class="reflect-grid">
+            <div class="reflect"><div class="label">1. Techniques</div>Which tools did you use?</div>
+            <div class="reflect"><div class="label">2. Challenges</div>What was difficult? How did you fix it?</div>
+            <div class="reflect"><div class="label">3. What worked</div>What are you happy with?</div>
+            <div class="reflect"><div class="label">4. Next time</div>What will you change?</div>
           </div>
           <div class="tip-box">
-            <h4>💡 Useful phrases</h4>
+            <strong>💡 Useful phrases</strong>
             <ul>
               <li><em>"I used … to …"</em></li>
               <li><em>"This worked because …"</em></li>
@@ -934,62 +1016,58 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
         </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-header" onclick="toggleStep(this)">
-          <div class="step-num blue">4</div>
-          <div class="step-title-text blue">Download PDF</div>
-          <div class="step-toggle">▶</div>
-        </div>
-        <div class="step-body">
+      <div class="acc">
+        <button class="acc-head" type="button"><span class="acc-num">4</span><span class="acc-title">Download PDF</span><span class="acc-arrow">›</span></button>
+        <div class="acc-body">
           <ul>
             <li>Click <strong>Download Progress Report (PDF)</strong></li>
             <li>Save it — you upload it to Padlet next</li>
           </ul>
         </div>
       </div>
-
     </div>
 
-    <div class="checklist blue">
-      <h3>Report Checklist ✓</h3>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">2–3 screenshots with captions</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Answered all 4 questions</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Downloaded the PDF</span></div>
+    <div class="checklist" data-key="pcs-report">
+      <h3>✅ Report Checklist</h3>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">2–3 screenshots with captions</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Answered all 4 questions</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Downloaded the PDF</span></button>
+      <div class="check-count"></div>
     </div>
 
-    <div class="nav-btns">
-      <button class="nav-btn btn-prev" onclick="goTo('task3')">← Task 3</button>
-      <button class="nav-btn btn-next gold" onclick="goTo('submit')">Submit →</button>
+    <div class="nav-buttons">
+      <button class="prev-btn" data-go="task3">← Task 3</button>
+      <button class="next-btn" data-go="submit">Submit →</button>
     </div>
-  </div>
+  </section>
 
-  <!-- ═══ SUBMIT ═══ -->
-  <div id="submit" class="section">
+  <!-- ===================== SUBMIT ===================== -->
+  <section class="content-section" id="submit" style="--c: var(--gold); --cl: var(--gold-light)">
+    <div class="section-banner">📤 Submit Your Work</div>
 
-    <div class="section-banner b-gold">📤 Submit Your Work</div>
-
-    <div class="submit-box">
+    <div class="padlet-box">
       <h3>Upload Three Items</h3>
-      <div class="submit-items">
-        <div class="submit-item"><h4>1. Original Experiments</h4><p>2–3 photocopier or scanner experiments</p></div>
-        <div class="submit-item"><h4>2. Final Design</h4><p>JPEG · Threshold, text on path, blend mode, reference</p></div>
-        <div class="submit-item"><h4>3. Progress Report</h4><p>PDF from the report tool</p></div>
+      <div class="card-grid">
+        <div class="card" style="--cc: var(--teal)"><div class="label">1. Original experiments</div>2–3 photocopier or scanner experiments</div>
+        <div class="card" style="--cc: var(--pink)"><div class="label">2. Final design</div>JPEG · Threshold, text on path, blend mode, reference</div>
+        <div class="card" style="--cc: var(--blue)"><div class="label">3. Progress Report</div>PDF from the report tool</div>
       </div>
-      <a href="https://artslondon.padlet.org/hstokes12/week-1-term-2-stpbw5it1itoa6v3" target="_blank" class="cta-btn cta-teal">📤 Upload to Padlet →</a>
+      <a class="btn" href="https://artslondon.padlet.org/hstokes12/week-1-term-2-stpbw5it1itoa6v3" target="_blank" rel="noopener">📤 Upload to Padlet ↗</a>
     </div>
 
-    <div class="checklist gold">
-      <h3>Final Checklist ✓</h3>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Uploaded 2–3 original experiments with notes</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Uploaded final design with text on path</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Uploaded Progress Report PDF</span></div>
-      <div class="ci"><div class="chk" onclick="tog(this)"></div><span class="cl">Saved your PSD file</span></div>
+    <div class="checklist" data-key="pcs-submit">
+      <h3>✅ Final Checklist</h3>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Uploaded 2–3 original experiments with notes</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Uploaded final design with text on path</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Uploaded Progress Report PDF</span></button>
+      <button class="check-item" type="button"><span class="box"></span><span class="text">Saved your PSD file</span></button>
+      <div class="check-count"></div>
     </div>
 
-    <div class="diagonal-rule"></div>
+    <div class="rule"></div>
 
     <h2>What You Learned Today</h2>
-    <div class="info-box green">
+    <div class="box-note green">
       <ul>
         <li><strong>Threshold</strong> — made a high-contrast image</li>
         <li><strong>Paths</strong> — turned a selection into a path</li>
@@ -1000,56 +1078,96 @@ footer { text-align: center; padding: 20px 0 10px; border-top: 1px dashed var(--
       </ul>
     </div>
 
-    <div class="nav-btns">
-      <button class="nav-btn btn-prev" onclick="goTo('report')">← Report</button>
-      <button class="nav-btn btn-next" onclick="goTo('overview')">↩ Back to Start</button>
+    <div class="nav-buttons">
+      <button class="prev-btn" data-go="report">← Report</button>
+      <button class="next-btn" data-go="overview">↺ Back to Start</button>
     </div>
-  </div>
+  </section>
 
+  <footer>© 2026 Digital Editing: Photocopier &amp; Scanner · IELS Level 5</footer>
 </div>
 
-<footer>© 2026 Digital Editing: Photocopier &amp; Scanner · IELS Level 5</footer>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
 
 <script>
-const sections = ['overview','task1','task2','task3','report','submit'];
-const progress  = { overview:10, task1:30, task2:50, task3:70, report:85, submit:100 };
-let current = 'overview';
+// ---- Sections, tabs and progress bar ----
+var progress = { overview: 10, task1: 30, task2: 50, task3: 70, report: 85, submit: 100 };
 
-function goTo(id) {
-  document.getElementById(current).classList.remove('active');
-  document.querySelector(`[data-sec="${current}"]`).classList.remove('active');
-  current = id;
-  document.getElementById(current).classList.add('active');
-  document.querySelector(`[data-sec="${id}"]`).classList.add('active');
-  document.getElementById('progressBar').style.width = progress[id] + '%';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+function goToSection(id) {
+  document.querySelectorAll('.content-section').forEach(function (s) {
+    s.classList.toggle('active', s.id === id);
+  });
+  document.querySelectorAll('.nav-block').forEach(function (b) {
+    b.classList.toggle('active', b.dataset.section === id);
+  });
+  document.getElementById('progressFill').style.width = progress[id] + '%';
+  window.scrollTo(0, 0);
 }
-
-document.querySelectorAll('.nav-block').forEach(b => {
-  b.addEventListener('click', () => goTo(b.dataset.sec));
+document.querySelectorAll('.nav-block').forEach(function (b) {
+  b.addEventListener('click', function () { goToSection(b.dataset.section); });
+});
+document.querySelectorAll('[data-go]').forEach(function (b) {
+  b.addEventListener('click', function () { goToSection(b.dataset.go); });
 });
 
-function tog(el) { el.classList.toggle('checked'); }
+// ---- Accordions ----
+document.querySelectorAll('.acc-head').forEach(function (head) {
+  head.addEventListener('click', function () { head.parentElement.classList.toggle('open'); });
+});
 
-function toggleStep(header) {
-  const body = header.nextElementSibling;
-  const arrow = header.querySelector('.step-toggle');
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  arrow.textContent = isOpen ? '▶' : '▼';
-}
+// ---- Missing images ----
+document.querySelectorAll('.thumb img').forEach(function (img) {
+  function markMissing() { img.closest('.thumb').classList.add('missing'); }
+  if (img.complete && img.naturalWidth === 0) markMissing();
+  img.addEventListener('error', markMissing);
+});
 
-function openLB(src, cap) {
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lb-cap').textContent = cap;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLB() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+// ---- Lightbox ----
+var lightbox = document.getElementById('lightbox');
+var lightboxImg = document.getElementById('lightboxImg');
+var lbCap = document.getElementById('lbCap');
+document.querySelectorAll('.thumb').forEach(function (thumb) {
+  thumb.addEventListener('click', function () {
+    if (thumb.classList.contains('missing')) return;
+    lightboxImg.src = thumb.dataset.src;
+    lightboxImg.alt = thumb.querySelector('img').alt;
+    lbCap.textContent = thumb.dataset.cap || '';
+    lightbox.classList.add('open');
+  });
+});
+function closeLightbox() { lightbox.classList.remove('open'); }
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', function (e) { if (e.target !== lightboxImg) closeLightbox(); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+
+// ---- Checklists (saved in this browser) ----
+document.querySelectorAll('.checklist').forEach(function (list) {
+  var key = list.dataset.key;
+  var items = list.querySelectorAll('.check-item');
+  var countEl = list.querySelector('.check-count');
+  function update() {
+    countEl.textContent = list.querySelectorAll('.check-item.done').length + ' / ' + items.length + ' done';
+  }
+  try {
+    var saved = JSON.parse(localStorage.getItem(key) || '[]');
+    items.forEach(function (item, i) { if (saved[i]) item.classList.add('done'); });
+  } catch (e) {}
+  items.forEach(function (item) {
+    item.addEventListener('click', function () {
+      item.classList.toggle('done');
+      var states = Array.prototype.map.call(items, function (i) { return i.classList.contains('done'); });
+      try { localStorage.setItem(key, JSON.stringify(states)); } catch (e) {}
+      update();
+    });
+  });
+  update();
+});
+
+goToSection('overview');
 </script>
 </body>
 </html>
