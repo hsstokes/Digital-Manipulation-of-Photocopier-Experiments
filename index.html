@@ -550,6 +550,9 @@ footer {
 .stuck .prob::before { content: "✗ "; color: #c62828; }
 .stuck .fix::before { content: "→ "; color: var(--teal, #0a7a7a); font-weight: 700; }
 @media (max-width: 600px) { .stuck .row { grid-template-columns: 1fr; } }
+
+/* screenshot slots: hidden until the file exists */
+.shot { display:block; max-width:100%; width:520px; height:auto; border:2px solid #1a1a1a; margin:10px 0; cursor:zoom-in; }
 </style>
 </head>
 <body>
@@ -777,7 +780,7 @@ footer {
             <li>Press <span class="key">T</span></li>
             <li>Select your path in the Paths panel first</li>
           </ul>
-        </div>
+        <img class="shot" src="shots/type-tool-path.png" alt="Type tool with the path selected" loading="lazy" onerror="this.remove()" onclick="window.open(this.src)"></div>
       </div>
 
       <div class="acc">
@@ -805,7 +808,7 @@ footer {
             <li><strong>An artist quote</strong> — from an artist you like</li>
             <li><strong>Keywords</strong> — from your Term 2 project</li>
           </ul>
-        </div>
+        <img class="shot" src="shots/text-on-path.png" alt="Text following the path" loading="lazy" onerror="this.remove()" onclick="window.open(this.src)"></div>
       </div>
     </div>
 
@@ -894,7 +897,7 @@ footer {
             <li>Save your PSD with all layers</li>
             <li>Export a JPEG for submission</li>
           </ul>
-        </div>
+        <img class="shot" src="https://hsstokes.github.io/Creating-Stencils---Digital-Brushes/shots/export-as-jpg.png" alt="Export As window, Format JPG" loading="lazy" onerror="this.remove()" onclick="window.open(this.src)"></div>
       </div>
     </div>
 
